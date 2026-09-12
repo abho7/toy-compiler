@@ -9,11 +9,12 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 1 of 10 — source text becomes an abstract syntax tree.**
+> **Status: phase 2 of 10 — a program is fully checked before anything runs.**
 > [The language](docs/language.md) and [what it means](docs/semantics.md) were written down
-> first, because every correctness argument later refers to them. The lexer and parser now
-> exist, with diagnostics that point at the offending token and error recovery that keeps going
-> rather than stopping at the first mistake.
+> first, because every correctness argument later refers to them. Source text now becomes an
+> abstract syntax tree, with diagnostics that point at the offending token, and that tree is
+> then checked: names resolved, types known, calls matched to signatures, array lengths
+> computed, and every non-void function required to return on every path. Nothing executes yet.
 
 ## Why a bytecode VM rather than native assembly
 
@@ -40,6 +41,14 @@ optimization pass must preserve all three, and this is checked by byte compariso
 corpus, across every pass configuration, and across randomly generated programs, not by
 inspection.
 
+One deliberate exception to "independent": all three evaluate every operator by calling the same
+arithmetic kernel, `src/values.js`. That is what will make constant folding correct by
+construction rather than by coincidence — folding is the interpreter's own evaluation, run one
+phase earlier, not a second implementation that has to agree with it. The cost is that a bug in
+that kernel would be a bug in all three at once, and no differential test between them could
+ever find it, so it is tested directly instead: every operator over every pair of boundary
+values, the division identity, and randomized sampling.
+
 ## Planned pipeline
 
 ```
@@ -53,7 +62,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 |---|---|---|
 | 0 | language specification, scaffold, CI | **done** |
 | 1 | lexer, parser, AST, diagnostics with source spans | **done** |
-| 2 | semantic analysis: scopes, types, returns | not started |
+| 2 | semantic analysis: scopes, types, returns | **done** |
 | 3 | reference AST interpreter, corpus, golden outputs | not started |
 | 4 | SSA IR, IR interpreter, IR validator | not started |
 | 5 | bytecode ISA, code generation, VM | not started |
