@@ -9,9 +9,11 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 0 of 10 — the language is specified, no compiler yet.**
-> [The language](docs/language.md) and [what it means](docs/semantics.md) are written down first,
-> because every correctness argument later refers to them.
+> **Status: phase 1 of 10 — source text becomes an abstract syntax tree.**
+> [The language](docs/language.md) and [what it means](docs/semantics.md) were written down
+> first, because every correctness argument later refers to them. The lexer and parser now
+> exist, with diagnostics that point at the offending token and error recovery that keeps going
+> rather than stopping at the first mistake.
 
 ## Why a bytecode VM rather than native assembly
 
@@ -50,7 +52,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | phase | what it adds | state |
 |---|---|---|
 | 0 | language specification, scaffold, CI | **done** |
-| 1 | lexer, parser, AST, diagnostics with source spans | not started |
+| 1 | lexer, parser, AST, diagnostics with source spans | **done** |
 | 2 | semantic analysis: scopes, types, returns | not started |
 | 3 | reference AST interpreter, corpus, golden outputs | not started |
 | 4 | SSA IR, IR interpreter, IR validator | not started |
