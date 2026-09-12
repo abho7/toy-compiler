@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>toy-compiler</title>
+<style>
+  :root {
+    --ink: #16171b; --dim: #5c6068; --faint: #8b9099; --line: #e3e5e9; --bg: #fbfbfc;
+    --card: #ffffff; --accent: #3b5bdb; --good: #15803d; --warn: #b45309;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e7e9ee; --dim: #9aa1ab; --faint: #767c86; --line: #2a2d34; --bg: #131418;
+      --card: #191b20; --accent: #91a7ff; --good: #4ade80; --warn: #fbbf24;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
+         font: 15px/1.7 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  main { max-width: 56rem; margin: 0 auto; padding: 3.5rem 1.5rem 6rem; }
+  h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 0.5rem; letter-spacing: -0.015em; }
+  h2 { font-size: 0.82rem; margin: 3rem 0 0.8rem; color: var(--faint);
+       text-transform: uppercase; letter-spacing: 0.11em; font-weight: 500; }
+  p { max-width: 46rem; }
+  .sub { color: var(--dim); margin-top: 0; }
+  a { color: var(--accent); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+          padding: 1.1rem 1.25rem; margin: 1rem 0; }
+  .lead { border-left: 3px solid var(--accent); }
+  .links { display: flex; flex-wrap: wrap; gap: 0.6rem; margin-top: 0.4rem; }
+  .links a { display: inline-block; padding: 0.4rem 0.8rem; border: 1px solid var(--line);
+             border-radius: 7px; text-decoration: none; background: var(--card); }
+  .links a b { color: var(--ink); }
+  .links a span { color: var(--faint); font-size: 0.82rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
+  th { text-align: left; font-weight: 500; color: var(--faint); padding: 0.3rem 1.2rem 0.5rem 0;
+       border-bottom: 1px solid var(--line); }
+  td { padding: 0.32rem 1.2rem 0.32rem 0; border-bottom: 1px solid var(--line); }
+  td.n { text-align: right; font-variant-numeric: tabular-nums; }
+  .warn { color: var(--warn); } .good { color: var(--good); }
+  footer { margin-top: 4rem; color: var(--faint); font-size: 0.82rem; }
+</style>
+<main>
+  <h1>A compiler, with every optimization checked</h1>
+  <p class="sub">minic: integers, arrays, functions, loops. Lexer, parser, type checker, SSA
+  intermediate representation, optimization passes, register allocation, and a bytecode VM —
+  written from scratch, no dependencies, no build step.</p>
+
+  <div class="card lead">
+    <p style="margin:0">An optimization that is merely plausible is not finished. Every pass here
+    has to preserve the exact output bytes, the exact trap, and the exact exit status of every
+    program — checked against a reference interpreter across a corpus and across randomly
+    generated programs, with the cases where a pass would have been wrong written down rather
+    than quietly fixed.</p>
+  </div>
+
+  <div class="links">
+    <a href="web/playground.html"><b>Playground</b> <span>&mdash; not built yet</span></a>
+    <a href="https://github.com/abho7/toy-compiler"><b>Source</b> <span>&mdash; GitHub</span></a>
+    <a href="docs/language.md"><b>Language</b> <span>&mdash; syntax</span></a>
+    <a href="docs/semantics.md"><b>Semantics</b> <span>&mdash; what programs mean</span></a>
+  </div>
+
+  <h2>Status</h2>
+  <p>Phase 0 of 10. The language and its semantics are specified; the compiler is not written
+  yet. This page will render its numbers from <code>golden/measurements.json</code> once there
+  are measurements to render, so that no figure on it is typed in by hand.</p>
+
+  <div class="card">
+    <table>
+      <tr><th>phase</th><th>what it adds</th><th class="n">state</th></tr>
+      <tr><td>0</td><td>language specification, scaffold, CI</td><td class="n good">done</td></tr>
+      <tr><td>1&ndash;2</td><td>lexer, parser, diagnostics, type checking</td><td class="n">not started</td></tr>
+      <tr><td>3&ndash;5</td><td>reference interpreter, SSA IR, bytecode VM</td><td class="n">not started</td></tr>
+      <tr><td>6&ndash;7</td><td>optimization passes, register allocation</td><td class="n">not started</td></tr>
+      <tr><td>8&ndash;9</td><td>random program testing, benchmarks, this report</td><td class="n">not started</td></tr>
+      <tr><td>10</td><td>interactive playground</td><td class="n">not started</td></tr>
+    </table>
+  </div>
+
+  <h2>Why a bytecode VM</h2>
+  <p>This machine has no assembler and no linker, and no emulator to run their output. Emitted
+  x86-64 could never be assembled, executed or differentially tested here or in CI &mdash; it
+  would be an artifact whose correctness is asserted rather than checked. The target is therefore
+  a register-based bytecode VM, built alongside the compiler, which keeps every stage executable
+  and keeps register allocation a real pass with real spilling. The cost, stated plainly: no
+  instruction selection against a real ISA, no ABI, no hardware effects, and VM instructions
+  executed rather than cycles as the primary metric.</p>
+
+  <footer>Nothing on this page has been measured yet. When it has, every number will name the
+  command that produced it.</footer>
+</main>
+</html>
