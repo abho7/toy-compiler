@@ -62,15 +62,17 @@
   </div>
 
   <h2>Status</h2>
-  <p>Phase 0 of 10. The language and its semantics are specified; the compiler is not written
-  yet. This page will render its numbers from <code>golden/measurements.json</code> once there
-  are measurements to render, so that no figure on it is typed in by hand.</p>
+  <p>Phase 1 of 10. The language and its semantics are specified, and source text now becomes an
+  abstract syntax tree, with diagnostics that point at the offending token. Nothing executes yet.
+  This page will render its numbers from <code>golden/measurements.json</code> once there are
+  measurements to render, so that no figure on it is typed in by hand.</p>
 
   <div class="card">
     <table>
       <tr><th>phase</th><th>what it adds</th><th class="n">state</th></tr>
       <tr><td>0</td><td>language specification, scaffold, CI</td><td class="n good">done</td></tr>
-      <tr><td>1&ndash;2</td><td>lexer, parser, diagnostics, type checking</td><td class="n">not started</td></tr>
+      <tr><td>1</td><td>lexer, parser, AST, diagnostics</td><td class="n good">done</td></tr>
+      <tr><td>2</td><td>type checking and scope resolution</td><td class="n">not started</td></tr>
       <tr><td>3&ndash;5</td><td>reference interpreter, SSA IR, bytecode VM</td><td class="n">not started</td></tr>
       <tr><td>6&ndash;7</td><td>optimization passes, register allocation</td><td class="n">not started</td></tr>
       <tr><td>8&ndash;9</td><td>random program testing, benchmarks, this report</td><td class="n">not started</td></tr>
