@@ -1,0 +1,10 @@
+# Source and fixtures are text, normalised to LF in the repository. Corpus
+# programs and their golden outputs are compared byte for byte by the test
+# suite, so a checkout that rewrote their line endings would fail the
+# comparison for reasons that have nothing to do with the compiler.
+* text=auto eol=lf
+
+*.mc text eol=lf
+*.expected text eol=lf
+*.json text eol=lf
+*.md text eol=lf

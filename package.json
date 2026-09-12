@@ -1,0 +1,12 @@
+{
+  "name": "toy-compiler",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "A compiler for minic, a small imperative language: lexer, parser, type checker, SSA IR, optimization passes, register allocation, and a bytecode VM, with every optimization checked against a reference interpreter.",
+  "engines": { "node": ">=24" },
+  "scripts": {
+    "test": "node --test",
+    "serve": "node tools/serve.js"
+  }
+}
