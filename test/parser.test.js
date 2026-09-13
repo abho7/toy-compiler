@@ -182,6 +182,16 @@ test('negating a non-literal stays a Unary node', () => {
   assert.equal(exprTree('-x'), ['Unary -', '  Name x'].join('\n'));
 });
 
+test('-(-2147483648) stays a negation, because its value is one past INT_MAX', () => {
+  // Folding it would produce a literal the range check rejects, but the
+  // expression is legal: negation wraps, so it evaluates to INT_MIN again.
+  const program = parseOrThrow('int main() { return -(-2147483648); }');
+  const value = program.functions[0].body.stmts[0].value;
+  assert.equal(value.kind, 'Unary');
+  assert.equal(value.operand.kind, 'IntLit');
+  assert.equal(value.operand.value, -2147483648);
+});
+
 test('an int[] parameter is recorded as such', () => {
   const program = parseOrThrow('int sum(int[] xs, int n) { return 0; }');
   assert.deepEqual(program.functions[0].params.map((p) => [p.type, p.name]),

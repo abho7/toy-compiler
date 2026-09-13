@@ -357,7 +357,14 @@ class Parser {
       // one past INT_MAX, so the minus is folded here rather than leaving a
       // literal that the range check below would reject.
       if (t.value === '-' && operand?.kind === 'IntLit') {
-        return { kind: 'IntLit', value: -operand.value, span: Span.join(t.span, operand.span) };
+        const folded = -operand.value;
+        // Only when the result is representable. `-(-2147483648)` is not: its
+        // value is one past INT_MAX. Negation wraps, so it stays a Unary and
+        // wraps at run time like any other negation, rather than being folded
+        // into a literal the range check would then reject.
+        if (folded >= -INT_MIN_MAGNITUDE && folded <= INT_MAX) {
+          return { kind: 'IntLit', value: folded, span: Span.join(t.span, operand.span) };
+        }
       }
       return { kind: 'Unary', op: t.value, operand, span: Span.join(t.span, operand?.span ?? t.span) };
     }

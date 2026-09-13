@@ -38,11 +38,23 @@ trap, remove a trap, change a trap's kind, or change which trap happens first.
 | `div_by_zero` | the right operand of `/` or `%` is `0` |
 | `div_overflow` | `INT_MIN / -1` or `INT_MIN % -1`, whose true result is not representable |
 | `out_of_bounds` | an array index `i` with `i < 0` or `i >= length` |
-| `stack_overflow` | a call is made at call depth 10000 |
+| `stack_overflow` | a call is made at call depth 1000 |
 
 `INT_MIN % -1` is mathematically `0`, so trapping is a choice rather than a necessity. It is
 made so that `/` and `%` have identical trap conditions, which is one fewer special case in every
 pass that reasons about them.
+
+Depth counts the frames currently executing, `main` included. So `main` sits at depth 1, a
+program can nest 999 further calls inside it, and the call that would make the 1001st frame is
+the one that traps. This is spelled out because it is exactly the kind of detail two
+implementations would otherwise settle differently, and a program recursing near the limit would
+then behave differently under the interpreter and under the VM.
+
+The limit is low on purpose. It is part of the language, so every implementation has to trap at
+exactly it — including the tree-walking reference interpreter, which spends several host stack
+frames per minic call and has to run inside a browser tab. A limit it could not reach would mean
+the interpreter and the VM disagreeing about a deeply recursive program, which is the one thing
+the reference implementation exists to prevent.
 
 ## Expressions
 

@@ -9,12 +9,13 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 2 of 10 — a program is fully checked before anything runs.**
+> **Status: phase 3 of 10 — programs run, and there is an oracle to judge them by.**
 > [The language](docs/language.md) and [what it means](docs/semantics.md) were written down
-> first, because every correctness argument later refers to them. Source text now becomes an
-> abstract syntax tree, with diagnostics that point at the offending token, and that tree is
-> then checked: names resolved, types known, calls matched to signatures, array lengths
-> computed, and every non-void function required to return on every path. Nothing executes yet.
+> first, because every correctness argument later refers to them. Source becomes a syntax tree,
+> the tree is checked, and a reference interpreter written straight from the semantics executes
+> it. Sixteen programs — sorts, a sieve, n-queens, a stack VM written in minic, and every trap —
+> are committed with the exact bytes they must produce. Every later phase is judged against
+> those.
 
 ## Why a bytecode VM rather than native assembly
 
@@ -63,7 +64,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | 0 | language specification, scaffold, CI | **done** |
 | 1 | lexer, parser, AST, diagnostics with source spans | **done** |
 | 2 | semantic analysis: scopes, types, returns | **done** |
-| 3 | reference AST interpreter, corpus, golden outputs | not started |
+| 3 | reference AST interpreter, corpus, golden outputs | **done** |
 | 4 | SSA IR, IR interpreter, IR validator | not started |
 | 5 | bytecode ISA, code generation, VM | not started |
 | 6 | optimization passes and the edge cases they get wrong | not started |
@@ -75,9 +76,16 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 ## Running it
 
 ```bash
-node --test          # the test suite
-node tools/serve.js  # the playground and report, at http://127.0.0.1:8099/
+node --test                          # the test suite
+node tools/mc.js corpus/vm.mc        # compile and run a program
+node tools/mc.js --emit=ast prog.mc  # or --emit=tokens, to see a stage
+node tools/goldens.js                # every corpus program against its golden
+node tools/serve.js                  # the playground and report, at http://127.0.0.1:8099/
 ```
+
+A program that exits cleanly gives its own status; a compile error gives 2, a trap gives 70, and
+exhausting the step budget gives 71. The trailer on stderr says which, so a program returning 70
+is still distinguishable from one that trapped.
 
 Requires Node 24 or newer.
 
