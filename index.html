@@ -62,13 +62,14 @@
   </div>
 
   <h2>Status</h2>
-  <p>Phase 4 of 10. Source becomes a syntax tree, the tree is checked, and a reference interpreter
-  written straight from the semantics executes it. The tree is also lowered to SSA over a control
-  flow graph, which a second interpreter runs &mdash; and the two are compared on all sixteen
-  corpus programs, byte for byte, trap positions included. The optimization passes will join the
-  same comparison. This page will render its numbers from
-  <code>golden/measurements.json</code> once there are measurements to render, so that no figure
-  on it is typed in by hand.</p>
+  <p>Phase 5 of 10. The pipeline is complete: source becomes a syntax tree, the tree is checked, a
+  reference interpreter written straight from the semantics executes it, the tree is lowered to SSA
+  over a control flow graph, and that becomes bytecode for a register machine built here. All three
+  ways of running a program are compared on all sixteen corpus programs, byte for byte, trap
+  positions included. No optimization yet &mdash; the code generator is deliberately naive, so the
+  passes to come have an honest baseline to beat. This page will render its numbers from
+  <code>golden/measurements.json</code> once there are measurements to render, so that no figure on
+  it is typed in by hand.</p>
 
   <div class="card">
     <table>
@@ -78,7 +79,7 @@
       <tr><td>2</td><td>type checking and scope resolution</td><td class="n good">done</td></tr>
       <tr><td>3</td><td>reference interpreter, corpus, golden outputs</td><td class="n good">done</td></tr>
       <tr><td>4</td><td>SSA intermediate representation, IR interpreter, validator</td><td class="n good">done</td></tr>
-      <tr><td>5</td><td>bytecode ISA, code generation, the VM</td><td class="n">not started</td></tr>
+      <tr><td>5</td><td>bytecode ISA, code generation, the VM</td><td class="n good">done</td></tr>
       <tr><td>6&ndash;7</td><td>optimization passes, register allocation</td><td class="n">not started</td></tr>
       <tr><td>8&ndash;9</td><td>random program testing, benchmarks, this report</td><td class="n">not started</td></tr>
       <tr><td>10</td><td>interactive playground</td><td class="n">not started</td></tr>
