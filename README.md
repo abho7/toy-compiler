@@ -9,13 +9,13 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 3 of 10 — programs run, and there is an oracle to judge them by.**
-> [The language](docs/language.md) and [what it means](docs/semantics.md) were written down
-> first, because every correctness argument later refers to them. Source becomes a syntax tree,
-> the tree is checked, and a reference interpreter written straight from the semantics executes
-> it. Sixteen programs — sorts, a sieve, n-queens, a stack VM written in minic, and every trap —
-> are committed with the exact bytes they must produce. Every later phase is judged against
-> those.
+> **Status: phase 4 of 10 — there is an [intermediate representation](docs/ir.md), and two ways
+> to run a program agree on every byte.**
+> Source becomes a syntax tree, the tree is checked, and a reference interpreter written straight
+> from [the semantics](docs/semantics.md) executes it. That tree is also lowered to SSA over a
+> control flow graph, which a second interpreter runs. Both are compared on all sixteen corpus
+> programs — same output, same trap kind at the same source position, same exit status. The
+> optimization passes will join the same comparison.
 
 ## Why a bytecode VM rather than native assembly
 
@@ -65,7 +65,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | 1 | lexer, parser, AST, diagnostics with source spans | **done** |
 | 2 | semantic analysis: scopes, types, returns | **done** |
 | 3 | reference AST interpreter, corpus, golden outputs | **done** |
-| 4 | SSA IR, IR interpreter, IR validator | not started |
+| 4 | SSA IR, IR interpreter, IR validator | **done** |
 | 5 | bytecode ISA, code generation, VM | not started |
 | 6 | optimization passes and the edge cases they get wrong | not started |
 | 7 | linear-scan register allocation | not started |
@@ -78,7 +78,8 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 ```bash
 node --test                          # the test suite
 node tools/mc.js corpus/vm.mc        # compile and run a program
-node tools/mc.js --emit=ast prog.mc  # or --emit=tokens, to see a stage
+node tools/mc.js --emit=ast prog.mc  # or --emit=tokens, --emit=ir, to see a stage
+node tools/mc.js --via-ir prog.mc    # run through the IR instead of the tree
 node tools/goldens.js                # every corpus program against its golden
 node tools/serve.js                  # the playground and report, at http://127.0.0.1:8099/
 ```
