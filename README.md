@@ -9,13 +9,15 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 4 of 10 — there is an [intermediate representation](docs/ir.md), and two ways
-> to run a program agree on every byte.**
-> Source becomes a syntax tree, the tree is checked, and a reference interpreter written straight
-> from [the semantics](docs/semantics.md) executes it. That tree is also lowered to SSA over a
-> control flow graph, which a second interpreter runs. Both are compared on all sixteen corpus
-> programs — same output, same trap kind at the same source position, same exit status. The
-> optimization passes will join the same comparison.
+> **Status: phase 5 of 10 — the pipeline is complete, and three ways to run a program agree on
+> every byte.**
+> Source becomes a syntax tree, the tree is checked, a reference interpreter written straight
+> from [the semantics](docs/semantics.md) executes it, the tree is lowered to
+> [SSA](docs/ir.md) over a control flow graph, and that becomes
+> [bytecode](docs/bytecode.md) for a register machine built here. All three run all sixteen
+> corpus programs and produce identical output, identical traps at identical source positions,
+> and identical exit statuses. No optimization yet: the code generator is deliberately naive, so
+> that the passes to come have an honest baseline to beat.
 
 ## Why a bytecode VM rather than native assembly
 
@@ -66,7 +68,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | 2 | semantic analysis: scopes, types, returns | **done** |
 | 3 | reference AST interpreter, corpus, golden outputs | **done** |
 | 4 | SSA IR, IR interpreter, IR validator | **done** |
-| 5 | bytecode ISA, code generation, VM | not started |
+| 5 | bytecode ISA, code generation, VM | **done** |
 | 6 | optimization passes and the edge cases they get wrong | not started |
 | 7 | linear-scan register allocation | not started |
 | 8 | random program generation, shrinking, long campaigns | not started |
@@ -78,8 +80,9 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 ```bash
 node --test                          # the test suite
 node tools/mc.js corpus/vm.mc        # compile and run a program
-node tools/mc.js --emit=ast prog.mc  # or --emit=tokens, --emit=ir, to see a stage
+node tools/mc.js --emit=ast prog.mc  # or --emit=tokens, --emit=ir, --emit=bytecode
 node tools/mc.js --via-ir prog.mc    # run through the IR instead of the tree
+node tools/mc.js --via-vm prog.mc    # run the bytecode on the VM
 node tools/goldens.js                # every corpus program against its golden
 node tools/serve.js                  # the playground and report, at http://127.0.0.1:8099/
 ```

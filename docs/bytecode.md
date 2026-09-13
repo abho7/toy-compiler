@@ -1,0 +1,100 @@
+# The bytecode and the virtual machine
+
+The compiler's output, and the machine that runs it. [Why a VM rather than native
+assembly](../README.md#why-a-bytecode-vm-rather-than-native-assembly) is in the README; this is
+what the machine is.
+
+## Shape
+
+Four `int32` per instruction — opcode and three operands — in one flat `Int32Array` per function.
+Fixed width costs space and buys two things: a jump target is an instruction index rather than a
+byte offset that has to be computed while emitting, and a disassembler cannot lose sync with the
+encoder.
+
+Each function carries a **span per instruction**, so a trap can report the source position it came
+from. That is not debugging decoration: `docs/semantics.md` makes a trap's location part of
+observable behaviour, so the spans are load-bearing and the differential harness compares them.
+
+## Storage
+
+| | |
+|---|---|
+| **registers** | 16 per frame, `r0`–`r15`. Scratch: nothing survives an instruction that does not write it. `r15` is reserved for breaking copy cycles. |
+| **slots** | the frame's own storage, `s0` upward. As many as the function needs. |
+| **heap** | arrays, referred to by an integer handle, so every register holds an `int32` and nothing else. |
+
+Parameters arrive in `r0` upward and are stored into slots `s0` upward on entry. A call leaves its
+result in `r0`, which the caller stores wherever it wants it. At most 15 arguments, since `r15` is
+the scratch register; the code generator reports that rather than emitting something wrong.
+
+The heap never frees. Arrays accumulate for the life of a run, which is fine at corpus scale and
+is written down here rather than discovered later.
+
+## Instructions
+
+| instruction | effect |
+|---|---|
+| `const rd, n` | `rd = n` |
+| `move rd, rs` | `rd = rs` |
+| `ldslot rd, s` | `rd = slot s` |
+| `stslot s, rs` | `slot s = rs` |
+| `add/sub/mul/div/mod rd, ra, rb` | arithmetic; `div` and `mod` can trap |
+| `shl/shr/and/or/xor rd, ra, rb` | bitwise; shift counts use the low five bits |
+| `eq/ne/lt/le/gt/ge rd, ra, rb` | comparison, yielding 1 or 0 |
+| `neg/not/bnot rd, ra` | unary `-`, `!`, `~` |
+| `alloc rd, n` | a fresh zeroed array of `n`; `rd` is its handle |
+| `load rd, ra[ri]` | element, bounds checked |
+| `store ra[ri], rv` | write, bounds checked |
+| `print rs`, `putchar rs` | the only output |
+| `call rd, f, n` | call function `f` with `n` arguments from `r0`; result to `rd` |
+| `ret rs`, `retvoid` | leave the function |
+| `jmp @t` | go to instruction `t` |
+| `brz rs, @t` | go to `t` when `rs` is zero |
+
+## Where the arithmetic comes from
+
+`div` and `mod` call `evalBinop` in `src/values.js` — the same function the two interpreters and
+the constant folder use. Truncation toward zero, `INT_MIN / -1`, and the sign of a remainder are
+the parts worth having in exactly one place.
+
+The rest is inlined in the VM loop, because JavaScript's operators on `int32` already are the
+semantics the document specifies, and routing every addition through a function that returns an
+object would make the benchmark numbers measure the wrapper. That is a deliberate duplication, so
+it is checked rather than trusted: `test/vm.test.js` runs **every inlined opcode against
+`evalBinop` over every pair of boundary values**, which is a finite exhaustive comparison of the
+cases where the two could differ.
+
+## Calls, and the depth limit
+
+The VM is a loop over an explicit frame stack, not host recursion. So the call depth the language
+specifies is the depth the VM enforces — exactly, on every host.
+
+That matters more than it sounds. The reference interpreter's limit had to be lowered to something
+a tree-walker could reach ([why](semantics.md#traps)). If the VM disagreed by even one frame, a
+deeply recursive program would behave differently here than under the oracle, and the differential
+harness would be comparing two languages rather than two implementations of one.
+
+## How code is generated, and why it is bad on purpose
+
+Phase 5's code generator is the simplest thing that is obviously correct: **every SSA value gets a
+slot of its own**, and every instruction loads its operands into registers, computes, and stores
+the result straight back. No value is ever in two places, so no allocation decision can be wrong.
+
+It is also slow — a three-operand addition costs a load, a load, an add and a store. That is the
+point. Phase 7 replaces the slot-per-value assignment with linear-scan register allocation, and the
+improvement it has to show is a concrete one, *loads and stores that stop happening*, against a
+baseline nobody has to take on faith.
+
+Before code generation, two things happen to the IR (`src/backend/linearize.js`):
+
+**Critical edges are split.** An edge from a block with several successors into a block with
+several predecessors has nowhere to put the copies a phi needs: the predecessor runs them on paths
+that do not take the edge, and the successor runs them for the wrong predecessor. A new block on
+the edge is the place that does exist.
+
+**Phis become copies.** A phi is a claim about which value arrived from which predecessor, which
+on each edge is a set of copies performed *simultaneously*. A cycle among them — `x` from `y` and
+`y` from `x` — cannot be sequenced naively without destroying one of the values, so one source is
+parked in a temporary first. Getting this wrong produces a program that is correct until two
+variables happen to exchange values, which is why `test/vm.test.js` exercises a swap and a
+three-way rotation across a loop back edge.
