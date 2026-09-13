@@ -17,8 +17,18 @@ export const TRAP = Object.freeze({
 /** Every trap kind, in declaration order. */
 export const TRAP_KINDS = Object.freeze(Object.values(TRAP));
 
-/** Call depth at which a further call raises STACK_OVERFLOW. */
-export const MAX_CALL_DEPTH = 10000;
+/**
+ * Call depth at which a further call raises STACK_OVERFLOW.
+ *
+ * Deliberately small. Every implementation of the semantics has to reach this
+ * limit and trap at exactly it -- including the tree-walking reference
+ * interpreter, which spends several host stack frames per minic call and runs
+ * inside a browser tab in the playground. A larger limit is unreachable there,
+ * and an interpreter that died of host stack exhaustion before the language's
+ * own limit would disagree with the VM about a program's observable behaviour,
+ * which is precisely what the oracle exists to rule out.
+ */
+export const MAX_CALL_DEPTH = 1000;
 
 /**
  * A trap, as produced by any of the three interpreters.

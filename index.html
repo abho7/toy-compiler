@@ -62,12 +62,12 @@
   </div>
 
   <h2>Status</h2>
-  <p>Phase 2 of 10. The language and its semantics are specified, source text becomes an abstract
-  syntax tree with diagnostics that point at the offending token, and that tree is then checked:
-  names resolved, types known, calls matched to signatures, array lengths computed, and every
-  non-void function required to return on every path. Nothing executes yet. This page will render
-  its numbers from <code>golden/measurements.json</code> once there are measurements to render, so
-  that no figure on it is typed in by hand.</p>
+  <p>Phase 3 of 10. Source becomes a syntax tree, the tree is checked, and a reference interpreter
+  written straight from the semantics executes it. Sixteen programs &mdash; sorts, a sieve,
+  n-queens, a stack VM written in minic, and every kind of trap &mdash; are committed with the
+  exact bytes they must produce, so every later phase has something to be judged against. This
+  page will render its numbers from <code>golden/measurements.json</code> once there are
+  measurements to render, so that no figure on it is typed in by hand.</p>
 
   <div class="card">
     <table>
@@ -75,7 +75,8 @@
       <tr><td>0</td><td>language specification, scaffold, CI</td><td class="n good">done</td></tr>
       <tr><td>1</td><td>lexer, parser, AST, diagnostics</td><td class="n good">done</td></tr>
       <tr><td>2</td><td>type checking and scope resolution</td><td class="n good">done</td></tr>
-      <tr><td>3&ndash;5</td><td>reference interpreter, SSA IR, bytecode VM</td><td class="n">not started</td></tr>
+      <tr><td>3</td><td>reference interpreter, corpus, golden outputs</td><td class="n good">done</td></tr>
+      <tr><td>4&ndash;5</td><td>SSA intermediate representation, bytecode VM</td><td class="n">not started</td></tr>
       <tr><td>6&ndash;7</td><td>optimization passes, register allocation</td><td class="n">not started</td></tr>
       <tr><td>8&ndash;9</td><td>random program testing, benchmarks, this report</td><td class="n">not started</td></tr>
       <tr><td>10</td><td>interactive playground</td><td class="n">not started</td></tr>
