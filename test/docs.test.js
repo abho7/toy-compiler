@@ -18,7 +18,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const read = (p) => readFileSync(join(ROOT, p), 'utf8');
 
 test('the documents the compiler is written against exist', () => {
-  for (const doc of ['docs/semantics.md', 'docs/language.md', 'README.md']) {
+  for (const doc of ['docs/semantics.md', 'docs/language.md', 'docs/ir.md', 'README.md']) {
     assert.ok(existsSync(join(ROOT, doc)), `${doc} is missing`);
   }
 });
