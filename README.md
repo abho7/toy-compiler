@@ -9,7 +9,24 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 7 of 10 — values live in registers, and the improvement is measured.**
+> **Status: phase 8 of 10 — 100,000 random programs, and a harness proven able to fail.**
+> Programs are generated well-typed by construction, run through the reference interpreter, the IR
+> interpreter and the VM, unoptimized and fully optimized, and compared byte for byte: output, trap
+> kind and source position, exit status. **100,000 programs, zero disagreements**, none skipped and
+> none that failed to compile.
+>
+> That zero is worth exactly as much as the harness's ability to report a failure, so the optimizer
+> was broken on purpose. `x + 1 → x` was caught within 4 programs; deleting constant folding's trap
+> guard was caught within 40 and shrunk from 35 statements to
+> `int main() { int v1 = (11 % 0); return 0; }`. Both injections were reverted, and
+> [a test](test/fuzz.test.js) now does the same thing permanently without touching `src/`.
+>
+> The campaign found no compiler bug, and it cannot find every kind: recursion is never generated,
+> so `stack_overflow` is covered only by the hand-written corpus. [The
+> limits](docs/correctness.md#what-the-campaign-found) are written down.
+>
+> The previous status, still true:
+> **Phase 7 — values live in registers, and the improvement is measured.**
 > Linear-scan allocation replaced the deliberately naive slot-per-value code generator: across the
 > corpus, **47.6% fewer instructions executed** and **every load and store to a frame slot gone**,
 > against the same compiler with zero allocatable registers. The weakest case is 0% — `arith.mc`
@@ -87,7 +104,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | 5 | bytecode ISA, code generation, VM | **done** |
 | 6 | optimization passes and the edge cases they get wrong | **done** |
 | 7 | linear-scan register allocation | **done** |
-| 8 | random program generation, shrinking, long campaigns | not started |
+| 8 | random program generation, shrinking, long campaigns | **done** |
 | 9 | benchmarks and the technical report | not started |
 | 10 | interactive playground | not started |
 
@@ -100,8 +117,15 @@ node tools/mc.js --emit=ast prog.mc  # or --emit=tokens, --emit=ir, --emit=bytec
 node tools/mc.js --via-ir prog.mc    # run through the IR instead of the tree
 node tools/mc.js --via-vm prog.mc    # run the bytecode on the VM
 node tools/goldens.js                # every corpus program against its golden
+node tools/fuzz.js                   # 1000 random programs, every way, compared
+node tools/fuzz.js --programs=100000 # a long campaign
+node tools/fuzz.js --thorough        # every pass alone as well as the pipeline
 node tools/serve.js                  # the playground and report, at http://127.0.0.1:8099/
 ```
+
+`tools/fuzz.js` exits non-zero when anything disagrees, so it works as a gate. A disagreement is
+shrunk to a minimal reproducer and written to `failures/`, which is gitignored: a real one gets
+promoted into `corpus/` or `test/` deliberately rather than committed by accident.
 
 A program that exits cleanly gives its own status; a compile error gives 2, a trap gives 70, and
 exhausting the step budget gives 71. The trailer on stderr says which, so a program returning 70

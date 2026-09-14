@@ -2,3 +2,7 @@ node_modules/
 *.log
 .DS_Store
 scratch/
+# Campaign output: shrunk reproducers for whatever the last fuzz run found.
+# A real one gets promoted into corpus/ or test/ deliberately, never committed
+# from here by accident.
+failures/
