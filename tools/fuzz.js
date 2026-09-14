@@ -13,7 +13,7 @@
 // Exit status is 0 when everything agreed and 1 when anything did not, so this
 // is usable as a gate.
 
-import { writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 
@@ -89,6 +89,31 @@ if (agreed) {
     write(`  ${kind.padEnd(16)} ${String(count).padStart(6)}  ${((100 * count) / agreed).toFixed(1)}%\n`);
   }
   write(`\n  mean output ${Math.round(outputTotal / agreed)} bytes\n`);
+}
+
+// Recorded before the failure report below, which exits: a campaign that found
+// something is exactly the one whose numbers should not be lost.
+if (flag('write')) {
+  const path = join(ROOT, 'golden', 'measurements.json');
+  const existing = existsSync(path) ? JSON.parse(readFileSync(path, 'utf8')) : {};
+  existing.campaign = {
+    producedBy: `node tools/fuzz.js --programs=${programs} --seed=${firstSeed}${thorough ? ' --thorough' : ''} --write`,
+    programs,
+    firstSeed,
+    configurationsPerProgram: configurations.length,
+    seconds: Number(elapsed),
+    agreed,
+    disagreed: failures.length - compileErrors,
+    skipped,
+    failedToCompile: compileErrors,
+    outcomes: Object.fromEntries([...outcomes].sort((a, b) => b[1] - a[1])),
+    meanOutputBytes: agreed ? Math.round(outputTotal / agreed) : 0,
+    limits: 'Recursion is never generated, so stack_overflow is not exercised here; an array '
+      + 'parameter is only ever indexed at 0, since the callee cannot know the caller\'s length.',
+  };
+  if (!existsSync(join(ROOT, 'golden'))) mkdirSync(join(ROOT, 'golden'), { recursive: true });
+  writeFileSync(path, `${JSON.stringify(existing, null, 1)}\n`);
+  write('\nrecorded in golden/measurements.json\n');
 }
 
 if (failures.length) {

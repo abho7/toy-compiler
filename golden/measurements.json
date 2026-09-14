@@ -420,13 +420,13 @@
      "statics": 48,
      "slotOps": 0,
      "steps": 48,
-     "ms": 0.0358
+     "ms": 0.0543
     },
     "allocated": {
      "statics": 48,
      "slotOps": 0,
      "steps": 48,
-     "ms": 0.0272
+     "ms": 0.031
     }
    },
    {
@@ -435,13 +435,13 @@
      "statics": 136,
      "slotOps": 70,
      "steps": 637,
-     "ms": 0.1427
+     "ms": 0.1325
     },
     "allocated": {
      "statics": 80,
      "slotOps": 0,
      "steps": 286,
-     "ms": 0.0783
+     "ms": 0.0752
     }
    },
    {
@@ -450,13 +450,13 @@
      "statics": 12,
      "slotOps": 4,
      "steps": 5,
-     "ms": 0.0166
+     "ms": 0.0125
     },
     "allocated": {
      "statics": 8,
      "slotOps": 0,
      "steps": 4,
-     "ms": 0.0162
+     "ms": 0.0187
     }
    },
    {
@@ -465,13 +465,13 @@
      "statics": 69,
      "slotOps": 37,
      "steps": 405457,
-     "ms": 9.8038
+     "ms": 9.9886
     },
     "allocated": {
      "statics": 38,
      "slotOps": 0,
      "steps": 219159,
-     "ms": 5.111
+     "ms": 5.2687
     }
    },
    {
@@ -480,13 +480,13 @@
      "statics": 163,
      "slotOps": 93,
      "steps": 158895,
-     "ms": 3.2666
+     "ms": 3.4464
     },
     "allocated": {
      "statics": 91,
      "slotOps": 0,
      "steps": 75785,
-     "ms": 1.6597
+     "ms": 1.42
     }
    },
    {
@@ -495,13 +495,13 @@
      "statics": 19,
      "slotOps": 9,
      "steps": 24,
-     "ms": 0.0013
+     "ms": 0.0011
     },
     "allocated": {
      "statics": 11,
      "slotOps": 0,
      "steps": 14,
-     "ms": 0.0011
+     "ms": 0.0009
     }
    },
    {
@@ -510,13 +510,13 @@
      "statics": 8,
      "slotOps": 1,
      "steps": 5,
-     "ms": 0.0099
+     "ms": 0.0097
     },
     "allocated": {
      "statics": 7,
      "slotOps": 0,
      "steps": 5,
-     "ms": 0.009
+     "ms": 0.0091
     }
    },
    {
@@ -540,13 +540,13 @@
      "statics": 20,
      "slotOps": 0,
      "steps": 20,
-     "ms": 0.0065
+     "ms": 0.0066
     },
     "allocated": {
      "statics": 20,
      "slotOps": 0,
      "steps": 20,
-     "ms": 0.0064
+     "ms": 0.0065
     }
    },
    {
@@ -555,7 +555,7 @@
      "statics": 33,
      "slotOps": 13,
      "steps": 54,
-     "ms": 0.0125
+     "ms": 0.0121
     },
     "allocated": {
      "statics": 21,
@@ -570,13 +570,13 @@
      "statics": 36,
      "slotOps": 16,
      "steps": 36,
-     "ms": 0.008
+     "ms": 0.0077
     },
     "allocated": {
      "statics": 22,
      "slotOps": 0,
      "steps": 22,
-     "ms": 0.0061
+     "ms": 0.006
     }
    },
    {
@@ -585,13 +585,13 @@
      "statics": 24,
      "slotOps": 9,
      "steps": 24,
-     "ms": 0.0076
+     "ms": 0.0059
     },
     "allocated": {
      "statics": 15,
      "slotOps": 0,
      "steps": 15,
-     "ms": 0.0055
+     "ms": 0.0097
     }
    },
    {
@@ -600,13 +600,13 @@
      "statics": 52,
      "slotOps": 0,
      "steps": 38,
-     "ms": 0.0118
+     "ms": 0.0114
     },
     "allocated": {
      "statics": 52,
      "slotOps": 0,
      "steps": 38,
-     "ms": 0.0015
+     "ms": 0.0014
     }
    },
    {
@@ -615,13 +615,13 @@
      "statics": 77,
      "slotOps": 41,
      "steps": 1456,
-     "ms": 0.3004
+     "ms": 0.2696
     },
     "allocated": {
      "statics": 42,
      "slotOps": 0,
      "steps": 768,
-     "ms": 0.1812
+     "ms": 0.3281
     }
    },
    {
@@ -630,13 +630,13 @@
      "statics": 162,
      "slotOps": 76,
      "steps": 1914,
-     "ms": 0.4105
+     "ms": 0.3446
     },
     "allocated": {
      "statics": 94,
      "slotOps": 0,
      "steps": 915,
-     "ms": 0.0184
+     "ms": 0.0164
     }
    },
    {
@@ -645,13 +645,13 @@
      "statics": 190,
      "slotOps": 105,
      "steps": 1271,
-     "ms": 0.0307
+     "ms": 0.0823
     },
     "allocated": {
      "statics": 106,
      "slotOps": 0,
      "steps": 616,
-     "ms": 0.0137
+     "ms": 0.0128
     }
    },
    {
@@ -660,13 +660,13 @@
      "statics": 144,
      "slotOps": 74,
      "steps": 488,
-     "ms": 0.2222
+     "ms": 0.1098
     },
     "allocated": {
      "statics": 85,
      "slotOps": 0,
      "steps": 247,
-     "ms": 0.0708
+     "ms": 0.0688
     }
    },
    {
@@ -675,13 +675,13 @@
      "statics": 6,
      "slotOps": 2,
      "steps": 3,
-     "ms": 0.0208
+     "ms": 0.012
     },
     "allocated": {
      "statics": 4,
      "slotOps": 0,
      "steps": 3,
-     "ms": 0.0195
+     "ms": 0.0115
     }
    },
    {
@@ -690,13 +690,13 @@
      "statics": 8,
      "slotOps": 2,
      "steps": 5,
-     "ms": 0.0101
+     "ms": 0.0252
     },
     "allocated": {
      "statics": 6,
      "slotOps": 0,
      "steps": 5,
-     "ms": 0.0096
+     "ms": 0.0177
     }
    },
    {
@@ -705,13 +705,13 @@
      "statics": 14,
      "slotOps": 7,
      "steps": 11,
-     "ms": 0.0185
+     "ms": 0.0101
     },
     "allocated": {
      "statics": 7,
      "slotOps": 0,
      "steps": 6,
-     "ms": 0.0098
+     "ms": 0.0092
     }
    },
    {
@@ -720,13 +720,13 @@
      "statics": 8,
      "slotOps": 2,
      "steps": 6,
-     "ms": 0.0203
+     "ms": 0.0226
     },
     "allocated": {
      "statics": 6,
      "slotOps": 0,
      "steps": 4,
-     "ms": 0.0118
+     "ms": 0.0122
     }
    },
    {
@@ -735,13 +735,13 @@
      "statics": 15,
      "slotOps": 8,
      "steps": 6995,
-     "ms": 1.2918
+     "ms": 1.2242
     },
     "allocated": {
      "statics": 9,
      "slotOps": 0,
      "steps": 4997,
-     "ms": 0.2468
+     "ms": 0.2657
     }
    },
    {
@@ -750,16 +750,1364 @@
      "statics": 425,
      "slotOps": 195,
      "steps": 17075,
-     "ms": 0.258
+     "ms": 0.2421
     },
     "allocated": {
      "statics": 250,
      "slotOps": 0,
      "steps": 8538,
-     "ms": 0.1392
+     "ms": 0.2029
     }
    }
   ],
   "wallClockNote": "median of 5 runs, reported per program but not aggregated: it measures this host on this day"
+ },
+ "optimizationPasses": {
+  "producedBy": "node tools/bench.js --write",
+  "baseline": "the same compiler with no optimization passes, register allocation on in both",
+  "primaryMetric": "instructions executed, which is machine independent",
+  "configurations": [
+   {
+    "configuration": "O0",
+    "statics": 1216,
+    "executed": 312570,
+    "spills": 0,
+    "irChanges": 0,
+    "staticCutPercent": 0,
+    "executedCutPercent": 0
+   },
+   {
+    "configuration": "fold",
+    "statics": 1048,
+    "executed": 312180,
+    "spills": 0,
+    "irChanges": 58,
+    "staticCutPercent": 13.8,
+    "executedCutPercent": 0.1
+   },
+   {
+    "configuration": "copyprop",
+    "statics": 1212,
+    "executed": 312542,
+    "spills": 0,
+    "irChanges": 3,
+    "staticCutPercent": 0.3,
+    "executedCutPercent": 0
+   },
+   {
+    "configuration": "cse",
+    "statics": 1180,
+    "executed": 311936,
+    "spills": 0,
+    "irChanges": 308,
+    "staticCutPercent": 3,
+    "executedCutPercent": 0.2
+   },
+   {
+    "configuration": "dce",
+    "statics": 1216,
+    "executed": 312570,
+    "spills": 0,
+    "irChanges": 69,
+    "staticCutPercent": 0,
+    "executedCutPercent": 0
+   },
+   {
+    "configuration": "fold+copyprop",
+    "statics": 1044,
+    "executed": 312152,
+    "spills": 0,
+    "irChanges": 61,
+    "staticCutPercent": 14.1,
+    "executedCutPercent": 0.1
+   },
+   {
+    "configuration": "all",
+    "statics": 1029,
+    "executed": 311533,
+    "spills": 0,
+    "irChanges": 406,
+    "staticCutPercent": 15.4,
+    "executedCutPercent": 0.3
+   }
+  ],
+  "perProgram": [
+   {
+    "program": "arith.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 92,
+      "spills": 0,
+      "steps": 92,
+      "ms": 0.0401,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 48,
+      "spills": 0,
+      "steps": 48,
+      "ms": 0.0381,
+      "irChanges": 23
+     },
+     "copyprop": {
+      "statics": 92,
+      "spills": 0,
+      "steps": 92,
+      "ms": 0.0753,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 92,
+      "spills": 0,
+      "steps": 92,
+      "ms": 0.0408,
+      "irChanges": 50
+     },
+     "dce": {
+      "statics": 92,
+      "spills": 0,
+      "steps": 92,
+      "ms": 0.0371,
+      "irChanges": 23
+     },
+     "fold+copyprop": {
+      "statics": 48,
+      "spills": 0,
+      "steps": 48,
+      "ms": 0.0254,
+      "irChanges": 23
+     },
+     "all": {
+      "statics": 48,
+      "spills": 0,
+      "steps": 48,
+      "ms": 0.0603,
+      "irChanges": 101
+     }
+    }
+   },
+   {
+    "program": "binary-search.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 80,
+      "spills": 0,
+      "steps": 286,
+      "ms": 0.0905,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 80,
+      "spills": 0,
+      "steps": 286,
+      "ms": 0.0094,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 80,
+      "spills": 0,
+      "steps": 286,
+      "ms": 0.0184,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 80,
+      "spills": 0,
+      "steps": 286,
+      "ms": 0.0345,
+      "irChanges": 17
+     },
+     "dce": {
+      "statics": 80,
+      "spills": 0,
+      "steps": 286,
+      "ms": 0.0134,
+      "irChanges": 4
+     },
+     "fold+copyprop": {
+      "statics": 80,
+      "spills": 0,
+      "steps": 286,
+      "ms": 0.0175,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 80,
+      "spills": 0,
+      "steps": 286,
+      "ms": 0.0171,
+      "irChanges": 17
+     }
+    }
+   },
+   {
+    "program": "eval-order.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 8,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.012,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 8,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0111,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 8,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0107,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 8,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0106,
+      "irChanges": 1
+     },
+     "dce": {
+      "statics": 8,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0112,
+      "irChanges": 0
+     },
+     "fold+copyprop": {
+      "statics": 8,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0238,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 8,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0091,
+      "irChanges": 1
+     }
+    }
+   },
+   {
+    "program": "fib.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 38,
+      "spills": 0,
+      "steps": 219159,
+      "ms": 5.0293,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 38,
+      "spills": 0,
+      "steps": 219159,
+      "ms": 5.2325,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 38,
+      "spills": 0,
+      "steps": 219159,
+      "ms": 5.4091,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 38,
+      "spills": 0,
+      "steps": 219159,
+      "ms": 4.859,
+      "irChanges": 7
+     },
+     "dce": {
+      "statics": 38,
+      "spills": 0,
+      "steps": 219159,
+      "ms": 15.3417,
+      "irChanges": 2
+     },
+     "fold+copyprop": {
+      "statics": 38,
+      "spills": 0,
+      "steps": 219159,
+      "ms": 4.7485,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 38,
+      "spills": 0,
+      "steps": 219159,
+      "ms": 5.4728,
+      "irChanges": 7
+     }
+    }
+   },
+   {
+    "program": "nqueens.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 91,
+      "spills": 0,
+      "steps": 75785,
+      "ms": 2.7522,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 91,
+      "spills": 0,
+      "steps": 75785,
+      "ms": 1.2348,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 91,
+      "spills": 0,
+      "steps": 75785,
+      "ms": 2.4083,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 91,
+      "spills": 0,
+      "steps": 75785,
+      "ms": 2.8012,
+      "irChanges": 8
+     },
+     "dce": {
+      "statics": 91,
+      "spills": 0,
+      "steps": 75785,
+      "ms": 1.2797,
+      "irChanges": 1
+     },
+     "fold+copyprop": {
+      "statics": 91,
+      "spills": 0,
+      "steps": 75785,
+      "ms": 1.1624,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 91,
+      "spills": 0,
+      "steps": 75785,
+      "ms": 1.8719,
+      "irChanges": 8
+     }
+    }
+   },
+   {
+    "program": "opt-call-twice.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 11,
+      "spills": 0,
+      "steps": 14,
+      "ms": 0.001,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 11,
+      "spills": 0,
+      "steps": 14,
+      "ms": 0.0009,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 11,
+      "spills": 0,
+      "steps": 14,
+      "ms": 0.001,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 11,
+      "spills": 0,
+      "steps": 14,
+      "ms": 0.0009,
+      "irChanges": 2
+     },
+     "dce": {
+      "statics": 11,
+      "spills": 0,
+      "steps": 14,
+      "ms": 0.0009,
+      "irChanges": 2
+     },
+     "fold+copyprop": {
+      "statics": 11,
+      "spills": 0,
+      "steps": 14,
+      "ms": 0.0009,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 11,
+      "spills": 0,
+      "steps": 14,
+      "ms": 0.0008,
+      "irChanges": 3
+     }
+    }
+   },
+   {
+    "program": "opt-dead-divide.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0097,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0094,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0251,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0229,
+      "irChanges": 2
+     },
+     "dce": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0124,
+      "irChanges": 1
+     },
+     "fold+copyprop": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0091,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0093,
+      "irChanges": 2
+     }
+    }
+   },
+   {
+    "program": "opt-dead-load.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0102,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0089,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0088,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0087,
+      "irChanges": 1
+     },
+     "dce": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0085,
+      "irChanges": 1
+     },
+     "fold+copyprop": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0096,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.009,
+      "irChanges": 1
+     }
+    }
+   },
+   {
+    "program": "opt-foldable.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 51,
+      "spills": 0,
+      "steps": 40,
+      "ms": 0.0105,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 20,
+      "spills": 0,
+      "steps": 20,
+      "ms": 0.0066,
+      "irChanges": 12
+     },
+     "copyprop": {
+      "statics": 51,
+      "spills": 0,
+      "steps": 40,
+      "ms": 0.0103,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 51,
+      "spills": 0,
+      "steps": 40,
+      "ms": 0.0189,
+      "irChanges": 17
+     },
+     "dce": {
+      "statics": 51,
+      "spills": 0,
+      "steps": 40,
+      "ms": 0.0189,
+      "irChanges": 9
+     },
+     "fold+copyprop": {
+      "statics": 20,
+      "spills": 0,
+      "steps": 20,
+      "ms": 0.0067,
+      "irChanges": 12
+     },
+     "all": {
+      "statics": 20,
+      "spills": 0,
+      "steps": 20,
+      "ms": 0.0065,
+      "irChanges": 39
+     }
+    }
+   },
+   {
+    "program": "opt-guarded-divide.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 21,
+      "spills": 0,
+      "steps": 33,
+      "ms": 0.0134,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 21,
+      "spills": 0,
+      "steps": 33,
+      "ms": 0.0099,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 21,
+      "spills": 0,
+      "steps": 33,
+      "ms": 0.0099,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 21,
+      "spills": 0,
+      "steps": 33,
+      "ms": 0.0102,
+      "irChanges": 5
+     },
+     "dce": {
+      "statics": 21,
+      "spills": 0,
+      "steps": 33,
+      "ms": 0.0098,
+      "irChanges": 3
+     },
+     "fold+copyprop": {
+      "statics": 21,
+      "spills": 0,
+      "steps": 33,
+      "ms": 0.0177,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 21,
+      "spills": 0,
+      "steps": 33,
+      "ms": 0.0279,
+      "irChanges": 5
+     }
+    }
+   },
+   {
+    "program": "opt-load-across-call.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 22,
+      "spills": 0,
+      "steps": 22,
+      "ms": 0.0125,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 22,
+      "spills": 0,
+      "steps": 22,
+      "ms": 0.0063,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 22,
+      "spills": 0,
+      "steps": 22,
+      "ms": 0.0062,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 22,
+      "spills": 0,
+      "steps": 22,
+      "ms": 0.0061,
+      "irChanges": 6
+     },
+     "dce": {
+      "statics": 22,
+      "spills": 0,
+      "steps": 22,
+      "ms": 0.0061,
+      "irChanges": 2
+     },
+     "fold+copyprop": {
+      "statics": 22,
+      "spills": 0,
+      "steps": 22,
+      "ms": 0.0061,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 22,
+      "spills": 0,
+      "steps": 22,
+      "ms": 0.0063,
+      "irChanges": 6
+     }
+    }
+   },
+   {
+    "program": "opt-load-after-store.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 15,
+      "spills": 0,
+      "steps": 15,
+      "ms": 0.0023,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 15,
+      "spills": 0,
+      "steps": 15,
+      "ms": 0.0019,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 15,
+      "spills": 0,
+      "steps": 15,
+      "ms": 0.0017,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 15,
+      "spills": 0,
+      "steps": 15,
+      "ms": 0.0016,
+      "irChanges": 6
+     },
+     "dce": {
+      "statics": 15,
+      "spills": 0,
+      "steps": 15,
+      "ms": 0.0016,
+      "irChanges": 2
+     },
+     "fold+copyprop": {
+      "statics": 15,
+      "spills": 0,
+      "steps": 15,
+      "ms": 0.0016,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 15,
+      "spills": 0,
+      "steps": 15,
+      "ms": 0.0009,
+      "irChanges": 6
+     }
+    }
+   },
+   {
+    "program": "short-circuit.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 142,
+      "spills": 0,
+      "steps": 82,
+      "ms": 0.0048,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 52,
+      "spills": 0,
+      "steps": 38,
+      "ms": 0.0033,
+      "irChanges": 22
+     },
+     "copyprop": {
+      "statics": 142,
+      "spills": 0,
+      "steps": 82,
+      "ms": 0.0057,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 121,
+      "spills": 0,
+      "steps": 67,
+      "ms": 0.0049,
+      "irChanges": 51
+     },
+     "dce": {
+      "statics": 142,
+      "spills": 0,
+      "steps": 82,
+      "ms": 0.0027,
+      "irChanges": 9
+     },
+     "fold+copyprop": {
+      "statics": 52,
+      "spills": 0,
+      "steps": 38,
+      "ms": 0.0021,
+      "irChanges": 22
+     },
+     "all": {
+      "statics": 52,
+      "spills": 0,
+      "steps": 38,
+      "ms": 0.0014,
+      "irChanges": 71
+     }
+    }
+   },
+   {
+    "program": "sieve.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 42,
+      "spills": 0,
+      "steps": 768,
+      "ms": 0.0182,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 42,
+      "spills": 0,
+      "steps": 768,
+      "ms": 0.0186,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 42,
+      "spills": 0,
+      "steps": 768,
+      "ms": 0.0207,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 42,
+      "spills": 0,
+      "steps": 768,
+      "ms": 0.0135,
+      "irChanges": 5
+     },
+     "dce": {
+      "statics": 42,
+      "spills": 0,
+      "steps": 768,
+      "ms": 0.0137,
+      "irChanges": 2
+     },
+     "fold+copyprop": {
+      "statics": 42,
+      "spills": 0,
+      "steps": 768,
+      "ms": 0.0136,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 42,
+      "spills": 0,
+      "steps": 768,
+      "ms": 0.0317,
+      "irChanges": 5
+     }
+    }
+   },
+   {
+    "program": "sort-insertion.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 98,
+      "spills": 0,
+      "steps": 943,
+      "ms": 0.0218,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 98,
+      "spills": 0,
+      "steps": 943,
+      "ms": 0.0218,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 94,
+      "spills": 0,
+      "steps": 915,
+      "ms": 0.0216,
+      "irChanges": 3
+     },
+     "cse": {
+      "statics": 98,
+      "spills": 0,
+      "steps": 943,
+      "ms": 0.0219,
+      "irChanges": 23
+     },
+     "dce": {
+      "statics": 98,
+      "spills": 0,
+      "steps": 943,
+      "ms": 0.0479,
+      "irChanges": 1
+     },
+     "fold+copyprop": {
+      "statics": 94,
+      "spills": 0,
+      "steps": 915,
+      "ms": 0.022,
+      "irChanges": 3
+     },
+     "all": {
+      "statics": 94,
+      "spills": 0,
+      "steps": 915,
+      "ms": 0.0168,
+      "irChanges": 26
+     }
+    }
+   },
+   {
+    "program": "sort-quick.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 110,
+      "spills": 0,
+      "steps": 636,
+      "ms": 0.0345,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 110,
+      "spills": 0,
+      "steps": 636,
+      "ms": 0.0342,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 110,
+      "spills": 0,
+      "steps": 636,
+      "ms": 0.0346,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 106,
+      "spills": 0,
+      "steps": 616,
+      "ms": 0.0339,
+      "irChanges": 21
+     },
+     "dce": {
+      "statics": 110,
+      "spills": 0,
+      "steps": 636,
+      "ms": 0.0343,
+      "irChanges": 1
+     },
+     "fold+copyprop": {
+      "statics": 110,
+      "spills": 0,
+      "steps": 636,
+      "ms": 0.0167,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 106,
+      "spills": 0,
+      "steps": 616,
+      "ms": 0.0126,
+      "irChanges": 21
+     }
+    }
+   },
+   {
+    "program": "strings.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 88,
+      "spills": 0,
+      "steps": 253,
+      "ms": 0.0135,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 88,
+      "spills": 0,
+      "steps": 253,
+      "ms": 0.0154,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 88,
+      "spills": 0,
+      "steps": 253,
+      "ms": 0.0244,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 85,
+      "spills": 0,
+      "steps": 247,
+      "ms": 0.0051,
+      "irChanges": 11
+     },
+     "dce": {
+      "statics": 88,
+      "spills": 0,
+      "steps": 253,
+      "ms": 0.0049,
+      "irChanges": 3
+     },
+     "fold+copyprop": {
+      "statics": 88,
+      "spills": 0,
+      "steps": 253,
+      "ms": 0.005,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 85,
+      "spills": 0,
+      "steps": 247,
+      "ms": 0.0053,
+      "irChanges": 11
+     }
+    }
+   },
+   {
+    "program": "trap-div-overflow.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 4,
+      "spills": 0,
+      "steps": 3,
+      "ms": 0.0386,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 4,
+      "spills": 0,
+      "steps": 3,
+      "ms": 0.0174,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 4,
+      "spills": 0,
+      "steps": 3,
+      "ms": 0.0215,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 4,
+      "spills": 0,
+      "steps": 3,
+      "ms": 0.0358,
+      "irChanges": 0
+     },
+     "dce": {
+      "statics": 4,
+      "spills": 0,
+      "steps": 3,
+      "ms": 0.0375,
+      "irChanges": 0
+     },
+     "fold+copyprop": {
+      "statics": 4,
+      "spills": 0,
+      "steps": 3,
+      "ms": 0.0564,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 4,
+      "spills": 0,
+      "steps": 3,
+      "ms": 0.017,
+      "irChanges": 0
+     }
+    }
+   },
+   {
+    "program": "trap-div-zero.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0169,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.016,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0163,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0197,
+      "irChanges": 1
+     },
+     "dce": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0217,
+      "irChanges": 1
+     },
+     "fold+copyprop": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0185,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 5,
+      "ms": 0.0165,
+      "irChanges": 1
+     }
+    }
+   },
+   {
+    "program": "trap-oob-read.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 6,
+      "ms": 0.0184,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 6,
+      "ms": 0.018,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 6,
+      "ms": 0.0199,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 6,
+      "ms": 0.0218,
+      "irChanges": 1
+     },
+     "dce": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 6,
+      "ms": 0.0186,
+      "irChanges": 1
+     },
+     "fold+copyprop": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 6,
+      "ms": 0.0177,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 7,
+      "spills": 0,
+      "steps": 6,
+      "ms": 0.0176,
+      "irChanges": 1
+     }
+    }
+   },
+   {
+    "program": "trap-oob-write.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.017,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0168,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0164,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0172,
+      "irChanges": 0
+     },
+     "dce": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0173,
+      "irChanges": 0
+     },
+     "fold+copyprop": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0171,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 6,
+      "spills": 0,
+      "steps": 4,
+      "ms": 0.0171,
+      "irChanges": 0
+     }
+    }
+   },
+   {
+    "program": "trap-stack-overflow.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 9,
+      "spills": 0,
+      "steps": 4997,
+      "ms": 0.4058,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 9,
+      "spills": 0,
+      "steps": 4997,
+      "ms": 0.511,
+      "irChanges": 0
+     },
+     "copyprop": {
+      "statics": 9,
+      "spills": 0,
+      "steps": 4997,
+      "ms": 0.4126,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 9,
+      "spills": 0,
+      "steps": 4997,
+      "ms": 0.1686,
+      "irChanges": 0
+     },
+     "dce": {
+      "statics": 9,
+      "spills": 0,
+      "steps": 4997,
+      "ms": 0.1579,
+      "irChanges": 0
+     },
+     "fold+copyprop": {
+      "statics": 9,
+      "spills": 0,
+      "steps": 4997,
+      "ms": 0.3529,
+      "irChanges": 0
+     },
+     "all": {
+      "statics": 9,
+      "spills": 0,
+      "steps": 4997,
+      "ms": 0.3625,
+      "irChanges": 0
+     }
+    }
+   },
+   {
+    "program": "vm.mc",
+    "byConfiguration": {
+     "O0": {
+      "statics": 261,
+      "spills": 0,
+      "steps": 9413,
+      "ms": 0.3114,
+      "irChanges": 0
+     },
+     "fold": {
+      "statics": 258,
+      "spills": 0,
+      "steps": 9131,
+      "ms": 0.1637,
+      "irChanges": 1
+     },
+     "copyprop": {
+      "statics": 261,
+      "spills": 0,
+      "steps": 9413,
+      "ms": 0.1679,
+      "irChanges": 0
+     },
+     "cse": {
+      "statics": 253,
+      "spills": 0,
+      "steps": 8820,
+      "ms": 0.1706,
+      "irChanges": 73
+     },
+     "dce": {
+      "statics": 261,
+      "spills": 0,
+      "steps": 9413,
+      "ms": 0.3939,
+      "irChanges": 1
+     },
+     "fold+copyprop": {
+      "statics": 258,
+      "spills": 0,
+      "steps": 9131,
+      "ms": 0.1449,
+      "irChanges": 1
+     },
+     "all": {
+      "statics": 250,
+      "spills": 0,
+      "steps": 8538,
+      "ms": 0.1996,
+      "irChanges": 74
+     }
+    }
+   }
+  ],
+  "best": {
+   "program": "short-circuit.mc",
+   "cutPercent": 53.7
+  },
+  "weakest": {
+   "program": "binary-search.mc",
+   "cutPercent": 0
+  },
+  "inert": [
+   "copyprop",
+   "dce"
+  ],
+  "finding": "The four passes cut static code size by 15.4% but executed instructions by only 0.3%. None of them optimizes across an iteration or a call -- there is no loop-invariant code motion, no strength reduction, no unrolling, no inlining -- so a program whose time goes into a loop or a recursive call gets nothing. The aggregate is dominated by exactly those programs. Per program the passes cut about half the work from small straight-line code and nothing at all from the hot ones, which is why the per-program table matters more than the total. Register allocation, measured separately, is where this compiler's dynamic win actually comes from.",
+  "note": "Each pass is measured alone as well as in the pipeline. A pass that reduces nothing on its own is reported as such rather than omitted: copy propagation removes trivial phis, and what creates them is constant folding.",
+  "wallClockNote": "median of 5 runs, per program, not aggregated: it measures this host on this day"
+ },
+ "campaign": {
+  "producedBy": "node tools/fuzz.js --programs=100000 --seed=1 --write",
+  "programs": 100000,
+  "firstSeed": 1,
+  "configurationsPerProgram": 2,
+  "seconds": 530.7,
+  "agreed": 100000,
+  "disagreed": 0,
+  "skipped": 0,
+  "failedToCompile": 0,
+  "outcomes": {
+   "exit": 74168,
+   "div_by_zero": 14636,
+   "out_of_bounds": 11036,
+   "div_overflow": 160
+  },
+  "meanOutputBytes": 99,
+  "limits": "Recursion is never generated, so stack_overflow is not exercised here; an array parameter is only ever indexed at 0, since the callee cannot know the caller's length."
  }
 }
