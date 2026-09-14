@@ -9,7 +9,25 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 8 of 10 — 100,000 random programs, and a harness proven able to fail.**
+> **Status: phase 9 of 10 — the optimizer is measured, and most of it does not help.**
+> Two benchmarks, kept apart because they answer different questions. Holding the passes fixed and
+> varying register allocation: **47.6% fewer instructions executed**, and every frame-slot load and
+> store gone. Holding allocation fixed and varying the passes: static code shrinks **15.4%**
+> (1216 → 1029 instructions) while executed instructions fall **0.3%**.
+>
+> The per-program table is the honest one. **16 of the 23 corpus programs get exactly 0%** from the
+> optimizer — including the two that dominate the total, `fib.mc` and `nqueens.mc`, which are
+> 295k of the 312k instructions executed and are byte-identical before and after. The passes cut
+> 48–54% from small straight-line programs and nothing at all from the hot ones, because none of
+> the four optimizes across an iteration or a call: no loop-invariant code motion, no strength
+> reduction, no unrolling, no inlining. Register allocation is where the dynamic win actually is.
+>
+> [The report](index.html) renders every one of those numbers out of
+> [`golden/measurements.json`](golden/measurements.json) when it loads. None of them is typed into
+> the page, and each table names the command that produced it.
+>
+> The previous status, still true:
+> **Phase 8 — 100,000 random programs, and a harness proven able to fail.**
 > Programs are generated well-typed by construction, run through the reference interpreter, the IR
 > interpreter and the VM, unoptimized and fully optimized, and compared byte for byte: output, trap
 > kind and source position, exit status. **100,000 programs, zero disagreements**, none skipped and
@@ -105,7 +123,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | 6 | optimization passes and the edge cases they get wrong | **done** |
 | 7 | linear-scan register allocation | **done** |
 | 8 | random program generation, shrinking, long campaigns | **done** |
-| 9 | benchmarks and the technical report | not started |
+| 9 | benchmarks and the technical report | **done** |
 | 10 | interactive playground | not started |
 
 ## Running it
@@ -120,6 +138,9 @@ node tools/goldens.js                # every corpus program against its golden
 node tools/fuzz.js                   # 1000 random programs, every way, compared
 node tools/fuzz.js --programs=100000 # a long campaign
 node tools/fuzz.js --thorough        # every pass alone as well as the pipeline
+node tools/bench.js                  # what allocation bought, and what each pass buys
+node tools/bench.js --write          # and record it in golden/measurements.json
+node tools/pressure.js               # peak register pressure across the corpus
 node tools/serve.js                  # the playground and report, at http://127.0.0.1:8099/
 ```
 

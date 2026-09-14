@@ -21,6 +21,7 @@
   h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 0.5rem; letter-spacing: -0.015em; }
   h2 { font-size: 0.82rem; margin: 3rem 0 0.8rem; color: var(--faint);
        text-transform: uppercase; letter-spacing: 0.11em; font-weight: 500; }
+  h3 { font-size: 0.95rem; margin: 1.6rem 0 0.5rem; font-weight: 600; }
   p { max-width: 46rem; }
   .sub { color: var(--dim); margin-top: 0; }
   a { color: var(--accent); }
@@ -32,13 +33,17 @@
              border-radius: 7px; text-decoration: none; background: var(--card); }
   .links a b { color: var(--ink); }
   .links a span { color: var(--faint); font-size: 0.82rem; }
+  .scroll { overflow-x: auto; }
   table { border-collapse: collapse; width: 100%; font-size: 0.85rem; }
   th { text-align: left; font-weight: 500; color: var(--faint); padding: 0.3rem 1.2rem 0.5rem 0;
-       border-bottom: 1px solid var(--line); }
-  td { padding: 0.32rem 1.2rem 0.32rem 0; border-bottom: 1px solid var(--line); }
-  td.n { text-align: right; font-variant-numeric: tabular-nums; }
+       border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td { padding: 0.32rem 1.2rem 0.32rem 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  td.n, th.n { text-align: right; font-variant-numeric: tabular-nums; }
   .warn { color: var(--warn); } .good { color: var(--good); }
+  .cmd { color: var(--faint); font-size: 0.78rem; margin: 0.1rem 0 0.9rem; }
+  .finding { border-left: 3px solid var(--warn); }
   footer { margin-top: 4rem; color: var(--faint); font-size: 0.82rem; }
+  @media (max-width: 34rem) { main { padding: 2.5rem 1rem 4rem; } }
 </style>
 <main>
   <h1>A compiler, with every optimization checked</h1>
@@ -49,46 +54,33 @@
   <div class="card lead">
     <p style="margin:0">An optimization that is merely plausible is not finished. Every pass here
     has to preserve the exact output bytes, the exact trap, and the exact exit status of every
-    program — checked against a reference interpreter across a corpus and across randomly
-    generated programs, with the cases where a pass would have been wrong written down rather
-    than quietly fixed.</p>
+    program — checked against a reference interpreter across a corpus and across a campaign of
+    randomly generated programs, with the cases where a pass would have been wrong written down
+    rather than quietly fixed. The campaign's size is in the table below, where it is read from
+    the measurement file rather than typed here.</p>
   </div>
 
   <div class="links">
     <a href="web/playground.html"><b>Playground</b> <span>&mdash; not built yet</span></a>
     <a href="https://github.com/abho7/toy-compiler"><b>Source</b> <span>&mdash; GitHub</span></a>
-    <a href="docs/language.md"><b>Language</b> <span>&mdash; syntax</span></a>
+    <a href="docs/correctness.md"><b>Correctness</b> <span>&mdash; the argument</span></a>
     <a href="docs/semantics.md"><b>Semantics</b> <span>&mdash; what programs mean</span></a>
   </div>
 
   <h2>Status</h2>
-  <p>Phase 8 of 10. The pipeline is complete and optimizing: source becomes a syntax tree, the tree
-  is checked, a reference interpreter written straight from the semantics executes it, the tree is
-  lowered to SSA over a control flow graph, four optimization passes rewrite it, linear-scan
-  allocation puts values in registers, and the result becomes bytecode for a register machine built
-  here. All three ways of running a program are compared on all twenty-three corpus programs, at
+  <p>Phase 9 of 10. The pipeline is complete, optimizing and measured: source becomes a syntax
+  tree, the tree is checked, a reference interpreter written straight from the semantics executes
+  it, the tree is lowered to SSA over a control flow graph, four optimization passes rewrite it,
+  linear-scan allocation puts values in registers, and the result becomes bytecode for a register
+  machine built here. All three ways of running a program are compared on every corpus program at
   every optimization level, byte for byte, trap positions included.</p>
 
-  <p>The first real measurements now exist in <code>golden/measurements.json</code>, written by
-  <code>tools/bench.js</code> and <code>tools/pressure.js</code>. This page will render from that
-  file rather than repeating its figures here, so that no number on it is typed in by hand &mdash;
-  which is phase 9's work, when the report is built.</p>
+  <p><strong>Every number below is read from <a href="golden/measurements.json"><code>golden/measurements.json</code></a>
+  when this page loads.</strong> None of them is typed into this file, and each table names the
+  command that produced it, so any of them can be reproduced or shown to be stale.</p>
 
-  <div class="card">
-    <table>
-      <tr><th>phase</th><th>what it adds</th><th class="n">state</th></tr>
-      <tr><td>0</td><td>language specification, scaffold, CI</td><td class="n good">done</td></tr>
-      <tr><td>1</td><td>lexer, parser, AST, diagnostics</td><td class="n good">done</td></tr>
-      <tr><td>2</td><td>type checking and scope resolution</td><td class="n good">done</td></tr>
-      <tr><td>3</td><td>reference interpreter, corpus, golden outputs</td><td class="n good">done</td></tr>
-      <tr><td>4</td><td>SSA intermediate representation, IR interpreter, validator</td><td class="n good">done</td></tr>
-      <tr><td>5</td><td>bytecode ISA, code generation, the VM</td><td class="n good">done</td></tr>
-      <tr><td>6</td><td>optimization passes, and the cases they get wrong</td><td class="n good">done</td></tr>
-      <tr><td>7</td><td>linear-scan register allocation</td><td class="n good">done</td></tr>
-      <tr><td>8</td><td>random program generation, shrinking, long campaigns</td><td class="n good">done</td></tr>
-      <tr><td>9</td><td>benchmarks, and this report</td><td class="n">not started</td></tr>
-      <tr><td>10</td><td>interactive playground</td><td class="n">not started</td></tr>
-    </table>
+  <div id="measurements">
+    <p class="sub" id="loading">Loading measurements&hellip;</p>
   </div>
 
   <h2>Why a bytecode VM</h2>
@@ -100,7 +92,196 @@
   instruction selection against a real ISA, no ABI, no hardware effects, and VM instructions
   executed rather than cycles as the primary metric.</p>
 
-  <footer>Nothing on this page has been measured yet. When it has, every number will name the
-  command that produced it.</footer>
+  <h2>Phases</h2>
+  <div class="card scroll">
+    <table>
+      <tr><th>phase</th><th>what it adds</th><th class="n">state</th></tr>
+      <tr><td>0</td><td>language specification, scaffold, CI</td><td class="n good">done</td></tr>
+      <tr><td>1</td><td>lexer, parser, AST, diagnostics</td><td class="n good">done</td></tr>
+      <tr><td>2</td><td>type checking and scope resolution</td><td class="n good">done</td></tr>
+      <tr><td>3</td><td>reference interpreter, corpus, golden outputs</td><td class="n good">done</td></tr>
+      <tr><td>4</td><td>SSA intermediate representation, IR interpreter, validator</td><td class="n good">done</td></tr>
+      <tr><td>5</td><td>bytecode ISA, code generation, the VM</td><td class="n good">done</td></tr>
+      <tr><td>6</td><td>optimization passes, and the cases they get wrong</td><td class="n good">done</td></tr>
+      <tr><td>7</td><td>linear-scan register allocation</td><td class="n good">done</td></tr>
+      <tr><td>8</td><td>random program generation, shrinking, long campaigns</td><td class="n good">done</td></tr>
+      <tr><td>9</td><td>benchmarks, and this report</td><td class="n good">done</td></tr>
+      <tr><td>10</td><td>interactive playground</td><td class="n">not started</td></tr>
+    </table>
+  </div>
+
+  <footer>Every number on this page names the command that produced it. Wall-clock timings are
+  recorded per program but never aggregated: they measure one host on one day, while instructions
+  executed is the same number anywhere.</footer>
+
+<script type="module">
+// The whole point of this page: it renders from the measurement file rather
+// than repeating it. A number that is wrong here is a number that is wrong in
+// golden/measurements.json, which a command produced and can reproduce.
+
+const n = (v) => (typeof v === 'number' ? v.toLocaleString('en-US') : String(v ?? '—'));
+const pct = (v) => (typeof v === 'number' ? `${v.toFixed(1)}%` : '—');
+
+const el = (tag, attrs = {}, ...children) => {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') node.className = v;
+    else if (k === 'html') node.innerHTML = v;
+    else node.setAttribute(k, v);
+  }
+  for (const child of children.flat()) {
+    if (child == null) continue;
+    node.append(child.nodeType ? child : document.createTextNode(String(child)));
+  }
+  return node;
+};
+
+/** A table from a header spec and rows of cells. Numeric columns right-align. */
+const table = (headers, rows) => {
+  const head = el('tr', {}, headers.map((h) => el('th', { class: h.numeric ? 'n' : '' }, h.label)));
+  const body = rows.map((cells) =>
+    el('tr', {}, cells.map((c, i) =>
+      el('td', { class: `${headers[i].numeric ? 'n' : ''} ${c && c.tone ? c.tone : ''}`.trim() },
+        c && typeof c === 'object' ? c.value : c))));
+  return el('div', { class: 'card scroll' }, el('table', {}, head, body));
+};
+
+const command = (text) => el('p', { class: 'cmd' }, `produced by: ${text}`);
+const heading = (text) => el('h2', {}, text);
+const note = (text, cls = 'card') => el('div', { class: cls }, el('p', { style: 'margin:0' }, text));
+
+function renderAllocation(d) {
+  if (!d) return [];
+  const t = d.totals;
+  return [
+    heading('What register allocation bought'),
+    el('p', {}, `Against the same compiler with zero allocatable registers — every value in a frame
+      slot, loaded and stored around every instruction. Same IR and same optimizer on both sides;
+      the only difference is whether values may live in registers.`),
+    command(d.producedBy),
+    table(
+      [{ label: 'measure' }, { label: 'every value in memory', numeric: true },
+        { label: 'allocated', numeric: true }, { label: 'cut', numeric: true }],
+      [
+        ['static instructions', n(t.staticBefore), n(t.staticAfter), pct(d.staticCutPercent)],
+        ['instructions executed', n(t.executedBefore), n(t.executedAfter), pct(d.executedCutPercent)],
+        ['slot loads and stores', n(t.slotOpsBefore),
+          { value: n(t.slotOpsAfter), tone: 'good' }, '—'],
+      ]),
+    el('p', {}, `Best case ${d.best.program} at ${pct(d.best.cutPercent)}; weakest case
+      ${d.weakest.program} at ${pct(d.weakest.cutPercent)} — it had no slot traffic to remove, and a
+      pass that does nothing for a whole class of programs is worth saying out loud.`),
+  ];
+}
+
+function renderPasses(d) {
+  if (!d) return [];
+  const rows = d.configurations.map((c) => [
+    c.configuration,
+    n(c.statics),
+    n(c.executed),
+    c.configuration === 'O0' ? '—' : { value: pct(c.executedCutPercent), tone: c.executedCutPercent <= 0 ? 'warn' : '' },
+    n(c.irChanges),
+    n(c.spills),
+  ]);
+  const perProgram = [...d.perProgram]
+    .map((r) => {
+      const o0 = r.byConfiguration.O0;
+      const all = r.byConfiguration.all;
+      const cut = o0.steps ? (100 * (o0.steps - all.steps)) / o0.steps : 0;
+      return { program: r.program, o0, all, cut };
+    })
+    .sort((a, b) => b.cut - a.cut);
+
+  return [
+    heading('What each optimization pass buys'),
+    el('p', {}, `The comparison above holds the passes fixed and varies register allocation. This
+      one holds allocation fixed and varies the passes: none at all, each pass alone, and the whole
+      pipeline. Each pass is measured alone even where that is not how it would ship.`),
+    command(d.producedBy),
+    table(
+      [{ label: 'configuration' }, { label: 'static', numeric: true },
+        { label: 'executed', numeric: true }, { label: 'cut', numeric: true },
+        { label: 'IR changes', numeric: true }, { label: 'spills', numeric: true }],
+      rows),
+    note(d.finding, 'card finding'),
+    el('h3', {}, 'Per program, because the total hides the spread'),
+    table(
+      [{ label: 'program' }, { label: 'executed, no passes', numeric: true },
+        { label: 'executed, all passes', numeric: true }, { label: 'cut', numeric: true }],
+      perProgram.map((r) => [
+        r.program, n(r.o0.steps), n(r.all.steps),
+        { value: `${r.cut.toFixed(1)}%`, tone: r.cut >= 40 ? 'good' : (r.cut === 0 ? 'warn' : '') },
+      ])),
+  ];
+}
+
+function renderPressure(d) {
+  if (!d) return [];
+  return [
+    heading('Register pressure, and what it means for the result above'),
+    command(d.producedBy),
+    table(
+      [{ label: 'measure' }, { label: 'value', numeric: true }],
+      [
+        ['functions measured', n(d.functions)],
+        ['peak simultaneous live values', `${n(d.peakPressure)} (${d.peakAt})`],
+        ['median peak', n(d.medianPeak)],
+        ['allocatable registers', n(d.allocatableRegisters)],
+        ['spills at the natural register file', { value: n(d.totalSpillsAtNaturalRegisterFile), tone: 'warn' }],
+      ]),
+    note(d.note, 'card finding'),
+  ];
+}
+
+function renderCampaign(d) {
+  if (!d) return [];
+  const outcomes = Object.entries(d.outcomes ?? {});
+  return [
+    heading('The randomized differential campaign'),
+    el('p', {}, `Programs generated well-typed by construction, run through the reference
+      interpreter, the IR interpreter and the VM, unoptimized and fully optimized, and compared
+      byte for byte: output, trap kind and source position, exit status.`),
+    command(d.producedBy),
+    table(
+      [{ label: 'measure' }, { label: 'value', numeric: true }],
+      [
+        ['programs', n(d.programs)],
+        ['configurations per program', n(d.configurationsPerProgram)],
+        ['disagreements', { value: n(d.disagreed), tone: d.disagreed ? 'warn' : 'good' }],
+        ['skipped (reference out of budget)', n(d.skipped)],
+        ['failed to compile', n(d.failedToCompile)],
+        ['mean output per program', `${n(d.meanOutputBytes)} bytes`],
+        ['wall clock', `${n(d.seconds)}s`],
+      ]),
+    outcomes.length
+      ? [el('h3', {}, 'How the generated programs ended'),
+        table([{ label: 'outcome' }, { label: 'programs', numeric: true }, { label: 'share', numeric: true }],
+          outcomes.map(([kind, count]) => [kind, n(count), pct((100 * count) / d.agreed)]))]
+      : null,
+    note(d.limits, 'card finding'),
+  ];
+}
+
+const host = document.getElementById('measurements');
+try {
+  const response = await fetch('golden/measurements.json', { cache: 'no-cache' });
+  if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+  const data = await response.json();
+  host.replaceChildren(
+    ...renderAllocation(data.registerAllocation),
+    ...renderPasses(data.optimizationPasses),
+    ...renderPressure(data.registerPressure),
+    ...renderCampaign(data.campaign).flat().filter(Boolean),
+  );
+} catch (error) {
+  // Opening this file directly with file:// blocks the fetch, which is worth
+  // saying rather than leaving an empty page that looks like a bug.
+  host.replaceChildren(note(
+    `Could not read golden/measurements.json (${error.message}). This page reads its numbers at
+     load time, so it needs to be served rather than opened from disk: run "node tools/serve.js"
+     and visit http://127.0.0.1:8099/.`, 'card finding'));
+}
+</script>
 </main>
 </html>
