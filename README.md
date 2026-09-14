@@ -9,8 +9,14 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 5 of 10 — the pipeline is complete, and three ways to run a program agree on
-> every byte.**
+> **Status: phase 6 of 10 — the optimizer works, and
+> [what keeps it honest](docs/correctness.md) is written down.**
+> Four passes — constant folding, copy propagation, common subexpression elimination, dead code
+> elimination — each checked for what it removes *and* what it refuses to remove. Every pass
+> alone, and the whole pipeline, on every corpus program, through both the IR interpreter and the
+> VM, byte for byte against the reference.
+>
+> The previous status, still true:
 > Source becomes a syntax tree, the tree is checked, a reference interpreter written straight
 > from [the semantics](docs/semantics.md) executes it, the tree is lowered to
 > [SSA](docs/ir.md) over a control flow graph, and that becomes
@@ -69,7 +75,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | 3 | reference AST interpreter, corpus, golden outputs | **done** |
 | 4 | SSA IR, IR interpreter, IR validator | **done** |
 | 5 | bytecode ISA, code generation, VM | **done** |
-| 6 | optimization passes and the edge cases they get wrong | not started |
+| 6 | optimization passes and the edge cases they get wrong | **done** |
 | 7 | linear-scan register allocation | not started |
 | 8 | random program generation, shrinking, long campaigns | not started |
 | 9 | benchmarks and the technical report | not started |

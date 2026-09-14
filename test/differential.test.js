@@ -25,6 +25,7 @@ import { runModule } from '../src/ir/interp.js';
 import { validateModule } from '../src/ir/validate.js';
 import { generate } from '../src/backend/codegen.js';
 import { runBytecode } from '../src/vm/vm.js';
+import { optimize, PASSES, DEFAULT_PIPELINE } from '../src/opt/passes.js';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..');
 const CORPUS = join(ROOT, 'corpus');
@@ -70,6 +71,58 @@ for (const file of programs) {
 
 test('the differential covers the whole corpus', () => {
   assert.ok(programs.length >= 15, `only ${programs.length} programs compared`);
+});
+
+// Every pass alone, the whole pipeline, and the pipeline twice. Each pass is
+// run on its own because a pass only ever tested inside a pipeline is one whose
+// bugs get attributed to its neighbours.
+const CONFIGURATIONS = [
+  ...Object.keys(PASSES).map((name) => [name]),
+  [...DEFAULT_PIPELINE],
+  [...DEFAULT_PIPELINE, ...DEFAULT_PIPELINE],
+];
+
+for (const file of programs) {
+  for (const names of CONFIGURATIONS) {
+    test(`optimized agrees: ${file} [${names.join('+')}]`, () => {
+      const source = readFileSync(join(CORPUS, file), 'utf8');
+      const { program } = compile(source);
+      const expected = observationBytes(runProgram(program, { maxSteps: 5_000_000 }));
+
+      const { module } = compile(source);
+      optimize(module, names);
+      assert.deepEqual(validateModule(module), [], `${file}: ${names.join('+')} left the IR malformed`);
+
+      const fromIr = runModule(module, { maxSteps: 20_000_000 });
+      const fromVm = runBytecode(generate(module), { maxSteps: 60_000_000 });
+
+      assert.equal(decode(observationBytes(fromIr)), decode(expected),
+        `${file}: the IR interpreter disagrees after ${names.join('+')}`);
+      assert.equal(decode(observationBytes(fromVm)), decode(expected),
+        `${file}: the VM disagrees after ${names.join('+')}`);
+    });
+  }
+}
+
+test('the optimizer actually optimizes, so the agreement above means something', () => {
+  // Agreement is worthless if every pass is a no-op: value numbering once
+  // reported zero changes on every program, and the tests that were supposed
+  // to constrain it passed anyway. Each pass has to demonstrably fire
+  // somewhere in the corpus.
+  const fired = Object.fromEntries(Object.keys(PASSES).map((name) => [name, 0]));
+  for (const file of programs) {
+    const source = readFileSync(join(CORPUS, file), 'utf8');
+    for (const name of Object.keys(PASSES)) {
+      const { module } = compile(source);
+      // Folding first for copyprop, which collapses phis that folding makes
+      // trivial; alone it would have nothing to do on most programs.
+      const report = optimize(module, name === 'copyprop' ? ['fold', name] : [name]);
+      fired[name] += report[report.length - 1].changed;
+    }
+  }
+  for (const [name, changes] of Object.entries(fired)) {
+    assert.ok(changes > 0, `${name} changed nothing anywhere in the corpus`);
+  }
 });
 
 test('every trap kind is exercised, in all three implementations', () => {
