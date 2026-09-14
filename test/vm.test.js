@@ -164,8 +164,13 @@ test('the disassembly names its opcodes and targets', () => {
   const { bytecode } = compile(main('int s = 0; for (int i = 0; i < 2; i = i + 1) s = s + i; return s;'));
   const text = disassembleFunc(bytecode.funcs[bytecode.mainIndex]);
   // Mnemonics are padded into a column, so the separator is one or more spaces.
+  //
+  // This deliberately does not require any slot traffic. Before register
+  // allocation every operand moved through a slot and an ldslot was guaranteed;
+  // now a loop this small allocates entirely into registers and emits none at
+  // all, which is the phase working rather than failing.
   assert.match(text, /func main\(0 params, \d+ slots\)/);
-  assert.match(text, /ldslot\s+r\d+, s\d+/);
+  assert.match(text, /add\s+r\d+, r\d+, r\d+/);
   assert.match(text, /brz\s+r\d+, @\d+/);
   assert.match(text, /ret\s+r\d+/);
 });

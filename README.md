@@ -9,8 +9,18 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 6 of 10 — the optimizer works, and
-> [what keeps it honest](docs/correctness.md) is written down.**
+> **Status: phase 7 of 10 — values live in registers, and the improvement is measured.**
+> Linear-scan allocation replaced the deliberately naive slot-per-value code generator: across the
+> corpus, **47.6% fewer instructions executed** and **every load and store to a frame slot gone**,
+> against the same compiler with zero allocatable registers. The weakest case is 0% — `arith.mc`
+> never had slot traffic to remove — and [the numbers](golden/measurements.json) say so.
+>
+> Peak register pressure is 11 against 13 allocatable, so nothing in the corpus spills. The spill
+> path is therefore verified by squeezing the register file to 3, 1 and 0 and checking the
+> generated programs still agree byte-for-byte with the reference interpreter, because code that
+> never runs is code whose passing tests mean nothing.
+>
+> The previous status, still true:
 > Four passes — constant folding, copy propagation, common subexpression elimination, dead code
 > elimination — each checked for what it removes *and* what it refuses to remove. Every pass
 > alone, and the whole pipeline, on every corpus program, through both the IR interpreter and the
@@ -76,7 +86,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | 4 | SSA IR, IR interpreter, IR validator | **done** |
 | 5 | bytecode ISA, code generation, VM | **done** |
 | 6 | optimization passes and the edge cases they get wrong | **done** |
-| 7 | linear-scan register allocation | not started |
+| 7 | linear-scan register allocation | **done** |
 | 8 | random program generation, shrinking, long campaigns | not started |
 | 9 | benchmarks and the technical report | not started |
 | 10 | interactive playground | not started |
