@@ -14,6 +14,18 @@
 export const REGISTERS = 16;
 /** Reserved for breaking cycles when phi copies have to be sequenced. */
 export const SCRATCH_REG = 15;
+
+/**
+ * The top three registers are never allocated.
+ *
+ * Generated code needs somewhere to put a spilled operand while it computes:
+ * a store whose array, index and value are all in slots needs three registers
+ * at once that the allocator has not promised to anything. r15 doubles as the
+ * temporary that breaks phi copy cycles, which is safe because copies happen
+ * at block boundaries, where no operand is half-loaded.
+ */
+export const FIRST_SCRATCH = 13;
+export const SCRATCH_REGS = Object.freeze([13, 14, 15]);
 /** Arguments are passed in r0 upward, so this is the most a call can take. */
 export const MAX_ARGS = SCRATCH_REG;
 

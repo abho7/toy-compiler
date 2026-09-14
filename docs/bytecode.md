@@ -80,10 +80,58 @@ Phase 5's code generator is the simplest thing that is obviously correct: **ever
 slot of its own**, and every instruction loads its operands into registers, computes, and stores
 the result straight back. No value is ever in two places, so no allocation decision can be wrong.
 
-It is also slow — a three-operand addition costs a load, a load, an add and a store. That is the
-point. Phase 7 replaces the slot-per-value assignment with linear-scan register allocation, and the
-improvement it has to show is a concrete one, *loads and stores that stop happening*, against a
-baseline nobody has to take on faith.
+It was also slow — a three-operand addition cost a load, a load, an add and a store. That was the
+point: a baseline nobody has to take on faith. Phase 7 replaced the slot-per-value assignment with
+linear-scan register allocation, and the improvement is measured rather than asserted.
+
+### What it bought
+
+`node tools/bench.js` compares the compiler against itself with zero allocatable registers — every
+value in a frame slot, loaded and stored around every instruction. Same IR, same optimizer on both
+sides; the only difference is whether values may live in registers. Over the whole corpus:
+
+| | every value in memory | allocated |
+|---|---|---|
+| static instructions | 1679 | 1029 (**38.7% fewer**) |
+| instructions executed | 594,474 | 311,533 (**47.6% fewer**) |
+| loads and stores to frame slots | 767 | **0** |
+
+Best case `binary-search.mc` at 55%. **Weakest case `arith.mc` at 0%** — its peak pressure is 1, so
+even the in-memory build barely touched a slot and allocation had nothing to take away. A pass that
+does nothing for a whole class of programs is worth saying out loud.
+
+Slot traffic reaching zero is the honest headline and also the limit of the result: peak pressure
+is 11 against 13 allocatable registers, so every value fits and none has to be spilled.
+
+#### A historical figure, measured differently
+
+Against the *actual phase 5 generator* (commit `5e6d35a`, extracted with
+`git show 5e6d35a:src/backend/codegen.js` and run side by side), the same corpus went from 2033 to
+1029 static instructions and 671,214 to 311,533 executed — 49.4% and 53.6%.
+
+Those numbers are larger than the table above and measure something slightly different, which is
+why they are kept apart rather than averaged in. The phase 5 generator emitted a `const` *and* a
+store for every constant definition; the current one materialises constants at each use and emits
+nothing at the definition site. So the zero-register baseline is leaner than phase 5 actually was,
+and the smaller cut is the more conservative claim. It is also the reproducible one.
+
+### What allocation can and cannot show at this size
+
+Three of the sixteen registers are withheld: generated code needs somewhere to hold a spilled
+operand while it computes, and a `store` whose array, index and value are all in slots needs three
+at once. The registers a function's own parameters arrive in are withheld too, which turns moving
+them to their allocated homes from a parallel copy into a plain ordered one. That leaves thirteen
+to allocate, fewer in a function that takes parameters or makes calls.
+
+Measured across the corpus with `node tools/pressure.js`: the most values live at any one point in
+any function is **11**, in `vm.mc:main`, and the median function needs **3**. Nothing spills.
+
+That is worth stating plainly rather than leaving implied. Linear scan's interesting decision —
+which value to evict when registers run out — **never happens on this corpus**. The win here is the
+load/store traffic that stops, not clever spilling, and a benchmark that implied otherwise would be
+overselling. The eviction path is real and verified, but it is verified by squeezing the register
+file down to 8, 4, 2 and 1 in `test/regalloc.test.js`, because code that never runs is code whose
+green tests mean nothing — a lesson this project has now learned twice.
 
 Before code generation, two things happen to the IR (`src/backend/linearize.js`):
 
