@@ -9,7 +9,26 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
-> **Status: phase 9 of 10 — the optimizer is measured, and most of it does not help.**
+> **Status: phase 10 of 10 — the compiler runs in the browser, and the VM can be stepped.**
+> [The playground](web/playground.html) imports the modules under `src/` directly — the same ones
+> `node --test` runs against, with no build step and no bundler — and shows a program as tokens, a
+> syntax tree, SSA, the IR after each pass with a line diff, live intervals with the register each
+> value was given, and bytecode. It runs the program three independent ways and says whether they
+> agree, and it steps the VM one instruction at a time with registers, frame slots, the call stack
+> and output updating as they change.
+>
+> The stepper is **not a second interpreter**. `run` and `step` in `src/vm/vm.js` are the same
+> switch: the loop state moved onto the instance and `run` became a loop over `step`, so the page
+> cannot drift from the VM the tests measure. Checked both ways — stepping agrees with
+> `runBytecode` on observation bytes *and* step count across all 23 corpus programs, and every
+> benchmark count came out identical. The cost is a method call per instruction: about **1.2x**
+> wall clock on the programs long enough to time, measured by running the old and new VM
+> interleaved in one process rather than against a figure recorded on another day.
+>
+> Verified in a real browser rather than asserted: all eight panes render, and no console errors.
+>
+> The previous status, still true:
+> **Phase 9 — the optimizer is measured, and most of it does not help.**
 > Two benchmarks, kept apart because they answer different questions. Holding the passes fixed and
 > varying register allocation: **47.6% fewer instructions executed**, and every frame-slot load and
 > store gone. Holding allocation fixed and varying the passes: static code shrinks **15.4%**
@@ -124,7 +143,7 @@ source → lexer → parser → AST → sema (types, scopes) → typed AST
 | 7 | linear-scan register allocation | **done** |
 | 8 | random program generation, shrinking, long campaigns | **done** |
 | 9 | benchmarks and the technical report | **done** |
-| 10 | interactive playground | not started |
+| 10 | interactive playground | **done** |
 
 ## Running it
 

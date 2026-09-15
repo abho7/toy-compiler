@@ -4,26 +4,493 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>minic playground</title>
 <style>
-  body { margin: 0; background: #fbfbfc; color: #16171b;
+  :root {
+    --ink: #16171b; --dim: #5c6068; --faint: #8b9099; --line: #e3e5e9; --bg: #fbfbfc;
+    --card: #ffffff; --accent: #3b5bdb; --good: #15803d; --warn: #b45309; --bad: #b91c1c;
+    --hi: #fff3cd;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e7e9ee; --dim: #9aa1ab; --faint: #767c86; --line: #2a2d34; --bg: #131418;
+      --card: #191b20; --accent: #91a7ff; --good: #4ade80; --warn: #fbbf24; --bad: #f87171;
+      --hi: #3a3320;
+    }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink);
          font: 14px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-  @media (prefers-color-scheme: dark) { body { background: #131418; color: #e7e9ee; } }
-  main { max-width: 52rem; margin: 0 auto; padding: 3.5rem 1.5rem; }
-  h1 { font-size: 1.3rem; }
-  p { color: #5c6068; }
-  @media (prefers-color-scheme: dark) { p { color: #9aa1ab; } }
-  a { color: #3b5bdb; }
-  @media (prefers-color-scheme: dark) { a { color: #91a7ff; } }
-  pre { overflow-x: auto; }
+  main { max-width: 72rem; margin: 0 auto; padding: 2rem 1.25rem 4rem; }
+  h1 { font-size: 1.25rem; margin: 0 0 0.3rem; }
+  .sub { color: var(--dim); margin: 0 0 1.4rem; max-width: 52rem; }
+  a { color: var(--accent); }
+  .grid { display: grid; grid-template-columns: minmax(0, 22rem) minmax(0, 1fr); gap: 1rem; }
+  @media (max-width: 62rem) { .grid { grid-template-columns: minmax(0, 1fr); } }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 9px; padding: 0.8rem; }
+  label { display: block; color: var(--faint); font-size: 0.78rem; text-transform: uppercase;
+          letter-spacing: 0.09em; margin-bottom: 0.4rem; }
+  textarea { width: 100%; height: 22rem; resize: vertical; background: var(--bg); color: var(--ink);
+             border: 1px solid var(--line); border-radius: 6px; padding: 0.6rem;
+             font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+  select, button { font: inherit; font-size: 0.85rem; background: var(--card); color: var(--ink);
+                   border: 1px solid var(--line); border-radius: 6px; padding: 0.3rem 0.6rem;
+                   cursor: pointer; }
+  button:hover:not(:disabled), select:hover { border-color: var(--accent); }
+  button:disabled { opacity: 0.45; cursor: default; }
+  .row { display: flex; flex-wrap: wrap; gap: 0.4rem; align-items: center; }
+  .tabs { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.7rem; }
+  .tabs button[aria-selected="true"] { border-color: var(--accent); color: var(--accent); }
+  pre { margin: 0; overflow-x: auto; font-size: 12.5px; line-height: 1.5; white-space: pre; }
+  .pane { min-height: 22rem; }
+  .status { margin: 0.7rem 0 0; font-size: 0.85rem; }
+  .ok { color: var(--good); } .warn { color: var(--warn); } .bad { color: var(--bad); }
+  table { border-collapse: collapse; font-size: 12.5px; }
+  th { text-align: left; color: var(--faint); font-weight: 500; padding: 0.2rem 1rem 0.3rem 0;
+       border-bottom: 1px solid var(--line); }
+  td { padding: 0.15rem 1rem 0.15rem 0; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  .diff-add { color: var(--good); } .diff-del { color: var(--bad); }
+  .cur { background: var(--hi); font-weight: 600; }
+  .regs { display: flex; flex-wrap: wrap; gap: 0.3rem 0.9rem; font-size: 12.5px; }
+  .regs span b { color: var(--faint); font-weight: 500; }
+  .hint { color: var(--faint); font-size: 0.8rem; margin: 0.5rem 0 0; }
 </style>
 <main>
   <h1>minic playground</h1>
-  <p>Not built yet. This is phase 10: write minic here and watch it become tokens, an AST, a
-  typed AST, SSA intermediate representation, the same IR after each optimization pass, allocated
-  registers and bytecode &mdash; then run it, or step the VM one instruction at a time.</p>
-  <p>The compiler it will import runs in this page unmodified: the same modules the test suite
-  runs against, with no build step in between.</p>
-  <p>Until then: <a href="../index.html">the report</a>,
-  <a href="../docs/language.md">the language</a>,
-  <a href="../docs/semantics.md">its semantics</a>.</p>
+  <p class="sub">Write minic and watch it become tokens, a syntax tree, SSA, optimized SSA,
+  allocated registers and bytecode — then run it three independent ways and check they agree, or
+  step the virtual machine one instruction at a time. The compiler runs in this page: the same
+  modules under <code>src/</code> that the test suite runs against, imported directly, with no
+  build step. <a href="../index.html">The report</a> ·
+  <a href="../docs/language.md">the language</a> · <a href="../docs/semantics.md">its semantics</a>.</p>
+
+  <div class="grid">
+    <div>
+      <div class="card">
+        <label for="src">source</label>
+        <textarea id="src" spellcheck="false"></textarea>
+        <div class="row" style="margin-top:0.6rem">
+          <select id="sample" aria-label="load a program"></select>
+          <button id="compile">compile</button>
+        </div>
+        <p class="status" id="diag"></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="tabs" id="tabs" role="tablist"></div>
+      <div class="pane" id="pane"><pre>Compiling…</pre></div>
+    </div>
+  </div>
 </main>
+
+<script type="module">
+import { tokenize } from '../src/lexer.js';
+import { parse } from '../src/parser.js';
+import { analyze } from '../src/sema.js';
+import { printAst } from '../src/ast.js';
+import { render } from '../src/diagnostics.js';
+import { buildModule } from '../src/ir/build.js';
+import { printModule } from '../src/ir/ir.js';
+import { validateModule } from '../src/ir/validate.js';
+import { optimize, PASSES, DEFAULT_PIPELINE } from '../src/opt/passes.js';
+import { splitCriticalEdges } from '../src/backend/linearize.js';
+import { allocate } from '../src/backend/regalloc.js';
+import { generate } from '../src/backend/codegen.js';
+import { disassembleOne, WORDS_PER_INSTR } from '../src/vm/bytecode.js';
+import { runBytecode, createStepper } from '../src/vm/vm.js';
+import { runProgram, trailerOf, observationBytes } from '../src/interp/ast-interp.js';
+import { runModule } from '../src/ir/interp.js';
+
+// Budgets are small here on purpose: this runs on the main thread, and a
+// program that would spin for twenty million steps should say so rather than
+// freeze the tab.
+const BUDGET = 2_000_000;
+
+const SAMPLES = {
+  'hello.mc': `int main() {\n  int s[] = "minic";\n  for (int i = 0; i < 5; i = i + 1) {\n    putchar(s[i]);\n  }\n  putchar(10);\n  return 0;\n}\n`,
+  'sum.mc': `int sum(int[] a, int n) {\n  int total = 0;\n  for (int i = 0; i < n; i = i + 1) {\n    total = total + a[i];\n  }\n  return total;\n}\n\nint main() {\n  int a[5] = {3, 1, 4, 1, 5};\n  print(sum(a, 5));\n  return 0;\n}\n`,
+  'trap.mc': `int main() {\n  int a[3] = {1, 2, 3};\n  print(a[1]);\n  print(a[7]);\n  return 0;\n}\n`,
+  'folds.mc': `int main() {\n  int x = 2 * 3 + 4;\n  int y = x * 1;\n  int z = y + 0;\n  print(z);\n  return 0;\n}\n`,
+};
+const CORPUS = ['sort-quick.mc', 'sort-insertion.mc', 'binary-search.mc', 'sieve.mc',
+  'nqueens.mc', 'strings.mc', 'fib.mc', 'vm.mc', 'short-circuit.mc', 'eval-order.mc'];
+
+const $ = (id) => document.getElementById(id);
+const el = (tag, attrs = {}, ...kids) => {
+  const node = document.createElement(tag);
+  for (const [k, v] of Object.entries(attrs)) {
+    if (k === 'class') node.className = v;
+    else node.setAttribute(k, v);
+  }
+  for (const kid of kids.flat()) {
+    if (kid == null) continue;
+    node.append(kid.nodeType ? kid : document.createTextNode(String(kid)));
+  }
+  return node;
+};
+const pre = (text) => el('pre', {}, text);
+const decode = (bytes) => new TextDecoder().decode(bytes);
+
+// --------------------------------------------------------------- compiling --
+
+/** Everything the panes read, or the diagnostics that stopped it. */
+function compileAll(source) {
+  const { tokens } = tokenize(source);
+  const { program, diags } = parse(source);
+  if (!diags.failed) analyze(program, diags);
+  if (diags.failed) {
+    return { ok: false, tokens, diags: diags.items.map((d) => render(source, d, 'playground')) };
+  }
+
+  // Each consumer gets its own build: the passes and the allocator mutate what
+  // they are given, so a shared module would make every pane depend on which
+  // pane ran first.
+  const build = () => {
+    const fresh = parse(source);
+    analyze(fresh.program, fresh.diags);
+    return { program: fresh.program, module: buildModule(fresh.program) };
+  };
+
+  return { ok: true, source, tokens, program, build };
+}
+
+/** Cumulative IR after each pass, with what each one changed. */
+function passStages(build) {
+  const stages = [];
+  const { module } = build();
+  stages.push({ name: 'no passes', changed: 0, text: printModule(module) });
+  for (const name of DEFAULT_PIPELINE) {
+    const report = optimize(module, [name]);
+    stages.push({ name, changed: report[0].changed, text: printModule(module) });
+  }
+  return stages;
+}
+
+/** A line diff, so a pass's effect is visible rather than described. */
+function diffLines(before, after) {
+  const a = before.split('\n');
+  const b = after.split('\n');
+  if (a.length * b.length > 250_000) return null;   // too big to be useful anyway
+
+  const lcs = Array.from({ length: a.length + 1 }, () => new Uint32Array(b.length + 1));
+  for (let i = a.length - 1; i >= 0; i--) {
+    for (let j = b.length - 1; j >= 0; j--) {
+      lcs[i][j] = a[i] === b[j] ? lcs[i + 1][j + 1] + 1 : Math.max(lcs[i + 1][j], lcs[i][j + 1]);
+    }
+  }
+  const out = [];
+  let i = 0; let j = 0;
+  while (i < a.length && j < b.length) {
+    if (a[i] === b[j]) { out.push([' ', a[i]]); i++; j++; }
+    else if (lcs[i + 1][j] >= lcs[i][j + 1]) { out.push(['-', a[i]]); i++; }
+    else { out.push(['+', b[j]]); j++; }
+  }
+  while (i < a.length) out.push(['-', a[i++]]);
+  while (j < b.length) out.push(['+', b[j++]]);
+  return out;
+}
+
+// ------------------------------------------------------------------- panes --
+
+const panes = {
+  tokens(c) {
+    const rows = c.tokens.map((t) =>
+      el('tr', {}, el('td', {}, String(t.span)), el('td', {}, t.kind), el('td', {}, t.describe())));
+    return el('table', {},
+      el('tr', {}, el('th', {}, 'at'), el('th', {}, 'kind'), el('th', {}, 'token')), rows);
+  },
+
+  ast(c) { return pre(printAst(c.program)); },
+
+  ir(c) {
+    const { module } = c.build();
+    const problems = validateModule(module);
+    return el('div', {},
+      problems.length
+        ? el('p', { class: 'status bad' }, `the IR is not well formed: ${problems[0]}`)
+        : el('p', { class: 'status ok' }, 'SSA over a control flow graph; the validator is happy'),
+      pre(printModule(module)));
+  },
+
+  passes(c) {
+    const stages = passStages(c.build);
+    const out = el('div', {});
+    for (let i = 1; i < stages.length; i++) {
+      const stage = stages[i];
+      const changed = diffLines(stages[i - 1].text, stage.text);
+      out.append(el('p', { class: 'status' },
+        el('b', {}, stage.name), ` — ${stage.changed} IR instruction${stage.changed === 1 ? '' : 's'} changed`));
+      if (stage.changed === 0) {
+        out.append(el('p', { class: 'hint' }, 'nothing to do on this program'));
+        continue;
+      }
+      if (!changed) { out.append(el('p', { class: 'hint' }, 'too large to diff')); continue; }
+      const body = changed.filter(([tag]) => tag !== ' ')
+        .map(([tag, text]) => el('div', { class: tag === '+' ? 'diff-add' : 'diff-del' }, `${tag} ${text}`));
+      out.append(el('pre', {}, body.length ? body : '(no textual change)'));
+    }
+    out.append(el('p', { class: 'hint' },
+      'Each pass is applied on top of the last, in the pipeline order: fold, copyprop, cse, dce.'));
+    return out;
+  },
+
+  registers(c) {
+    const { module } = c.build();
+    optimize(module, DEFAULT_PIPELINE);
+    const out = el('div', {});
+    for (const func of module.funcs.values()) {
+      // allocate() expects critical edges already split, and splitting mutates,
+      // which is why this pane builds its own module.
+      splitCriticalEdges(func);
+      const result = allocate(func);
+      out.append(el('p', { class: 'status' },
+        el('b', {}, `func ${func.name}`),
+        ` — ${result.registersUsed} registers used of ${result.allocatable} allocatable, `,
+        `${result.spills} spilled, ${result.slots} slot${result.slots === 1 ? '' : 's'}`));
+      const rows = result.intervals.map((iv) => {
+        const at = result.location.get(iv.value);
+        return el('tr', {},
+          el('td', {}, iv.value.ref),
+          el('td', {}, iv.value.op === 'param' ? `param ${iv.value.name}` : iv.value.op),
+          el('td', {}, `[${iv.start}, ${iv.end}]`),
+          el('td', { class: at && at.kind === 'slot' ? 'warn' : '' },
+            at ? (at.kind === 'reg' ? `r${at.n}` : `s${at.n} (spilled)`) : '—'));
+      });
+      out.append(el('table', {},
+        el('tr', {}, el('th', {}, 'value'), el('th', {}, 'defined by'),
+          el('th', {}, 'live'), el('th', {}, 'home')), rows));
+    }
+    out.append(el('p', { class: 'hint' },
+      'Live intervals over a linear numbering, assigned by linear scan. Three registers are held '
+      + 'back as scratch, plus the ones this function\'s arguments arrive in.'));
+    return out;
+  },
+
+  bytecode(c) {
+    const { module } = c.build();
+    optimize(module, DEFAULT_PIPELINE);
+    const program = generate(module);
+    const out = el('div', {});
+    for (const func of program.funcs) {
+      out.append(el('p', { class: 'status' },
+        el('b', {}, `func ${func.name}`),
+        ` — ${func.nparams} param${func.nparams === 1 ? '' : 's'}, ${func.nslots} slots, `,
+        `${func.spans.length} instructions, ${func.spills} spilled`));
+      const lines = [];
+      for (let at = 0; at < func.spans.length; at++) {
+        lines.push(`${String(at).padStart(4)}  ${disassembleOne(func.code, at)}`);
+      }
+      out.append(pre(lines.join('\n')));
+    }
+    return out;
+  },
+
+  run(c) {
+    // The differential, in the browser: the tree-walker, the IR interpreter and
+    // the VM are three independent implementations of docs/semantics.md, and
+    // this is the claim the whole project rests on, checkable here by hand.
+    const a = c.build();
+    const fromAst = runProgram(a.program, { maxSteps: BUDGET });
+
+    const b = c.build();
+    optimize(b.module, DEFAULT_PIPELINE);
+    const fromIr = runModule(b.module, { maxSteps: BUDGET });
+
+    const d = c.build();
+    optimize(d.module, DEFAULT_PIPELINE);
+    const fromVm = runBytecode(generate(d.module), { maxSteps: BUDGET });
+
+    const bytes = (r) => decode(observationBytes(r));
+    const agree = bytes(fromAst) === bytes(fromIr) && bytes(fromAst) === bytes(fromVm);
+    const budget = [fromAst, fromIr, fromVm].some((r) => r.outcome === 'budget');
+
+    const out = el('div', {});
+    out.append(el('p', { class: `status ${agree ? 'ok' : 'bad'}` },
+      agree
+        ? 'All three implementations agree, byte for byte: output, trap and exit status.'
+        : 'THEY DISAGREE — that would be a compiler bug. Please report it.'));
+    if (budget) {
+      out.append(el('p', { class: 'status warn' },
+        `One or more runs hit this page's ${BUDGET.toLocaleString('en-US')}-step budget, which is a `
+        + 'limit of the playground and not a behaviour of the program.'));
+    }
+    out.append(el('table', {},
+      el('tr', {}, el('th', {}, 'implementation'), el('th', {}, 'outcome'), el('th', {}, 'steps')),
+      [['reference tree-walker', fromAst], ['IR interpreter', fromIr], ['bytecode VM', fromVm]]
+        .map(([name, r]) => el('tr', {},
+          el('td', {}, name), el('td', {}, trailerOf(r).replace('=== ', '')),
+          el('td', {}, r.steps.toLocaleString('en-US'))))));
+    out.append(el('p', { class: 'status' }, el('b', {}, 'output')));
+    out.append(pre(decode(fromAst.output) || '(no output)'));
+    return out;
+  },
+
+  step(c) {
+    const d = c.build();
+    optimize(d.module, DEFAULT_PIPELINE);
+    const program = generate(d.module);
+    const stepper = createStepper(program, { maxSteps: BUDGET });
+
+    const controls = el('div', { class: 'row' });
+    const one = el('button', {}, 'step');
+    const ten = el('button', {}, 'step 10');
+    const hundred = el('button', {}, 'step 100');
+    const finish = el('button', {}, 'run to end');
+    const reset = el('button', {}, 'reset');
+    controls.append(one, ten, hundred, finish, reset);
+
+    const status = el('p', { class: 'status' });
+    const code = el('pre', {});
+    const regs = el('div', { class: 'regs' });
+    const slots = el('div', { class: 'regs' });
+    const stack = el('pre', {});
+    const output = el('pre', {});
+
+    const draw = (s) => {
+      const done = s.finished;
+      status.className = `status ${done ? (done.outcome === 'exit' ? 'ok' : 'warn') : ''}`;
+      status.textContent = done
+        ? `${done.outcome === 'trap' ? String(done.trap) : done.outcome === 'budget'
+          ? `stopped at this page's ${BUDGET.toLocaleString('en-US')}-step budget`
+          : `exited with status ${done.status}`} after ${s.steps.toLocaleString('en-US')} steps`
+        : `in ${s.func.name}, about to run instruction ${s.pc} — ${s.steps.toLocaleString('en-US')} steps so far, call depth ${s.depth}`;
+
+      for (const b of [one, ten, hundred, finish]) b.disabled = Boolean(done);
+
+      if (s.func) {
+        const lines = [];
+        const from = Math.max(0, s.pc - 8);
+        const to = Math.min(s.func.spans.length, s.pc + 9);
+        for (let at = from; at < to; at++) {
+          const text = `${at === s.pc ? '>' : ' '} ${String(at).padStart(4)}  ${disassembleOne(s.func.code, at)}`;
+          lines.push(at === s.pc && !done ? el('div', { class: 'cur' }, text) : el('div', {}, text));
+        }
+        code.replaceChildren(...lines);
+      }
+
+      // Only the registers this frame could be using: all 16 every time is
+      // noise, and the top three are scratch.
+      regs.replaceChildren(...s.regs.map((v, i) =>
+        el('span', {}, el('b', {}, `r${i} `), String(v))));
+      slots.replaceChildren(...(s.slots.length
+        ? s.slots.map((v, i) => el('span', {}, el('b', {}, `s${i} `), String(v)))
+        : [el('span', { class: 'hint' }, 'no slots in this frame')]));
+      stack.textContent = s.stack.map((f, i) =>
+        `${i === 0 ? 'top' : '   '}  ${f.name}  at ${f.pc}`).join('\n');
+      output.textContent = decode(s.output) || '(nothing yet)';
+    };
+
+    const advance = (n) => { let s; for (let i = 0; i < n; i++) s = stepper.step(); draw(s); };
+    one.onclick = () => advance(1);
+    ten.onclick = () => advance(10);
+    hundred.onclick = () => advance(100);
+    finish.onclick = () => {
+      let s = stepper.state();
+      let guard = 0;
+      while (!s.finished && guard++ < BUDGET) s = stepper.step();
+      draw(s);
+    };
+    reset.onclick = () => show('step');
+
+    const out = el('div', {}, controls, status,
+      el('p', { class: 'status' }, el('b', {}, 'bytecode, around the program counter')), code,
+      el('p', { class: 'status' }, el('b', {}, 'registers')), regs,
+      el('p', { class: 'status' }, el('b', {}, 'frame slots')), slots,
+      el('p', { class: 'status' }, el('b', {}, 'call stack')), stack,
+      el('p', { class: 'status' }, el('b', {}, 'output so far')), output,
+      el('p', { class: 'hint' },
+        'This is the same VM the tests and the report measure, stepped by hand rather than in a '
+        + 'loop — not a second interpreter written for this page.'));
+    draw(stepper.state());
+    return out;
+  },
+};
+
+const TABS = [
+  ['tokens', 'tokens'], ['ast', 'syntax tree'], ['ir', 'SSA'],
+  ['passes', 'per-pass diffs'], ['registers', 'registers'], ['bytecode', 'bytecode'],
+  ['run', 'run (all three)'], ['step', 'step the VM'],
+];
+
+let current = 'tokens';
+let compiled = null;
+
+function show(which) {
+  current = which;
+  for (const button of $('tabs').children) {
+    button.setAttribute('aria-selected', String(button.dataset.pane === which));
+  }
+  if (!compiled) return;
+  const host = $('pane');
+  if (!compiled.ok) {
+    host.replaceChildren(pre('This program does not compile; the errors are beside the source.'));
+    return;
+  }
+  try {
+    host.replaceChildren(panes[which](compiled));
+  } catch (error) {
+    // A pane that throws is a real bug worth seeing, not a blank box.
+    host.replaceChildren(el('p', { class: 'status bad' }, `${which}: ${error.message}`),
+      pre(error.stack ?? ''));
+  }
+}
+
+function compileNow() {
+  const source = $('src').value;
+  compiled = compileAll(source);
+  const diag = $('diag');
+  if (compiled.ok) {
+    diag.className = 'status ok';
+    diag.textContent = 'compiles cleanly';
+  } else {
+    diag.className = 'status bad';
+    diag.replaceChildren(pre(compiled.diags.join('\n\n')));
+  }
+  show(current);
+}
+
+// ------------------------------------------------------------------- setup --
+
+for (const [id, label] of TABS) {
+  const button = el('button', { role: 'tab', 'aria-selected': String(id === current) }, label);
+  button.dataset.pane = id;
+  button.onclick = () => show(id);
+  $('tabs').append(button);
+}
+
+const sample = $('sample');
+sample.append(el('option', { value: '' }, 'load a program…'));
+for (const name of Object.keys(SAMPLES)) sample.append(el('option', { value: name }, name));
+for (const name of CORPUS) sample.append(el('option', { value: `corpus:${name}` }, `corpus/${name}`));
+
+sample.onchange = async () => {
+  const choice = sample.value;
+  if (!choice) return;
+  if (choice.startsWith('corpus:')) {
+    const name = choice.slice(7);
+    $('src').value = `// loading corpus/${name}…`;
+    try {
+      const response = await fetch(`../corpus/${name}`, { cache: 'no-cache' });
+      if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
+      $('src').value = await response.text();
+    } catch (error) {
+      $('src').value = `// could not load corpus/${name}: ${error.message}\n`
+        + '// This page needs to be served rather than opened from disk.\n';
+    }
+  } else {
+    $('src').value = SAMPLES[choice];
+  }
+  compileNow();
+};
+
+$('compile').onclick = compileNow;
+
+let debounce = null;
+$('src').addEventListener('input', () => {
+  clearTimeout(debounce);
+  debounce = setTimeout(compileNow, 300);
+});
+
+$('src').value = SAMPLES['hello.mc'];
+compileNow();
+</script>
 </html>

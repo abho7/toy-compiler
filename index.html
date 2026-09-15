@@ -61,14 +61,14 @@
   </div>
 
   <div class="links">
-    <a href="web/playground.html"><b>Playground</b> <span>&mdash; not built yet</span></a>
+    <a href="web/playground.html"><b>Playground</b> <span>&mdash; compile and step, in the browser</span></a>
     <a href="https://github.com/abho7/toy-compiler"><b>Source</b> <span>&mdash; GitHub</span></a>
     <a href="docs/correctness.md"><b>Correctness</b> <span>&mdash; the argument</span></a>
     <a href="docs/semantics.md"><b>Semantics</b> <span>&mdash; what programs mean</span></a>
   </div>
 
   <h2>Status</h2>
-  <p>Phase 9 of 10. The pipeline is complete, optimizing and measured: source becomes a syntax
+  <p>Phase 10 of 10, and complete. The pipeline is finished, optimizing and measured: source becomes a syntax
   tree, the tree is checked, a reference interpreter written straight from the semantics executes
   it, the tree is lowered to SSA over a control flow graph, four optimization passes rewrite it,
   linear-scan allocation puts values in registers, and the result becomes bytecode for a register
@@ -106,7 +106,7 @@
       <tr><td>7</td><td>linear-scan register allocation</td><td class="n good">done</td></tr>
       <tr><td>8</td><td>random program generation, shrinking, long campaigns</td><td class="n good">done</td></tr>
       <tr><td>9</td><td>benchmarks, and this report</td><td class="n good">done</td></tr>
-      <tr><td>10</td><td>interactive playground</td><td class="n">not started</td></tr>
+      <tr><td>10</td><td>interactive playground, with a VM stepper</td><td class="n good">done</td></tr>
     </table>
   </div>
 
