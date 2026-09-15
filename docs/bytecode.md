@@ -126,6 +126,25 @@ to allocate, fewer in a function that takes parameters or makes calls.
 Measured across the corpus with `node tools/pressure.js`: the most values live at any one point in
 any function is **11**, in `vm.mc:main`, and the median function needs **3**. Nothing spills.
 
+#### Void instructions are given registers they never use
+
+Something the playground made visible, having been invisible in a table of totals: `liveIntervals`
+gives an interval to *every* instruction in a block, including the ones that define no value. A
+`store` or a `putchar` therefore gets a live interval and is assigned a register it has no result
+to put in.
+
+That is why `arith.mc` is recorded as 23 values with a peak pressure of **1** and yet **13
+registers used** — the register count is inflated by instructions that never needed one. It is an
+inefficiency and not a correctness problem: the allocation is still a valid one, nothing else is
+assigned those registers while they are held, and the differential across the corpus and 100,000
+random programs is unaffected. But it wastes the register file on exactly the functions where
+pressure might otherwise have mattered, and a `registersUsed` figure read without this caveat
+would overstate how close the allocator comes to running out.
+
+The fix is to skip void instructions when building intervals. It is left undone deliberately
+rather than slipped into a phase about something else, and written down here so the recorded
+numbers can be read correctly in the meantime.
+
 That is worth stating plainly rather than leaving implied. Linear scan's interesting decision —
 which value to evict when registers run out — **never happens on this corpus**. The win here is the
 load/store traffic that stops, not clever spilling, and a benchmark that implied otherwise would be
