@@ -141,7 +141,24 @@ export function liveIntervals(func) {
   const intervals = new Map();
 
   const touch = (value, position) => {
-    if (!value || value.op === 'const') return;
+    // Two kinds of value need no home, for two different reasons.
+    //
+    //   A constant is materialised at each use, which is one instruction either
+    //   way and costs no register.
+    //
+    //   A void instruction defines nothing at all: `store`, `print`, `putchar`
+    //   and a call to a void function produce no result, so there is nothing to
+    //   keep anywhere. Giving them intervals handed each one a register it had
+    //   no use for, which is why arith.mc reported 23 values at a peak pressure
+    //   of 1 and still used 13 registers. Harmless -- the allocation stayed
+    //   valid and nothing else was given those registers while they were held
+    //   -- but it wasted the register file on exactly the functions where
+    //   pressure might otherwise have mattered.
+    //
+    // Filtering here rather than at the definition site is deliberate: this is
+    // the one place every value passes through, and a void instruction can
+    // never be an operand, so nothing real is suppressed.
+    if (!value || value.op === 'const' || value.type === 'void') return;
     const existing = intervals.get(value);
     if (!existing) intervals.set(value, { value, start: position, end: position });
     else {

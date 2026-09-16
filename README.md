@@ -9,6 +9,22 @@ what the program does, against a reference interpreter, on a corpus and on rando
 programs — and that the places where an optimization would have been wrong are documented rather
 than quietly fixed.
 
+> **Latest: the allocator no longer reserves registers for instructions that define nothing.**
+> `liveIntervals` gave a live interval to every instruction in a block, including `store`,
+> `print`, `putchar` and calls to void functions — each was assigned a register it had no result to
+> put in. Skipping values whose type is `void` takes registers used across the corpus from
+> **254 to 172**, and `arith.mc` from 13 to **0**, reserving nothing at all.
+>
+> It is a trade rather than a free win, and the benchmark says so. A shorter interval list hands
+> the linear scan a different free-register order, so `sort-quick.mc` and `vm.mc` each need two
+> extra `move`s at phi edges: static size goes 1029 → 1033 and executed 311,533 → 311,815, all of
+> it from those two programs, with every other corpus program compiling to byte-identical code.
+> 82 fewer reserved registers for 4 more moves. It also shows that the 0.2% cut previously
+> credited to common subexpression elimination was mostly churn of the same kind — CSE now joins
+> copy propagation and dead code elimination among the passes that change the IR without reducing
+> what the VM actually does.
+> [The detail](docs/bytecode.md#void-instructions-were-given-registers-they-never-used).
+>
 > **Status: phase 10 of 10 — the compiler runs in the browser, and the VM can be stepped.**
 > [The playground](web/playground.html) imports the modules under `src/` directly — the same ones
 > `node --test` runs against, with no build step and no bundler — and shows a program as tokens, a
@@ -30,14 +46,14 @@ than quietly fixed.
 > The previous status, still true:
 > **Phase 9 — the optimizer is measured, and most of it does not help.**
 > Two benchmarks, kept apart because they answer different questions. Holding the passes fixed and
-> varying register allocation: **47.6% fewer instructions executed**, and every frame-slot load and
-> store gone. Holding allocation fixed and varying the passes: static code shrinks **15.4%**
-> (1216 → 1029 instructions) while executed instructions fall **0.3%**.
+> varying register allocation: **47.5% fewer instructions executed**, and every frame-slot load and
+> store gone. Holding allocation fixed and varying the passes: static code shrinks **15.0%**
+> (1216 → 1033 instructions) while executed instructions fall **0.2%**.
 >
 > The per-program table is the honest one. **16 of the 23 corpus programs get exactly 0%** from the
 > optimizer — including the two that dominate the total, `fib.mc` and `nqueens.mc`, which are
 > 295k of the 312k instructions executed and are byte-identical before and after. The passes cut
-> 48–54% from small straight-line programs and nothing at all from the hot ones, because none of
+> 47–54% from small straight-line programs and nothing at all from the hot ones, because none of
 > the four optimizes across an iteration or a call: no loop-invariant code motion, no strength
 > reduction, no unrolling, no inlining. Register allocation is where the dynamic win actually is.
 >
@@ -65,7 +81,7 @@ than quietly fixed.
 > The previous status, still true:
 > **Phase 7 — values live in registers, and the improvement is measured.**
 > Linear-scan allocation replaced the deliberately naive slot-per-value code generator: across the
-> corpus, **47.6% fewer instructions executed** and **every load and store to a frame slot gone**,
+> corpus, **47.5% fewer instructions executed** and **every load and store to a frame slot gone**,
 > against the same compiler with zero allocatable registers. The weakest case is 0% — `arith.mc`
 > never had slot traffic to remove — and [the numbers](golden/measurements.json) say so.
 >
