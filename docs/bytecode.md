@@ -92,8 +92,8 @@ sides; the only difference is whether values may live in registers. Over the who
 
 | | every value in memory | allocated |
 |---|---|---|
-| static instructions | 1679 | 1029 (**38.7% fewer**) |
-| instructions executed | 594,474 | 311,533 (**47.6% fewer**) |
+| static instructions | 1679 | 1033 (**38.5% fewer**) |
+| instructions executed | 594,474 | 311,815 (**47.5% fewer**) |
 | loads and stores to frame slots | 767 | **0** |
 
 Best case `binary-search.mc` at 55%. **Weakest case `arith.mc` at 0%** — its peak pressure is 1, so
@@ -108,6 +108,11 @@ is 11 against 13 allocatable registers, so every value fits and none has to be s
 Against the *actual phase 5 generator* (commit `5e6d35a`, extracted with
 `git show 5e6d35a:src/backend/codegen.js` and run side by side), the same corpus went from 2033 to
 1029 static instructions and 671,214 to 311,533 executed — 49.4% and 53.6%.
+
+Those were measured before the void-interval fix described below, which moved the current
+generator to 1033 and 311,815. They are left as they were taken rather than half-updated: the
+"before" side came from a generator that no longer exists, and re-deriving one end of a comparison
+from a different build is how two measurements quietly become one wrong one.
 
 Those numbers are larger than the table above and measure something slightly different, which is
 why they are kept apart rather than averaged in. The phase 5 generator emitted a `const` *and* a
@@ -126,24 +131,39 @@ to allocate, fewer in a function that takes parameters or makes calls.
 Measured across the corpus with `node tools/pressure.js`: the most values live at any one point in
 any function is **11**, in `vm.mc:main`, and the median function needs **3**. Nothing spills.
 
-#### Void instructions are given registers they never use
+#### Void instructions were given registers they never used
 
 Something the playground made visible, having been invisible in a table of totals: `liveIntervals`
-gives an interval to *every* instruction in a block, including the ones that define no value. A
-`store` or a `putchar` therefore gets a live interval and is assigned a register it has no result
-to put in.
+gave an interval to *every* instruction in a block, including the ones that define no value. A
+`store` or a `putchar` got a live interval and was assigned a register it had no result to put in.
 
-That is why `arith.mc` is recorded as 23 values with a peak pressure of **1** and yet **13
-registers used** — the register count is inflated by instructions that never needed one. It is an
-inefficiency and not a correctness problem: the allocation is still a valid one, nothing else is
-assigned those registers while they are held, and the differential across the corpus and 100,000
-random programs is unaffected. But it wastes the register file on exactly the functions where
-pressure might otherwise have mattered, and a `registersUsed` figure read without this caveat
-would overstate how close the allocator comes to running out.
+That was why `arith.mc` was recorded as 23 values at a peak pressure of **1** and yet **13
+registers used**. It was never a correctness problem — the allocation stayed valid, nothing else
+was given those registers while they were held, and the differential was unaffected — but it wasted
+the register file on exactly the functions where pressure might otherwise have mattered, and a
+`registersUsed` figure read without the caveat overstated how close the allocator came to running
+out.
 
-The fix is to skip void instructions when building intervals. It is left undone deliberately
-rather than slipped into a phase about something else, and written down here so the recorded
-numbers can be read correctly in the meantime.
+`liveIntervals` now skips values whose type is `void`, alongside the constants it already skipped.
+Across the corpus that takes **registers used from 254 to 172**. `arith.mc` goes from 13 to **0**
+— it reserves nothing at all now — and `opt-foldable.mc` from 7 to 0, `short-circuit.mc` from 9 to
+0, `strings.mc` from 35 to 23. Peak pressure is unchanged at 11, because void instructions were
+rarely what set the peak; what they consumed was headroom.
+
+**It is not a free win, and the benchmark says so.** Two programs emit *more* code than before:
+`sort-quick.mc` goes from 106 static instructions to 108 and `vm.mc` from 250 to 252. Both
+differences are entirely `move` instructions at phi edges — corpus-wide moves go 117 to 121, which
+is exactly the change in static size — because a shorter interval list hands the linear scan a
+different free-register order, and two functions land on assignments needing two extra edge copies
+each. Executed instructions rise 311,533 to 311,815, all of it from those two programs. Every other
+corpus program compiles to byte-identical code.
+
+So the trade is 82 fewer reserved registers against 4 more `move`s. Worth taking, since the
+headroom is what decides whether a larger program spills, but it is a trade rather than a
+straight improvement. It also means the 0.2% cut previously attributed to common subexpression
+elimination was mostly assignment churn of this same kind: with the fix in, CSE joins copy
+propagation and dead code elimination in the benchmark's list of configurations that change the IR
+without reducing the work the VM does.
 
 That is worth stating plainly rather than leaving implied. Linear scan's interesting decision —
 which value to evict when registers run out — **never happens on this corpus**. The win here is the

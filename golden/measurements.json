@@ -12,7 +12,7 @@
    {
     "program": "vm.mc",
     "func": "main",
-    "values": 95,
+    "values": 49,
     "peak": 11,
     "available": 13,
     "reserved": 0,
@@ -22,22 +22,12 @@
    {
     "program": "sort-quick.mc",
     "func": "partition",
-    "values": 22,
-    "peak": 9,
+    "values": 18,
+    "peak": 8,
     "available": 10,
     "reserved": 3,
     "spills": 0,
     "registersUsed": 10
-   },
-   {
-    "program": "sort-insertion.mc",
-    "func": "sort",
-    "values": 20,
-    "peak": 8,
-    "available": 11,
-    "reserved": 2,
-    "spills": 0,
-    "registersUsed": 11
    },
    {
     "program": "binary-search.mc",
@@ -62,7 +52,7 @@
    {
     "program": "nqueens.mc",
     "func": "solve",
-    "values": 14,
+    "values": 13,
     "peak": 7,
     "available": 10,
     "reserved": 3,
@@ -70,9 +60,9 @@
     "registersUsed": 10
    },
    {
-    "program": "strings.mc",
-    "func": "reverse",
-    "values": 12,
+    "program": "sort-insertion.mc",
+    "func": "sort",
+    "values": 18,
     "peak": 7,
     "available": 11,
     "reserved": 2,
@@ -82,7 +72,7 @@
    {
     "program": "sieve.mc",
     "func": "main",
-    "values": 16,
+    "values": 13,
     "peak": 6,
     "available": 13,
     "reserved": 0,
@@ -90,24 +80,24 @@
     "registersUsed": 13
    },
    {
-    "program": "sort-quick.mc",
-    "func": "quicksort",
-    "values": 9,
-    "peak": 6,
-    "available": 10,
-    "reserved": 3,
-    "spills": 0,
-    "registersUsed": 9
-   },
-   {
     "program": "strings.mc",
-    "func": "emit",
-    "values": 8,
-    "peak": 5,
+    "func": "reverse",
+    "values": 10,
+    "peak": 6,
     "available": 11,
     "reserved": 2,
     "spills": 0,
-    "registersUsed": 8
+    "registersUsed": 10
+   },
+   {
+    "program": "sort-quick.mc",
+    "func": "quicksort",
+    "values": 7,
+    "peak": 5,
+    "available": 10,
+    "reserved": 3,
+    "spills": 0,
+    "registersUsed": 7
    },
    {
     "program": "fib.mc",
@@ -122,32 +112,12 @@
    {
     "program": "fib.mc",
     "func": "main",
-    "values": 9,
+    "values": 7,
     "peak": 4,
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 9
-   },
-   {
-    "program": "sort-insertion.mc",
-    "func": "main",
-    "values": 17,
-    "peak": 4,
-    "available": 11,
-    "reserved": 2,
-    "spills": 0,
-    "registersUsed": 11
-   },
-   {
-    "program": "sort-quick.mc",
-    "func": "main",
-    "values": 15,
-    "peak": 4,
-    "available": 10,
-    "reserved": 3,
-    "spills": 0,
-    "registersUsed": 10
+    "registersUsed": 7
    },
    {
     "program": "strings.mc",
@@ -160,114 +130,114 @@
     "registersUsed": 5
    },
    {
-    "program": "binary-search.mc",
-    "func": "main",
-    "values": 15,
-    "peak": 3,
-    "available": 10,
-    "reserved": 3,
+    "program": "strings.mc",
+    "func": "emit",
+    "values": 6,
+    "peak": 4,
+    "available": 11,
+    "reserved": 2,
     "spills": 0,
-    "registersUsed": 10
-   },
-   {
-    "program": "eval-order.mc",
-    "func": "main",
-    "values": 3,
-    "peak": 3,
-    "available": 13,
-    "reserved": 0,
-    "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 6
    },
    {
     "program": "opt-call-twice.mc",
     "func": "main",
-    "values": 4,
+    "values": 3,
     "peak": 3,
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 4
+    "registersUsed": 3
    },
    {
     "program": "opt-load-across-call.mc",
     "func": "bump",
-    "values": 4,
-    "peak": 3,
-    "available": 12,
-    "reserved": 1,
-    "spills": 0,
-    "registersUsed": 4
-   },
-   {
-    "program": "opt-load-across-call.mc",
-    "func": "main",
-    "values": 7,
-    "peak": 3,
-    "available": 12,
-    "reserved": 1,
-    "spills": 0,
-    "registersUsed": 7
-   },
-   {
-    "program": "opt-load-after-store.mc",
-    "func": "main",
-    "values": 7,
-    "peak": 3,
-    "available": 13,
-    "reserved": 0,
-    "spills": 0,
-    "registersUsed": 7
-   },
-   {
-    "program": "strings.mc",
-    "func": "main",
-    "values": 12,
-    "peak": 3,
-    "available": 11,
-    "reserved": 2,
-    "spills": 0,
-    "registersUsed": 11
-   },
-   {
-    "program": "trap-oob-read.mc",
-    "func": "main",
-    "values": 4,
-    "peak": 3,
-    "available": 13,
-    "reserved": 0,
-    "spills": 0,
-    "registersUsed": 4
-   },
-   {
-    "program": "nqueens.mc",
-    "func": "main",
     "values": 3,
-    "peak": 2,
-    "available": 10,
-    "reserved": 3,
+    "peak": 3,
+    "available": 12,
+    "reserved": 1,
     "spills": 0,
     "registersUsed": 3
    },
    {
-    "program": "opt-call-twice.mc",
-    "func": "tell",
-    "values": 2,
-    "peak": 2,
+    "program": "opt-load-across-call.mc",
+    "func": "main",
+    "values": 3,
+    "peak": 3,
     "available": 12,
     "reserved": 1,
+    "spills": 0,
+    "registersUsed": 3
+   },
+   {
+    "program": "opt-load-after-store.mc",
+    "func": "main",
+    "values": 3,
+    "peak": 3,
+    "available": 13,
+    "reserved": 0,
+    "spills": 0,
+    "registersUsed": 3
+   },
+   {
+    "program": "sort-insertion.mc",
+    "func": "main",
+    "values": 5,
+    "peak": 3,
+    "available": 11,
+    "reserved": 2,
+    "spills": 0,
+    "registersUsed": 5
+   },
+   {
+    "program": "sort-quick.mc",
+    "func": "main",
+    "values": 5,
+    "peak": 3,
+    "available": 10,
+    "reserved": 3,
+    "spills": 0,
+    "registersUsed": 5
+   },
+   {
+    "program": "binary-search.mc",
+    "func": "main",
+    "values": 5,
+    "peak": 2,
+    "available": 10,
+    "reserved": 3,
+    "spills": 0,
+    "registersUsed": 5
+   },
+   {
+    "program": "eval-order.mc",
+    "func": "main",
+    "values": 2,
+    "peak": 2,
+    "available": 13,
+    "reserved": 0,
+    "spills": 0,
+    "registersUsed": 2
+   },
+   {
+    "program": "nqueens.mc",
+    "func": "main",
+    "values": 2,
+    "peak": 2,
+    "available": 10,
+    "reserved": 3,
     "spills": 0,
     "registersUsed": 2
    },
    {
     "program": "opt-dead-load.mc",
     "func": "main",
-    "values": 3,
+    "values": 2,
     "peak": 2,
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 2
    },
    {
     "program": "opt-guarded-divide.mc",
@@ -280,24 +250,24 @@
     "registersUsed": 3
    },
    {
-    "program": "opt-guarded-divide.mc",
-    "func": "main",
-    "values": 6,
-    "peak": 2,
-    "available": 12,
-    "reserved": 1,
-    "spills": 0,
-    "registersUsed": 6
-   },
-   {
-    "program": "trap-oob-write.mc",
+    "program": "strings.mc",
     "func": "main",
     "values": 2,
+    "peak": 2,
+    "available": 11,
+    "reserved": 2,
+    "spills": 0,
+    "registersUsed": 2
+   },
+   {
+    "program": "trap-oob-read.mc",
+    "func": "main",
+    "values": 3,
     "peak": 2,
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 2
+    "registersUsed": 3
    },
    {
     "program": "trap-stack-overflow.mc",
@@ -310,38 +280,18 @@
     "registersUsed": 3
    },
    {
-    "program": "arith.mc",
-    "func": "main",
-    "values": 23,
+    "program": "opt-call-twice.mc",
+    "func": "tell",
+    "values": 1,
     "peak": 1,
-    "available": 13,
-    "reserved": 0,
+    "available": 12,
+    "reserved": 1,
     "spills": 0,
-    "registersUsed": 13
+    "registersUsed": 1
    },
    {
     "program": "opt-dead-divide.mc",
     "func": "main",
-    "values": 2,
-    "peak": 1,
-    "available": 13,
-    "reserved": 0,
-    "spills": 0,
-    "registersUsed": 2
-   },
-   {
-    "program": "opt-foldable.mc",
-    "func": "main",
-    "values": 7,
-    "peak": 1,
-    "available": 13,
-    "reserved": 0,
-    "spills": 0,
-    "registersUsed": 7
-   },
-   {
-    "program": "short-circuit.mc",
-    "func": "boom",
     "values": 1,
     "peak": 1,
     "available": 13,
@@ -350,14 +300,14 @@
     "registersUsed": 1
    },
    {
-    "program": "short-circuit.mc",
+    "program": "opt-guarded-divide.mc",
     "func": "main",
-    "values": 8,
+    "values": 3,
     "peak": 1,
-    "available": 13,
-    "reserved": 0,
+    "available": 12,
+    "reserved": 1,
     "spills": 0,
-    "registersUsed": 8
+    "registersUsed": 3
    },
    {
     "program": "trap-div-overflow.mc",
@@ -372,12 +322,22 @@
    {
     "program": "trap-div-zero.mc",
     "func": "main",
-    "values": 2,
+    "values": 1,
     "peak": 1,
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 2
+    "registersUsed": 1
+   },
+   {
+    "program": "trap-oob-write.mc",
+    "func": "main",
+    "values": 1,
+    "peak": 1,
+    "available": 13,
+    "reserved": 0,
+    "spills": 0,
+    "registersUsed": 1
    },
    {
     "program": "trap-stack-overflow.mc",
@@ -388,6 +348,46 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 1
+   },
+   {
+    "program": "arith.mc",
+    "func": "main",
+    "values": 0,
+    "peak": 0,
+    "available": 13,
+    "reserved": 0,
+    "spills": 0,
+    "registersUsed": 0
+   },
+   {
+    "program": "opt-foldable.mc",
+    "func": "main",
+    "values": 0,
+    "peak": 0,
+    "available": 13,
+    "reserved": 0,
+    "spills": 0,
+    "registersUsed": 0
+   },
+   {
+    "program": "short-circuit.mc",
+    "func": "boom",
+    "values": 0,
+    "peak": 0,
+    "available": 13,
+    "reserved": 0,
+    "spills": 0,
+    "registersUsed": 0
+   },
+   {
+    "program": "short-circuit.mc",
+    "func": "main",
+    "values": 0,
+    "peak": 0,
+    "available": 13,
+    "reserved": 0,
+    "spills": 0,
+    "registersUsed": 0
    }
   ]
  },
@@ -397,14 +397,14 @@
   "primaryMetric": "instructions executed, which is machine independent",
   "totals": {
    "staticBefore": 1679,
-   "staticAfter": 1029,
+   "staticAfter": 1033,
    "executedBefore": 594474,
-   "executedAfter": 311533,
+   "executedAfter": 311815,
    "slotOpsBefore": 767,
    "slotOpsAfter": 0
   },
-  "staticCutPercent": 38.7,
-  "executedCutPercent": 47.6,
+  "staticCutPercent": 38.5,
+  "executedCutPercent": 47.5,
   "best": {
    "program": "binary-search.mc",
    "cutPercent": 55.1
@@ -420,13 +420,13 @@
      "statics": 48,
      "slotOps": 0,
      "steps": 48,
-     "ms": 0.0543
+     "ms": 0.0522
     },
     "allocated": {
      "statics": 48,
      "slotOps": 0,
      "steps": 48,
-     "ms": 0.031
+     "ms": 0.0502
     }
    },
    {
@@ -435,13 +435,13 @@
      "statics": 136,
      "slotOps": 70,
      "steps": 637,
-     "ms": 0.1325
+     "ms": 0.2084
     },
     "allocated": {
      "statics": 80,
      "slotOps": 0,
      "steps": 286,
-     "ms": 0.0752
+     "ms": 0.2384
     }
    },
    {
@@ -450,13 +450,13 @@
      "statics": 12,
      "slotOps": 4,
      "steps": 5,
-     "ms": 0.0125
+     "ms": 0.0264
     },
     "allocated": {
      "statics": 8,
      "slotOps": 0,
      "steps": 4,
-     "ms": 0.0187
+     "ms": 0.0231
     }
    },
    {
@@ -465,13 +465,13 @@
      "statics": 69,
      "slotOps": 37,
      "steps": 405457,
-     "ms": 9.9886
+     "ms": 12.3054
     },
     "allocated": {
      "statics": 38,
      "slotOps": 0,
      "steps": 219159,
-     "ms": 5.2687
+     "ms": 7.9738
     }
    },
    {
@@ -480,13 +480,13 @@
      "statics": 163,
      "slotOps": 93,
      "steps": 158895,
-     "ms": 3.4464
+     "ms": 4.6904
     },
     "allocated": {
      "statics": 91,
      "slotOps": 0,
      "steps": 75785,
-     "ms": 1.42
+     "ms": 2.3014
     }
    },
    {
@@ -495,13 +495,13 @@
      "statics": 19,
      "slotOps": 9,
      "steps": 24,
-     "ms": 0.0011
+     "ms": 0.0015
     },
     "allocated": {
      "statics": 11,
      "slotOps": 0,
      "steps": 14,
-     "ms": 0.0009
+     "ms": 0.0014
     }
    },
    {
@@ -510,13 +510,13 @@
      "statics": 8,
      "slotOps": 1,
      "steps": 5,
-     "ms": 0.0097
+     "ms": 0.014
     },
     "allocated": {
      "statics": 7,
      "slotOps": 0,
      "steps": 5,
-     "ms": 0.0091
+     "ms": 0.0128
     }
    },
    {
@@ -525,13 +525,13 @@
      "statics": 10,
      "slotOps": 3,
      "steps": 7,
-     "ms": 0.0121
+     "ms": 0.022
     },
     "allocated": {
      "statics": 7,
      "slotOps": 0,
      "steps": 5,
-     "ms": 0.0112
+     "ms": 0.0233
     }
    },
    {
@@ -540,13 +540,13 @@
      "statics": 20,
      "slotOps": 0,
      "steps": 20,
-     "ms": 0.0066
+     "ms": 0.0134
     },
     "allocated": {
      "statics": 20,
      "slotOps": 0,
      "steps": 20,
-     "ms": 0.0065
+     "ms": 0.0085
     }
    },
    {
@@ -555,13 +555,13 @@
      "statics": 33,
      "slotOps": 13,
      "steps": 54,
-     "ms": 0.0121
+     "ms": 0.0248
     },
     "allocated": {
      "statics": 21,
      "slotOps": 0,
      "steps": 33,
-     "ms": 0.0094
+     "ms": 0.0124
     }
    },
    {
@@ -570,13 +570,13 @@
      "statics": 36,
      "slotOps": 16,
      "steps": 36,
-     "ms": 0.0077
+     "ms": 0.0213
     },
     "allocated": {
      "statics": 22,
      "slotOps": 0,
      "steps": 22,
-     "ms": 0.006
+     "ms": 0.0165
     }
    },
    {
@@ -585,13 +585,13 @@
      "statics": 24,
      "slotOps": 9,
      "steps": 24,
-     "ms": 0.0059
+     "ms": 0.0078
     },
     "allocated": {
      "statics": 15,
      "slotOps": 0,
      "steps": 15,
-     "ms": 0.0097
+     "ms": 0.0086
     }
    },
    {
@@ -600,13 +600,13 @@
      "statics": 52,
      "slotOps": 0,
      "steps": 38,
-     "ms": 0.0114
+     "ms": 0.0029
     },
     "allocated": {
      "statics": 52,
      "slotOps": 0,
      "steps": 38,
-     "ms": 0.0014
+     "ms": 0.0019
     }
    },
    {
@@ -615,13 +615,13 @@
      "statics": 77,
      "slotOps": 41,
      "steps": 1456,
-     "ms": 0.2696
+     "ms": 0.5296
     },
     "allocated": {
      "statics": 42,
      "slotOps": 0,
      "steps": 768,
-     "ms": 0.3281
+     "ms": 0.0199
     }
    },
    {
@@ -630,13 +630,13 @@
      "statics": 162,
      "slotOps": 76,
      "steps": 1914,
-     "ms": 0.3446
+     "ms": 0.4505
     },
     "allocated": {
      "statics": 94,
      "slotOps": 0,
      "steps": 915,
-     "ms": 0.0164
+     "ms": 0.0217
     }
    },
    {
@@ -645,13 +645,13 @@
      "statics": 190,
      "slotOps": 105,
      "steps": 1271,
-     "ms": 0.0823
+     "ms": 0.0323
     },
     "allocated": {
-     "statics": 106,
+     "statics": 108,
      "slotOps": 0,
-     "steps": 616,
-     "ms": 0.0128
+     "steps": 649,
+     "ms": 0.0179
     }
    },
    {
@@ -660,13 +660,13 @@
      "statics": 144,
      "slotOps": 74,
      "steps": 488,
-     "ms": 0.1098
+     "ms": 0.1234
     },
     "allocated": {
      "statics": 85,
      "slotOps": 0,
      "steps": 247,
-     "ms": 0.0688
+     "ms": 0.0815
     }
    },
    {
@@ -675,13 +675,13 @@
      "statics": 6,
      "slotOps": 2,
      "steps": 3,
-     "ms": 0.012
+     "ms": 0.0135
     },
     "allocated": {
      "statics": 4,
      "slotOps": 0,
      "steps": 3,
-     "ms": 0.0115
+     "ms": 0.0233
     }
    },
    {
@@ -690,13 +690,13 @@
      "statics": 8,
      "slotOps": 2,
      "steps": 5,
-     "ms": 0.0252
+     "ms": 0.0235
     },
     "allocated": {
      "statics": 6,
      "slotOps": 0,
      "steps": 5,
-     "ms": 0.0177
+     "ms": 0.0203
     }
    },
    {
@@ -705,13 +705,13 @@
      "statics": 14,
      "slotOps": 7,
      "steps": 11,
-     "ms": 0.0101
+     "ms": 0.0135
     },
     "allocated": {
      "statics": 7,
      "slotOps": 0,
      "steps": 6,
-     "ms": 0.0092
+     "ms": 0.0128
     }
    },
    {
@@ -720,13 +720,13 @@
      "statics": 8,
      "slotOps": 2,
      "steps": 6,
-     "ms": 0.0226
+     "ms": 0.0276
     },
     "allocated": {
      "statics": 6,
      "slotOps": 0,
      "steps": 4,
-     "ms": 0.0122
+     "ms": 0.0168
     }
    },
    {
@@ -735,13 +735,13 @@
      "statics": 15,
      "slotOps": 8,
      "steps": 6995,
-     "ms": 1.2242
+     "ms": 1.4163
     },
     "allocated": {
      "statics": 9,
      "slotOps": 0,
      "steps": 4997,
-     "ms": 0.2657
+     "ms": 0.3992
     }
    },
    {
@@ -750,13 +750,13 @@
      "statics": 425,
      "slotOps": 195,
      "steps": 17075,
-     "ms": 0.2421
+     "ms": 0.3451
     },
     "allocated": {
-     "statics": 250,
+     "statics": 252,
      "slotOps": 0,
-     "steps": 8538,
-     "ms": 0.2029
+     "steps": 8787,
+     "ms": 0.3223
     }
    }
   ],
@@ -770,7 +770,7 @@
    {
     "configuration": "O0",
     "statics": 1216,
-    "executed": 312570,
+    "executed": 312354,
     "spills": 0,
     "irChanges": 0,
     "staticCutPercent": 0,
@@ -779,7 +779,7 @@
    {
     "configuration": "fold",
     "statics": 1048,
-    "executed": 312180,
+    "executed": 311964,
     "spills": 0,
     "irChanges": 58,
     "staticCutPercent": 13.8,
@@ -788,7 +788,7 @@
    {
     "configuration": "copyprop",
     "statics": 1212,
-    "executed": 312542,
+    "executed": 312326,
     "spills": 0,
     "irChanges": 3,
     "staticCutPercent": 0.3,
@@ -796,17 +796,17 @@
    },
    {
     "configuration": "cse",
-    "statics": 1180,
-    "executed": 311936,
+    "statics": 1184,
+    "executed": 312218,
     "spills": 0,
     "irChanges": 308,
-    "staticCutPercent": 3,
-    "executedCutPercent": 0.2
+    "staticCutPercent": 2.6,
+    "executedCutPercent": 0
    },
    {
     "configuration": "dce",
     "statics": 1216,
-    "executed": 312570,
+    "executed": 312354,
     "spills": 0,
     "irChanges": 69,
     "staticCutPercent": 0,
@@ -815,7 +815,7 @@
    {
     "configuration": "fold+copyprop",
     "statics": 1044,
-    "executed": 312152,
+    "executed": 311936,
     "spills": 0,
     "irChanges": 61,
     "staticCutPercent": 14.1,
@@ -823,12 +823,12 @@
    },
    {
     "configuration": "all",
-    "statics": 1029,
-    "executed": 311533,
+    "statics": 1033,
+    "executed": 311815,
     "spills": 0,
     "irChanges": 406,
-    "staticCutPercent": 15.4,
-    "executedCutPercent": 0.3
+    "staticCutPercent": 15,
+    "executedCutPercent": 0.2
    }
   ],
   "perProgram": [
@@ -839,49 +839,49 @@
       "statics": 92,
       "spills": 0,
       "steps": 92,
-      "ms": 0.0401,
+      "ms": 0.0347,
       "irChanges": 0
      },
      "fold": {
       "statics": 48,
       "spills": 0,
       "steps": 48,
-      "ms": 0.0381,
+      "ms": 0.024,
       "irChanges": 23
      },
      "copyprop": {
       "statics": 92,
       "spills": 0,
       "steps": 92,
-      "ms": 0.0753,
+      "ms": 0.0771,
       "irChanges": 0
      },
      "cse": {
       "statics": 92,
       "spills": 0,
       "steps": 92,
-      "ms": 0.0408,
+      "ms": 0.0795,
       "irChanges": 50
      },
      "dce": {
       "statics": 92,
       "spills": 0,
       "steps": 92,
-      "ms": 0.0371,
+      "ms": 0.1014,
       "irChanges": 23
      },
      "fold+copyprop": {
       "statics": 48,
       "spills": 0,
       "steps": 48,
-      "ms": 0.0254,
+      "ms": 0.0533,
       "irChanges": 23
      },
      "all": {
       "statics": 48,
       "spills": 0,
       "steps": 48,
-      "ms": 0.0603,
+      "ms": 0.0053,
       "irChanges": 101
      }
     }
@@ -893,49 +893,49 @@
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0905,
+      "ms": 0.009,
       "irChanges": 0
      },
      "fold": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0094,
+      "ms": 0.0087,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0184,
+      "ms": 0.0186,
       "irChanges": 0
      },
      "cse": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0345,
+      "ms": 0.0085,
       "irChanges": 17
      },
      "dce": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0134,
+      "ms": 0.0107,
       "irChanges": 4
      },
      "fold+copyprop": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0175,
+      "ms": 0.0085,
       "irChanges": 0
      },
      "all": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0171,
+      "ms": 0.0116,
       "irChanges": 17
      }
     }
@@ -947,49 +947,49 @@
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.012,
+      "ms": 0.042,
       "irChanges": 0
      },
      "fold": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0111,
+      "ms": 0.0193,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0107,
+      "ms": 0.0258,
       "irChanges": 0
      },
      "cse": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0106,
+      "ms": 0.0129,
       "irChanges": 1
      },
      "dce": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0112,
+      "ms": 0.0127,
       "irChanges": 0
      },
      "fold+copyprop": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0238,
+      "ms": 0.0129,
       "irChanges": 0
      },
      "all": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0091,
+      "ms": 0.0126,
       "irChanges": 1
      }
     }
@@ -1001,49 +1001,49 @@
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 5.0293,
+      "ms": 7.1827,
       "irChanges": 0
      },
      "fold": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 5.2325,
+      "ms": 7.6895,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 5.4091,
+      "ms": 7.0685,
       "irChanges": 0
      },
      "cse": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 4.859,
+      "ms": 6.6819,
       "irChanges": 7
      },
      "dce": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 15.3417,
+      "ms": 7.111,
       "irChanges": 2
      },
      "fold+copyprop": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 4.7485,
+      "ms": 8.1671,
       "irChanges": 0
      },
      "all": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 5.4728,
+      "ms": 8.445,
       "irChanges": 7
      }
     }
@@ -1055,49 +1055,49 @@
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 2.7522,
+      "ms": 1.6622,
       "irChanges": 0
      },
      "fold": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.2348,
+      "ms": 1.9302,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 2.4083,
+      "ms": 2.1145,
       "irChanges": 0
      },
      "cse": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 2.8012,
+      "ms": 1.8163,
       "irChanges": 8
      },
      "dce": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.2797,
+      "ms": 1.7386,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.1624,
+      "ms": 1.6997,
       "irChanges": 0
      },
      "all": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.8719,
+      "ms": 2.0181,
       "irChanges": 8
      }
     }
@@ -1109,49 +1109,49 @@
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.001,
+      "ms": 0.0013,
       "irChanges": 0
      },
      "fold": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0009,
+      "ms": 0.0013,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.001,
+      "ms": 0.0012,
       "irChanges": 0
      },
      "cse": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0009,
+      "ms": 0.0012,
       "irChanges": 2
      },
      "dce": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0009,
+      "ms": 0.0011,
       "irChanges": 2
      },
      "fold+copyprop": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0009,
+      "ms": 0.0011,
       "irChanges": 0
      },
      "all": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0008,
+      "ms": 0.0012,
       "irChanges": 3
      }
     }
@@ -1163,49 +1163,49 @@
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0097,
+      "ms": 0.0232,
       "irChanges": 0
      },
      "fold": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0094,
+      "ms": 0.0276,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0251,
+      "ms": 0.0199,
       "irChanges": 0
      },
      "cse": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0229,
+      "ms": 0.0201,
       "irChanges": 2
      },
      "dce": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0124,
+      "ms": 0.0246,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0091,
+      "ms": 0.0194,
       "irChanges": 0
      },
      "all": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0093,
+      "ms": 0.019,
       "irChanges": 2
      }
     }
@@ -1217,49 +1217,49 @@
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0102,
+      "ms": 0.0129,
       "irChanges": 0
      },
      "fold": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0089,
+      "ms": 0.0125,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0088,
+      "ms": 0.0123,
       "irChanges": 0
      },
      "cse": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0087,
+      "ms": 0.0124,
       "irChanges": 1
      },
      "dce": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0085,
+      "ms": 0.0125,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0096,
+      "ms": 0.0122,
       "irChanges": 0
      },
      "all": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.009,
+      "ms": 0.0126,
       "irChanges": 1
      }
     }
@@ -1271,49 +1271,49 @@
       "statics": 51,
       "spills": 0,
       "steps": 40,
-      "ms": 0.0105,
+      "ms": 0.0135,
       "irChanges": 0
      },
      "fold": {
       "statics": 20,
       "spills": 0,
       "steps": 20,
-      "ms": 0.0066,
+      "ms": 0.0085,
       "irChanges": 12
      },
      "copyprop": {
       "statics": 51,
       "spills": 0,
       "steps": 40,
-      "ms": 0.0103,
+      "ms": 0.0132,
       "irChanges": 0
      },
      "cse": {
       "statics": 51,
       "spills": 0,
       "steps": 40,
-      "ms": 0.0189,
+      "ms": 0.0132,
       "irChanges": 17
      },
      "dce": {
       "statics": 51,
       "spills": 0,
       "steps": 40,
-      "ms": 0.0189,
+      "ms": 0.014,
       "irChanges": 9
      },
      "fold+copyprop": {
       "statics": 20,
       "spills": 0,
       "steps": 20,
-      "ms": 0.0067,
+      "ms": 0.0083,
       "irChanges": 12
      },
      "all": {
       "statics": 20,
       "spills": 0,
       "steps": 20,
-      "ms": 0.0065,
+      "ms": 0.0097,
       "irChanges": 39
      }
     }
@@ -1325,49 +1325,49 @@
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0134,
+      "ms": 0.0127,
       "irChanges": 0
      },
      "fold": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0099,
+      "ms": 0.0122,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0099,
+      "ms": 0.0122,
       "irChanges": 0
      },
      "cse": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0102,
+      "ms": 0.0121,
       "irChanges": 5
      },
      "dce": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0098,
+      "ms": 0.0123,
       "irChanges": 3
      },
      "fold+copyprop": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0177,
+      "ms": 0.0123,
       "irChanges": 0
      },
      "all": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0279,
+      "ms": 0.0123,
       "irChanges": 5
      }
     }
@@ -1379,49 +1379,49 @@
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0125,
+      "ms": 0.0021,
       "irChanges": 0
      },
      "fold": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0063,
+      "ms": 0.0033,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0062,
+      "ms": 0.0026,
       "irChanges": 0
      },
      "cse": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0061,
+      "ms": 0.0021,
       "irChanges": 6
      },
      "dce": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0061,
+      "ms": 0.0024,
       "irChanges": 2
      },
      "fold+copyprop": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0061,
+      "ms": 0.0014,
       "irChanges": 0
      },
      "all": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0063,
+      "ms": 0.0013,
       "irChanges": 6
      }
     }
@@ -1433,7 +1433,7 @@
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0023,
+      "ms": 0.002,
       "irChanges": 0
      },
      "fold": {
@@ -1447,14 +1447,14 @@
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0017,
+      "ms": 0.0019,
       "irChanges": 0
      },
      "cse": {
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0016,
+      "ms": 0.0019,
       "irChanges": 6
      },
      "dce": {
@@ -1468,14 +1468,14 @@
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0016,
+      "ms": 0.0021,
       "irChanges": 0
      },
      "all": {
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0009,
+      "ms": 0.001,
       "irChanges": 6
      }
     }
@@ -1487,49 +1487,49 @@
       "statics": 142,
       "spills": 0,
       "steps": 82,
-      "ms": 0.0048,
+      "ms": 0.0027,
       "irChanges": 0
      },
      "fold": {
       "statics": 52,
       "spills": 0,
       "steps": 38,
-      "ms": 0.0033,
+      "ms": 0.0017,
       "irChanges": 22
      },
      "copyprop": {
       "statics": 142,
       "spills": 0,
       "steps": 82,
-      "ms": 0.0057,
+      "ms": 0.0031,
       "irChanges": 0
      },
      "cse": {
       "statics": 121,
       "spills": 0,
       "steps": 67,
-      "ms": 0.0049,
+      "ms": 0.0046,
       "irChanges": 51
      },
      "dce": {
       "statics": 142,
       "spills": 0,
       "steps": 82,
-      "ms": 0.0027,
+      "ms": 0.0026,
       "irChanges": 9
      },
      "fold+copyprop": {
       "statics": 52,
       "spills": 0,
       "steps": 38,
-      "ms": 0.0021,
+      "ms": 0.0018,
       "irChanges": 22
      },
      "all": {
       "statics": 52,
       "spills": 0,
       "steps": 38,
-      "ms": 0.0014,
+      "ms": 0.003,
       "irChanges": 71
      }
     }
@@ -1541,49 +1541,49 @@
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0182,
+      "ms": 0.0194,
       "irChanges": 0
      },
      "fold": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0186,
+      "ms": 0.0222,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0207,
+      "ms": 0.0381,
       "irChanges": 0
      },
      "cse": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0135,
+      "ms": 0.0401,
       "irChanges": 5
      },
      "dce": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0137,
+      "ms": 0.0303,
       "irChanges": 2
      },
      "fold+copyprop": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0136,
+      "ms": 0.0325,
       "irChanges": 0
      },
      "all": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0317,
+      "ms": 0.02,
       "irChanges": 5
      }
     }
@@ -1595,49 +1595,49 @@
       "statics": 98,
       "spills": 0,
       "steps": 943,
-      "ms": 0.0218,
+      "ms": 0.0437,
       "irChanges": 0
      },
      "fold": {
       "statics": 98,
       "spills": 0,
       "steps": 943,
-      "ms": 0.0218,
+      "ms": 0.0314,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 94,
       "spills": 0,
       "steps": 915,
-      "ms": 0.0216,
+      "ms": 0.0425,
       "irChanges": 3
      },
      "cse": {
       "statics": 98,
       "spills": 0,
       "steps": 943,
-      "ms": 0.0219,
+      "ms": 0.0423,
       "irChanges": 23
      },
      "dce": {
       "statics": 98,
       "spills": 0,
       "steps": 943,
-      "ms": 0.0479,
+      "ms": 0.0429,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 94,
       "spills": 0,
       "steps": 915,
-      "ms": 0.022,
+      "ms": 0.0392,
       "irChanges": 3
      },
      "all": {
       "statics": 94,
       "spills": 0,
       "steps": 915,
-      "ms": 0.0168,
+      "ms": 0.0404,
       "irChanges": 26
      }
     }
@@ -1646,52 +1646,52 @@
     "program": "sort-quick.mc",
     "byConfiguration": {
      "O0": {
-      "statics": 110,
+      "statics": 112,
       "spills": 0,
-      "steps": 636,
-      "ms": 0.0345,
+      "steps": 669,
+      "ms": 0.0294,
       "irChanges": 0
      },
      "fold": {
-      "statics": 110,
+      "statics": 112,
       "spills": 0,
-      "steps": 636,
-      "ms": 0.0342,
+      "steps": 669,
+      "ms": 0.0183,
       "irChanges": 0
      },
      "copyprop": {
-      "statics": 110,
+      "statics": 112,
       "spills": 0,
-      "steps": 636,
-      "ms": 0.0346,
+      "steps": 669,
+      "ms": 0.016,
       "irChanges": 0
      },
      "cse": {
-      "statics": 106,
+      "statics": 108,
       "spills": 0,
-      "steps": 616,
-      "ms": 0.0339,
+      "steps": 649,
+      "ms": 0.0157,
       "irChanges": 21
      },
      "dce": {
-      "statics": 110,
+      "statics": 112,
       "spills": 0,
-      "steps": 636,
-      "ms": 0.0343,
+      "steps": 669,
+      "ms": 0.0169,
       "irChanges": 1
      },
      "fold+copyprop": {
-      "statics": 110,
+      "statics": 112,
       "spills": 0,
-      "steps": 636,
-      "ms": 0.0167,
+      "steps": 669,
+      "ms": 0.0159,
       "irChanges": 0
      },
      "all": {
-      "statics": 106,
+      "statics": 108,
       "spills": 0,
-      "steps": 616,
-      "ms": 0.0126,
+      "steps": 649,
+      "ms": 0.0153,
       "irChanges": 21
      }
     }
@@ -1703,49 +1703,49 @@
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0135,
+      "ms": 0.0069,
       "irChanges": 0
      },
      "fold": {
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0154,
+      "ms": 0.0069,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0244,
+      "ms": 0.0072,
       "irChanges": 0
      },
      "cse": {
       "statics": 85,
       "spills": 0,
       "steps": 247,
-      "ms": 0.0051,
+      "ms": 0.0069,
       "irChanges": 11
      },
      "dce": {
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0049,
+      "ms": 0.0071,
       "irChanges": 3
      },
      "fold+copyprop": {
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.005,
+      "ms": 0.0068,
       "irChanges": 0
      },
      "all": {
       "statics": 85,
       "spills": 0,
       "steps": 247,
-      "ms": 0.0053,
+      "ms": 0.0069,
       "irChanges": 11
      }
     }
@@ -1757,49 +1757,49 @@
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0386,
+      "ms": 0.0181,
       "irChanges": 0
      },
      "fold": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0174,
+      "ms": 0.0164,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0215,
+      "ms": 0.0177,
       "irChanges": 0
      },
      "cse": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0358,
+      "ms": 0.0427,
       "irChanges": 0
      },
      "dce": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0375,
+      "ms": 0.0267,
       "irChanges": 0
      },
      "fold+copyprop": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0564,
+      "ms": 0.0273,
       "irChanges": 0
      },
      "all": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.017,
+      "ms": 0.0304,
       "irChanges": 0
      }
     }
@@ -1811,35 +1811,35 @@
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0169,
+      "ms": 0.0181,
       "irChanges": 0
      },
      "fold": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.016,
+      "ms": 0.0171,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0163,
+      "ms": 0.0169,
       "irChanges": 0
      },
      "cse": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0197,
+      "ms": 0.0173,
       "irChanges": 1
      },
      "dce": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0217,
+      "ms": 0.0171,
       "irChanges": 1
      },
      "fold+copyprop": {
@@ -1853,7 +1853,7 @@
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0165,
+      "ms": 0.0183,
       "irChanges": 1
      }
     }
@@ -1865,42 +1865,42 @@
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0184,
+      "ms": 0.0185,
       "irChanges": 0
      },
      "fold": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.018,
+      "ms": 0.0178,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0199,
+      "ms": 0.0179,
       "irChanges": 0
      },
      "cse": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0218,
+      "ms": 0.0177,
       "irChanges": 1
      },
      "dce": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0186,
+      "ms": 0.0174,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0177,
+      "ms": 0.0176,
       "irChanges": 0
      },
      "all": {
@@ -1919,28 +1919,28 @@
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.017,
+      "ms": 0.0209,
       "irChanges": 0
      },
      "fold": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0168,
+      "ms": 0.0175,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0164,
+      "ms": 0.0166,
       "irChanges": 0
      },
      "cse": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0172,
+      "ms": 0.0166,
       "irChanges": 0
      },
      "dce": {
@@ -1954,14 +1954,14 @@
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0171,
+      "ms": 0.017,
       "irChanges": 0
      },
      "all": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0171,
+      "ms": 0.0169,
       "irChanges": 0
      }
     }
@@ -1973,49 +1973,49 @@
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.4058,
+      "ms": 0.2094,
       "irChanges": 0
      },
      "fold": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.511,
+      "ms": 0.1864,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.4126,
+      "ms": 0.2935,
       "irChanges": 0
      },
      "cse": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.1686,
+      "ms": 0.1964,
       "irChanges": 0
      },
      "dce": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.1579,
+      "ms": 0.1756,
       "irChanges": 0
      },
      "fold+copyprop": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.3529,
+      "ms": 0.3039,
       "irChanges": 0
      },
      "all": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.3625,
+      "ms": 0.317,
       "irChanges": 0
      }
     }
@@ -2024,52 +2024,52 @@
     "program": "vm.mc",
     "byConfiguration": {
      "O0": {
-      "statics": 261,
+      "statics": 259,
       "spills": 0,
-      "steps": 9413,
-      "ms": 0.3114,
+      "steps": 9164,
+      "ms": 0.1797,
       "irChanges": 0
      },
      "fold": {
-      "statics": 258,
+      "statics": 256,
       "spills": 0,
-      "steps": 9131,
-      "ms": 0.1637,
+      "steps": 8882,
+      "ms": 0.449,
       "irChanges": 1
      },
      "copyprop": {
-      "statics": 261,
+      "statics": 259,
       "spills": 0,
-      "steps": 9413,
-      "ms": 0.1679,
+      "steps": 9164,
+      "ms": 0.2141,
       "irChanges": 0
      },
      "cse": {
-      "statics": 253,
+      "statics": 255,
       "spills": 0,
-      "steps": 8820,
-      "ms": 0.1706,
+      "steps": 9069,
+      "ms": 0.2273,
       "irChanges": 73
      },
      "dce": {
-      "statics": 261,
+      "statics": 259,
       "spills": 0,
-      "steps": 9413,
-      "ms": 0.3939,
+      "steps": 9164,
+      "ms": 0.1795,
       "irChanges": 1
      },
      "fold+copyprop": {
-      "statics": 258,
+      "statics": 256,
       "spills": 0,
-      "steps": 9131,
-      "ms": 0.1449,
+      "steps": 8882,
+      "ms": 0.1758,
       "irChanges": 1
      },
      "all": {
-      "statics": 250,
+      "statics": 252,
       "spills": 0,
-      "steps": 8538,
-      "ms": 0.1996,
+      "steps": 8787,
+      "ms": 0.2607,
       "irChanges": 74
      }
     }
@@ -2085,9 +2085,10 @@
   },
   "inert": [
    "copyprop",
+   "cse",
    "dce"
   ],
-  "finding": "The four passes cut static code size by 15.4% but executed instructions by only 0.3%. None of them optimizes across an iteration or a call -- there is no loop-invariant code motion, no strength reduction, no unrolling, no inlining -- so a program whose time goes into a loop or a recursive call gets nothing. The aggregate is dominated by exactly those programs. Per program the passes cut about half the work from small straight-line code and nothing at all from the hot ones, which is why the per-program table matters more than the total. Register allocation, measured separately, is where this compiler's dynamic win actually comes from.",
+  "finding": "The four passes cut static code size by 15.0% but executed instructions by only 0.2%. None of them optimizes across an iteration or a call -- there is no loop-invariant code motion, no strength reduction, no unrolling, no inlining -- so a program whose time goes into a loop or a recursive call gets nothing. The aggregate is dominated by exactly those programs. Per program the passes cut about half the work from small straight-line code and nothing at all from the hot ones, which is why the per-program table matters more than the total. Register allocation, measured separately, is where this compiler's dynamic win actually comes from.",
   "note": "Each pass is measured alone as well as in the pipeline. A pass that reduces nothing on its own is reported as such rather than omitted: copy propagation removes trivial phis, and what creates them is constant folding.",
   "wallClockNote": "median of 5 runs, per program, not aggregated: it measures this host on this day"
  },
