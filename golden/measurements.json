@@ -10,6 +10,7 @@
   "registersUsed": {
    "withVoidIntervals": 254,
    "withoutVoidIntervals": 172,
+   "spillsWithVoidIntervals": 0,
    "functionsThatUseFewer": 25
   },
   "note": "No corpus function fills the register file, so the spill path never runs on this input. It is exercised by squeezing the register set in test/regalloc.test.js.",
@@ -23,7 +24,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 13,
-    "registersUsedWithVoidIntervals": 13
+    "registersUsedWithVoidIntervals": 13,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "sort-quick.mc",
@@ -34,7 +36,8 @@
     "reserved": 3,
     "spills": 0,
     "registersUsed": 10,
-    "registersUsedWithVoidIntervals": 10
+    "registersUsedWithVoidIntervals": 10,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "binary-search.mc",
@@ -45,7 +48,8 @@
     "reserved": 3,
     "spills": 0,
     "registersUsed": 10,
-    "registersUsedWithVoidIntervals": 10
+    "registersUsedWithVoidIntervals": 10,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "nqueens.mc",
@@ -56,7 +60,8 @@
     "reserved": 3,
     "spills": 0,
     "registersUsed": 10,
-    "registersUsedWithVoidIntervals": 10
+    "registersUsedWithVoidIntervals": 10,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "nqueens.mc",
@@ -67,7 +72,8 @@
     "reserved": 3,
     "spills": 0,
     "registersUsed": 10,
-    "registersUsedWithVoidIntervals": 10
+    "registersUsedWithVoidIntervals": 10,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "sort-insertion.mc",
@@ -78,7 +84,8 @@
     "reserved": 2,
     "spills": 0,
     "registersUsed": 11,
-    "registersUsedWithVoidIntervals": 11
+    "registersUsedWithVoidIntervals": 11,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "sieve.mc",
@@ -89,7 +96,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 13,
-    "registersUsedWithVoidIntervals": 13
+    "registersUsedWithVoidIntervals": 13,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "strings.mc",
@@ -100,7 +108,8 @@
     "reserved": 2,
     "spills": 0,
     "registersUsed": 10,
-    "registersUsedWithVoidIntervals": 11
+    "registersUsedWithVoidIntervals": 11,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "sort-quick.mc",
@@ -111,7 +120,8 @@
     "reserved": 3,
     "spills": 0,
     "registersUsed": 7,
-    "registersUsedWithVoidIntervals": 9
+    "registersUsedWithVoidIntervals": 9,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "fib.mc",
@@ -122,7 +132,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 7,
-    "registersUsedWithVoidIntervals": 7
+    "registersUsedWithVoidIntervals": 7,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "fib.mc",
@@ -133,7 +144,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 7,
-    "registersUsedWithVoidIntervals": 9
+    "registersUsedWithVoidIntervals": 9,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "strings.mc",
@@ -144,7 +156,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 5,
-    "registersUsedWithVoidIntervals": 5
+    "registersUsedWithVoidIntervals": 5,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "strings.mc",
@@ -155,7 +168,8 @@
     "reserved": 2,
     "spills": 0,
     "registersUsed": 6,
-    "registersUsedWithVoidIntervals": 8
+    "registersUsedWithVoidIntervals": 8,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-call-twice.mc",
@@ -166,7 +180,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 3,
-    "registersUsedWithVoidIntervals": 4
+    "registersUsedWithVoidIntervals": 4,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-load-across-call.mc",
@@ -177,7 +192,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 3,
-    "registersUsedWithVoidIntervals": 4
+    "registersUsedWithVoidIntervals": 4,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-load-across-call.mc",
@@ -188,7 +204,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 3,
-    "registersUsedWithVoidIntervals": 7
+    "registersUsedWithVoidIntervals": 7,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-load-after-store.mc",
@@ -199,7 +216,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 3,
-    "registersUsedWithVoidIntervals": 7
+    "registersUsedWithVoidIntervals": 7,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "sort-insertion.mc",
@@ -210,7 +228,8 @@
     "reserved": 2,
     "spills": 0,
     "registersUsed": 5,
-    "registersUsedWithVoidIntervals": 11
+    "registersUsedWithVoidIntervals": 11,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "sort-quick.mc",
@@ -221,7 +240,8 @@
     "reserved": 3,
     "spills": 0,
     "registersUsed": 5,
-    "registersUsedWithVoidIntervals": 10
+    "registersUsedWithVoidIntervals": 10,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "binary-search.mc",
@@ -232,7 +252,8 @@
     "reserved": 3,
     "spills": 0,
     "registersUsed": 5,
-    "registersUsedWithVoidIntervals": 10
+    "registersUsedWithVoidIntervals": 10,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "eval-order.mc",
@@ -243,7 +264,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 2,
-    "registersUsedWithVoidIntervals": 3
+    "registersUsedWithVoidIntervals": 3,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "nqueens.mc",
@@ -254,7 +276,8 @@
     "reserved": 3,
     "spills": 0,
     "registersUsed": 2,
-    "registersUsedWithVoidIntervals": 3
+    "registersUsedWithVoidIntervals": 3,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-dead-load.mc",
@@ -265,7 +288,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 2,
-    "registersUsedWithVoidIntervals": 3
+    "registersUsedWithVoidIntervals": 3,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-guarded-divide.mc",
@@ -276,7 +300,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 3,
-    "registersUsedWithVoidIntervals": 3
+    "registersUsedWithVoidIntervals": 3,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "strings.mc",
@@ -287,7 +312,8 @@
     "reserved": 2,
     "spills": 0,
     "registersUsed": 2,
-    "registersUsedWithVoidIntervals": 11
+    "registersUsedWithVoidIntervals": 11,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "trap-oob-read.mc",
@@ -298,7 +324,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 3,
-    "registersUsedWithVoidIntervals": 4
+    "registersUsedWithVoidIntervals": 4,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "trap-stack-overflow.mc",
@@ -309,7 +336,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 3,
-    "registersUsedWithVoidIntervals": 3
+    "registersUsedWithVoidIntervals": 3,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-call-twice.mc",
@@ -320,7 +348,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 1,
-    "registersUsedWithVoidIntervals": 2
+    "registersUsedWithVoidIntervals": 2,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-dead-divide.mc",
@@ -331,7 +360,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 1,
-    "registersUsedWithVoidIntervals": 2
+    "registersUsedWithVoidIntervals": 2,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-guarded-divide.mc",
@@ -342,7 +372,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 3,
-    "registersUsedWithVoidIntervals": 6
+    "registersUsedWithVoidIntervals": 6,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "trap-div-overflow.mc",
@@ -353,7 +384,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 1,
-    "registersUsedWithVoidIntervals": 1
+    "registersUsedWithVoidIntervals": 1,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "trap-div-zero.mc",
@@ -364,7 +396,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 1,
-    "registersUsedWithVoidIntervals": 2
+    "registersUsedWithVoidIntervals": 2,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "trap-oob-write.mc",
@@ -375,7 +408,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 1,
-    "registersUsedWithVoidIntervals": 2
+    "registersUsedWithVoidIntervals": 2,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "trap-stack-overflow.mc",
@@ -386,7 +420,8 @@
     "reserved": 1,
     "spills": 0,
     "registersUsed": 1,
-    "registersUsedWithVoidIntervals": 1
+    "registersUsedWithVoidIntervals": 1,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "arith.mc",
@@ -397,7 +432,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 0,
-    "registersUsedWithVoidIntervals": 13
+    "registersUsedWithVoidIntervals": 13,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "opt-foldable.mc",
@@ -408,7 +444,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 0,
-    "registersUsedWithVoidIntervals": 7
+    "registersUsedWithVoidIntervals": 7,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "short-circuit.mc",
@@ -419,7 +456,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 0,
-    "registersUsedWithVoidIntervals": 1
+    "registersUsedWithVoidIntervals": 1,
+    "spillsWithVoidIntervals": 0
    },
    {
     "program": "short-circuit.mc",
@@ -430,7 +468,8 @@
     "reserved": 0,
     "spills": 0,
     "registersUsed": 0,
-    "registersUsedWithVoidIntervals": 8
+    "registersUsedWithVoidIntervals": 8,
+    "spillsWithVoidIntervals": 0
    }
   ]
  },
@@ -463,13 +502,13 @@
      "statics": 48,
      "slotOps": 0,
      "steps": 48,
-     "ms": 0.0522
+     "ms": 0.0514
     },
     "allocated": {
      "statics": 48,
      "slotOps": 0,
      "steps": 48,
-     "ms": 0.0502
+     "ms": 0.0418
     }
    },
    {
@@ -478,13 +517,13 @@
      "statics": 136,
      "slotOps": 70,
      "steps": 637,
-     "ms": 0.2084
+     "ms": 0.1745
     },
     "allocated": {
      "statics": 80,
      "slotOps": 0,
      "steps": 286,
-     "ms": 0.2384
+     "ms": 0.0986
     }
    },
    {
@@ -493,13 +532,13 @@
      "statics": 12,
      "slotOps": 4,
      "steps": 5,
-     "ms": 0.0264
+     "ms": 0.017
     },
     "allocated": {
      "statics": 8,
      "slotOps": 0,
      "steps": 4,
-     "ms": 0.0231
+     "ms": 0.0259
     }
    },
    {
@@ -508,13 +547,13 @@
      "statics": 69,
      "slotOps": 37,
      "steps": 405457,
-     "ms": 12.3054
+     "ms": 9.5147
     },
     "allocated": {
      "statics": 38,
      "slotOps": 0,
      "steps": 219159,
-     "ms": 7.9738
+     "ms": 8.113
     }
    },
    {
@@ -523,13 +562,13 @@
      "statics": 163,
      "slotOps": 93,
      "steps": 158895,
-     "ms": 4.6904
+     "ms": 3.6571
     },
     "allocated": {
      "statics": 91,
      "slotOps": 0,
      "steps": 75785,
-     "ms": 2.3014
+     "ms": 1.7279
     }
    },
    {
@@ -538,13 +577,13 @@
      "statics": 19,
      "slotOps": 9,
      "steps": 24,
-     "ms": 0.0015
+     "ms": 0.0014
     },
     "allocated": {
      "statics": 11,
      "slotOps": 0,
      "steps": 14,
-     "ms": 0.0014
+     "ms": 0.0011
     }
    },
    {
@@ -553,13 +592,13 @@
      "statics": 8,
      "slotOps": 1,
      "steps": 5,
-     "ms": 0.014
+     "ms": 0.0111
     },
     "allocated": {
      "statics": 7,
      "slotOps": 0,
      "steps": 5,
-     "ms": 0.0128
+     "ms": 0.0104
     }
    },
    {
@@ -568,13 +607,13 @@
      "statics": 10,
      "slotOps": 3,
      "steps": 7,
-     "ms": 0.022
+     "ms": 0.0136
     },
     "allocated": {
      "statics": 7,
      "slotOps": 0,
      "steps": 5,
-     "ms": 0.0233
+     "ms": 0.0128
     }
    },
    {
@@ -583,13 +622,13 @@
      "statics": 20,
      "slotOps": 0,
      "steps": 20,
-     "ms": 0.0134
+     "ms": 0.0071
     },
     "allocated": {
      "statics": 20,
      "slotOps": 0,
      "steps": 20,
-     "ms": 0.0085
+     "ms": 0.0093
     }
    },
    {
@@ -598,13 +637,13 @@
      "statics": 33,
      "slotOps": 13,
      "steps": 54,
-     "ms": 0.0248
+     "ms": 0.0133
     },
     "allocated": {
      "statics": 21,
      "slotOps": 0,
      "steps": 33,
-     "ms": 0.0124
+     "ms": 0.0141
     }
    },
    {
@@ -613,13 +652,13 @@
      "statics": 36,
      "slotOps": 16,
      "steps": 36,
-     "ms": 0.0213
+     "ms": 0.0107
     },
     "allocated": {
      "statics": 22,
      "slotOps": 0,
      "steps": 22,
-     "ms": 0.0165
+     "ms": 0.0084
     }
    },
    {
@@ -628,13 +667,13 @@
      "statics": 24,
      "slotOps": 9,
      "steps": 24,
-     "ms": 0.0078
+     "ms": 0.0077
     },
     "allocated": {
      "statics": 15,
      "slotOps": 0,
      "steps": 15,
-     "ms": 0.0086
+     "ms": 0.0077
     }
    },
    {
@@ -643,13 +682,13 @@
      "statics": 52,
      "slotOps": 0,
      "steps": 38,
-     "ms": 0.0029
+     "ms": 0.0015
     },
     "allocated": {
      "statics": 52,
      "slotOps": 0,
      "steps": 38,
-     "ms": 0.0019
+     "ms": 0.0021
     }
    },
    {
@@ -658,13 +697,13 @@
      "statics": 77,
      "slotOps": 41,
      "steps": 1456,
-     "ms": 0.5296
+     "ms": 0.3028
     },
     "allocated": {
      "statics": 42,
      "slotOps": 0,
      "steps": 768,
-     "ms": 0.0199
+     "ms": 0.2809
     }
    },
    {
@@ -673,13 +712,13 @@
      "statics": 162,
      "slotOps": 76,
      "steps": 1914,
-     "ms": 0.4505
+     "ms": 0.4837
     },
     "allocated": {
      "statics": 94,
      "slotOps": 0,
      "steps": 915,
-     "ms": 0.0217
+     "ms": 0.0184
     }
    },
    {
@@ -688,13 +727,13 @@
      "statics": 190,
      "slotOps": 105,
      "steps": 1271,
-     "ms": 0.0323
+     "ms": 0.0417
     },
     "allocated": {
      "statics": 108,
      "slotOps": 0,
      "steps": 649,
-     "ms": 0.0179
+     "ms": 0.0209
     }
    },
    {
@@ -703,13 +742,13 @@
      "statics": 144,
      "slotOps": 74,
      "steps": 488,
-     "ms": 0.1234
+     "ms": 0.1343
     },
     "allocated": {
      "statics": 85,
      "slotOps": 0,
      "steps": 247,
-     "ms": 0.0815
+     "ms": 0.101
     }
    },
    {
@@ -718,13 +757,13 @@
      "statics": 6,
      "slotOps": 2,
      "steps": 3,
-     "ms": 0.0135
+     "ms": 0.0368
     },
     "allocated": {
      "statics": 4,
      "slotOps": 0,
      "steps": 3,
-     "ms": 0.0233
+     "ms": 0.0268
     }
    },
    {
@@ -733,13 +772,13 @@
      "statics": 8,
      "slotOps": 2,
      "steps": 5,
-     "ms": 0.0235
+     "ms": 0.0132
     },
     "allocated": {
      "statics": 6,
      "slotOps": 0,
      "steps": 5,
-     "ms": 0.0203
+     "ms": 0.0122
     }
    },
    {
@@ -748,13 +787,13 @@
      "statics": 14,
      "slotOps": 7,
      "steps": 11,
-     "ms": 0.0135
+     "ms": 0.0103
     },
     "allocated": {
      "statics": 7,
      "slotOps": 0,
      "steps": 6,
-     "ms": 0.0128
+     "ms": 0.0102
     }
    },
    {
@@ -763,13 +802,13 @@
      "statics": 8,
      "slotOps": 2,
      "steps": 6,
-     "ms": 0.0276
+     "ms": 0.0443
     },
     "allocated": {
      "statics": 6,
      "slotOps": 0,
      "steps": 4,
-     "ms": 0.0168
+     "ms": 0.0123
     }
    },
    {
@@ -778,13 +817,13 @@
      "statics": 15,
      "slotOps": 8,
      "steps": 6995,
-     "ms": 1.4163
+     "ms": 1.1253
     },
     "allocated": {
      "statics": 9,
      "slotOps": 0,
      "steps": 4997,
-     "ms": 0.3992
+     "ms": 0.2037
     }
    },
    {
@@ -793,13 +832,13 @@
      "statics": 425,
      "slotOps": 195,
      "steps": 17075,
-     "ms": 0.3451
+     "ms": 0.3477
     },
     "allocated": {
      "statics": 252,
      "slotOps": 0,
      "steps": 8787,
-     "ms": 0.3223
+     "ms": 0.1641
     }
    }
   ],
@@ -882,49 +921,49 @@
       "statics": 92,
       "spills": 0,
       "steps": 92,
-      "ms": 0.0347,
+      "ms": 0.0309,
       "irChanges": 0
      },
      "fold": {
       "statics": 48,
       "spills": 0,
       "steps": 48,
-      "ms": 0.024,
+      "ms": 0.0186,
       "irChanges": 23
      },
      "copyprop": {
       "statics": 92,
       "spills": 0,
       "steps": 92,
-      "ms": 0.0771,
+      "ms": 0.0325,
       "irChanges": 0
      },
      "cse": {
       "statics": 92,
       "spills": 0,
       "steps": 92,
-      "ms": 0.0795,
+      "ms": 0.0291,
       "irChanges": 50
      },
      "dce": {
       "statics": 92,
       "spills": 0,
       "steps": 92,
-      "ms": 0.1014,
+      "ms": 0.0603,
       "irChanges": 23
      },
      "fold+copyprop": {
       "statics": 48,
       "spills": 0,
       "steps": 48,
-      "ms": 0.0533,
+      "ms": 0.0347,
       "irChanges": 23
      },
      "all": {
       "statics": 48,
       "spills": 0,
       "steps": 48,
-      "ms": 0.0053,
+      "ms": 0.0183,
       "irChanges": 101
      }
     }
@@ -936,49 +975,49 @@
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.009,
+      "ms": 0.0085,
       "irChanges": 0
      },
      "fold": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0087,
+      "ms": 0.0081,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0186,
+      "ms": 0.0078,
       "irChanges": 0
      },
      "cse": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0085,
+      "ms": 0.0075,
       "irChanges": 17
      },
      "dce": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0107,
+      "ms": 0.0079,
       "irChanges": 4
      },
      "fold+copyprop": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0085,
+      "ms": 0.0074,
       "irChanges": 0
      },
      "all": {
       "statics": 80,
       "spills": 0,
       "steps": 286,
-      "ms": 0.0116,
+      "ms": 0.0078,
       "irChanges": 17
      }
     }
@@ -990,49 +1029,49 @@
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.042,
+      "ms": 0.0258,
       "irChanges": 0
      },
      "fold": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0193,
+      "ms": 0.0372,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0258,
+      "ms": 0.0254,
       "irChanges": 0
      },
      "cse": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0129,
+      "ms": 0.0094,
       "irChanges": 1
      },
      "dce": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0127,
+      "ms": 0.0238,
       "irChanges": 0
      },
      "fold+copyprop": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0129,
+      "ms": 0.009,
       "irChanges": 0
      },
      "all": {
       "statics": 8,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0126,
+      "ms": 0.0092,
       "irChanges": 1
      }
     }
@@ -1044,49 +1083,49 @@
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 7.1827,
+      "ms": 5.8006,
       "irChanges": 0
      },
      "fold": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 7.6895,
+      "ms": 5.5706,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 7.0685,
+      "ms": 5.6113,
       "irChanges": 0
      },
      "cse": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 6.6819,
+      "ms": 6.061,
       "irChanges": 7
      },
      "dce": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 7.111,
+      "ms": 5.7416,
       "irChanges": 2
      },
      "fold+copyprop": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 8.1671,
+      "ms": 16.6206,
       "irChanges": 0
      },
      "all": {
       "statics": 38,
       "spills": 0,
       "steps": 219159,
-      "ms": 8.445,
+      "ms": 12.0941,
       "irChanges": 7
      }
     }
@@ -1098,49 +1137,49 @@
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.6622,
+      "ms": 2.8709,
       "irChanges": 0
      },
      "fold": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.9302,
+      "ms": 1.4037,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 2.1145,
+      "ms": 3.0778,
       "irChanges": 0
      },
      "cse": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.8163,
+      "ms": 1.3942,
       "irChanges": 8
      },
      "dce": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.7386,
+      "ms": 1.3857,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 1.6997,
+      "ms": 1.378,
       "irChanges": 0
      },
      "all": {
       "statics": 91,
       "spills": 0,
       "steps": 75785,
-      "ms": 2.0181,
+      "ms": 1.3568,
       "irChanges": 8
      }
     }
@@ -1152,28 +1191,28 @@
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0013,
+      "ms": 0.0014,
       "irChanges": 0
      },
      "fold": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0013,
+      "ms": 0.001,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0012,
+      "ms": 0.0013,
       "irChanges": 0
      },
      "cse": {
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0012,
+      "ms": 0.0028,
       "irChanges": 2
      },
      "dce": {
@@ -1194,7 +1233,7 @@
       "statics": 11,
       "spills": 0,
       "steps": 14,
-      "ms": 0.0012,
+      "ms": 0.001,
       "irChanges": 3
      }
     }
@@ -1206,49 +1245,49 @@
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0232,
+      "ms": 0.0113,
       "irChanges": 0
      },
      "fold": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0276,
+      "ms": 0.0105,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0199,
+      "ms": 0.0106,
       "irChanges": 0
      },
      "cse": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0201,
+      "ms": 0.0103,
       "irChanges": 2
      },
      "dce": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0246,
+      "ms": 0.0103,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0194,
+      "ms": 0.0103,
       "irChanges": 0
      },
      "all": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.019,
+      "ms": 0.0105,
       "irChanges": 2
      }
     }
@@ -1260,49 +1299,49 @@
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0129,
+      "ms": 0.0106,
       "irChanges": 0
      },
      "fold": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0125,
+      "ms": 0.0097,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0123,
+      "ms": 0.01,
       "irChanges": 0
      },
      "cse": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0124,
+      "ms": 0.0097,
       "irChanges": 1
      },
      "dce": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0125,
+      "ms": 0.01,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0122,
+      "ms": 0.0098,
       "irChanges": 0
      },
      "all": {
       "statics": 7,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0126,
+      "ms": 0.0097,
       "irChanges": 1
      }
     }
@@ -1314,49 +1353,49 @@
       "statics": 51,
       "spills": 0,
       "steps": 40,
-      "ms": 0.0135,
+      "ms": 0.0017,
       "irChanges": 0
      },
      "fold": {
       "statics": 20,
       "spills": 0,
       "steps": 20,
-      "ms": 0.0085,
+      "ms": 0.0011,
       "irChanges": 12
      },
      "copyprop": {
       "statics": 51,
       "spills": 0,
       "steps": 40,
-      "ms": 0.0132,
+      "ms": 0.0014,
       "irChanges": 0
      },
      "cse": {
       "statics": 51,
       "spills": 0,
       "steps": 40,
-      "ms": 0.0132,
+      "ms": 0.0016,
       "irChanges": 17
      },
      "dce": {
       "statics": 51,
       "spills": 0,
       "steps": 40,
-      "ms": 0.014,
+      "ms": 0.0014,
       "irChanges": 9
      },
      "fold+copyprop": {
       "statics": 20,
       "spills": 0,
       "steps": 20,
-      "ms": 0.0083,
+      "ms": 0.001,
       "irChanges": 12
      },
      "all": {
       "statics": 20,
       "spills": 0,
       "steps": 20,
-      "ms": 0.0097,
+      "ms": 0.0015,
       "irChanges": 39
      }
     }
@@ -1368,49 +1407,49 @@
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0127,
+      "ms": 0.0017,
       "irChanges": 0
      },
      "fold": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0122,
+      "ms": 0.0017,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0122,
+      "ms": 0.0016,
       "irChanges": 0
      },
      "cse": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0121,
+      "ms": 0.0016,
       "irChanges": 5
      },
      "dce": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0123,
+      "ms": 0.0015,
       "irChanges": 3
      },
      "fold+copyprop": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0123,
+      "ms": 0.0016,
       "irChanges": 0
      },
      "all": {
       "statics": 21,
       "spills": 0,
       "steps": 33,
-      "ms": 0.0123,
+      "ms": 0.0017,
       "irChanges": 5
      }
     }
@@ -1422,28 +1461,28 @@
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0021,
+      "ms": 0.0028,
       "irChanges": 0
      },
      "fold": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0033,
+      "ms": 0.0023,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0026,
+      "ms": 0.0024,
       "irChanges": 0
      },
      "cse": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0021,
+      "ms": 0.0024,
       "irChanges": 6
      },
      "dce": {
@@ -1457,14 +1496,14 @@
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0014,
+      "ms": 0.0021,
       "irChanges": 0
      },
      "all": {
       "statics": 22,
       "spills": 0,
       "steps": 22,
-      "ms": 0.0013,
+      "ms": 0.0023,
       "irChanges": 6
      }
     }
@@ -1476,49 +1515,49 @@
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.002,
+      "ms": 0.0009,
       "irChanges": 0
      },
      "fold": {
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0019,
+      "ms": 0.0009,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0019,
+      "ms": 0.001,
       "irChanges": 0
      },
      "cse": {
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0019,
+      "ms": 0.0009,
       "irChanges": 6
      },
      "dce": {
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0016,
+      "ms": 0.0011,
       "irChanges": 2
      },
      "fold+copyprop": {
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.0021,
+      "ms": 0.0011,
       "irChanges": 0
      },
      "all": {
       "statics": 15,
       "spills": 0,
       "steps": 15,
-      "ms": 0.001,
+      "ms": 0.0011,
       "irChanges": 6
      }
     }
@@ -1530,35 +1569,35 @@
       "statics": 142,
       "spills": 0,
       "steps": 82,
-      "ms": 0.0027,
+      "ms": 0.002,
       "irChanges": 0
      },
      "fold": {
       "statics": 52,
       "spills": 0,
       "steps": 38,
-      "ms": 0.0017,
+      "ms": 0.0018,
       "irChanges": 22
      },
      "copyprop": {
       "statics": 142,
       "spills": 0,
       "steps": 82,
-      "ms": 0.0031,
+      "ms": 0.0022,
       "irChanges": 0
      },
      "cse": {
       "statics": 121,
       "spills": 0,
       "steps": 67,
-      "ms": 0.0046,
+      "ms": 0.0018,
       "irChanges": 51
      },
      "dce": {
       "statics": 142,
       "spills": 0,
       "steps": 82,
-      "ms": 0.0026,
+      "ms": 0.0029,
       "irChanges": 9
      },
      "fold+copyprop": {
@@ -1572,7 +1611,7 @@
       "statics": 52,
       "spills": 0,
       "steps": 38,
-      "ms": 0.003,
+      "ms": 0.0019,
       "irChanges": 71
      }
     }
@@ -1584,49 +1623,49 @@
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0194,
+      "ms": 0.0144,
       "irChanges": 0
      },
      "fold": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0222,
+      "ms": 0.0142,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0381,
+      "ms": 0.0142,
       "irChanges": 0
      },
      "cse": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0401,
+      "ms": 0.0141,
       "irChanges": 5
      },
      "dce": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0303,
+      "ms": 0.0142,
       "irChanges": 2
      },
      "fold+copyprop": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.0325,
+      "ms": 0.0143,
       "irChanges": 0
      },
      "all": {
       "statics": 42,
       "spills": 0,
       "steps": 768,
-      "ms": 0.02,
+      "ms": 0.0144,
       "irChanges": 5
      }
     }
@@ -1638,49 +1677,49 @@
       "statics": 98,
       "spills": 0,
       "steps": 943,
-      "ms": 0.0437,
+      "ms": 0.0166,
       "irChanges": 0
      },
      "fold": {
       "statics": 98,
       "spills": 0,
       "steps": 943,
-      "ms": 0.0314,
+      "ms": 0.0173,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 94,
       "spills": 0,
       "steps": 915,
-      "ms": 0.0425,
+      "ms": 0.0254,
       "irChanges": 3
      },
      "cse": {
       "statics": 98,
       "spills": 0,
       "steps": 943,
-      "ms": 0.0423,
+      "ms": 0.0168,
       "irChanges": 23
      },
      "dce": {
       "statics": 98,
       "spills": 0,
       "steps": 943,
-      "ms": 0.0429,
+      "ms": 0.0167,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 94,
       "spills": 0,
       "steps": 915,
-      "ms": 0.0392,
+      "ms": 0.0164,
       "irChanges": 3
      },
      "all": {
       "statics": 94,
       "spills": 0,
       "steps": 915,
-      "ms": 0.0404,
+      "ms": 0.0518,
       "irChanges": 26
      }
     }
@@ -1692,49 +1731,49 @@
       "statics": 112,
       "spills": 0,
       "steps": 669,
-      "ms": 0.0294,
+      "ms": 0.0138,
       "irChanges": 0
      },
      "fold": {
       "statics": 112,
       "spills": 0,
       "steps": 669,
-      "ms": 0.0183,
+      "ms": 0.0134,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 112,
       "spills": 0,
       "steps": 669,
-      "ms": 0.016,
+      "ms": 0.0133,
       "irChanges": 0
      },
      "cse": {
       "statics": 108,
       "spills": 0,
       "steps": 649,
-      "ms": 0.0157,
+      "ms": 0.0127,
       "irChanges": 21
      },
      "dce": {
       "statics": 112,
       "spills": 0,
       "steps": 669,
-      "ms": 0.0169,
+      "ms": 0.0137,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 112,
       "spills": 0,
       "steps": 669,
-      "ms": 0.0159,
+      "ms": 0.0132,
       "irChanges": 0
      },
      "all": {
       "statics": 108,
       "spills": 0,
       "steps": 649,
-      "ms": 0.0153,
+      "ms": 0.013,
       "irChanges": 21
      }
     }
@@ -1746,49 +1785,49 @@
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0069,
+      "ms": 0.006,
       "irChanges": 0
      },
      "fold": {
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0069,
+      "ms": 0.0054,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0072,
+      "ms": 0.0054,
       "irChanges": 0
      },
      "cse": {
       "statics": 85,
       "spills": 0,
       "steps": 247,
-      "ms": 0.0069,
+      "ms": 0.0149,
       "irChanges": 11
      },
      "dce": {
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0071,
+      "ms": 0.0073,
       "irChanges": 3
      },
      "fold+copyprop": {
       "statics": 88,
       "spills": 0,
       "steps": 253,
-      "ms": 0.0068,
+      "ms": 0.007,
       "irChanges": 0
      },
      "all": {
       "statics": 85,
       "spills": 0,
       "steps": 247,
-      "ms": 0.0069,
+      "ms": 0.0057,
       "irChanges": 11
      }
     }
@@ -1800,49 +1839,49 @@
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0181,
+      "ms": 0.0146,
       "irChanges": 0
      },
      "fold": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0164,
+      "ms": 0.0135,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0177,
+      "ms": 0.0144,
       "irChanges": 0
      },
      "cse": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0427,
+      "ms": 0.0135,
       "irChanges": 0
      },
      "dce": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0267,
+      "ms": 0.0134,
       "irChanges": 0
      },
      "fold+copyprop": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0273,
+      "ms": 0.0136,
       "irChanges": 0
      },
      "all": {
       "statics": 4,
       "spills": 0,
       "steps": 3,
-      "ms": 0.0304,
+      "ms": 0.0135,
       "irChanges": 0
      }
     }
@@ -1854,49 +1893,49 @@
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0181,
+      "ms": 0.0139,
       "irChanges": 0
      },
      "fold": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0171,
+      "ms": 0.0133,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0169,
+      "ms": 0.0131,
       "irChanges": 0
      },
      "cse": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0173,
+      "ms": 0.0134,
       "irChanges": 1
      },
      "dce": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0171,
+      "ms": 0.0132,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0185,
+      "ms": 0.0142,
       "irChanges": 0
      },
      "all": {
       "statics": 6,
       "spills": 0,
       "steps": 5,
-      "ms": 0.0183,
+      "ms": 0.0135,
       "irChanges": 1
      }
     }
@@ -1908,49 +1947,49 @@
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0185,
+      "ms": 0.0141,
       "irChanges": 0
      },
      "fold": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0178,
+      "ms": 0.0138,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0179,
+      "ms": 0.0136,
       "irChanges": 0
      },
      "cse": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0177,
+      "ms": 0.0136,
       "irChanges": 1
      },
      "dce": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0174,
+      "ms": 0.0136,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0176,
+      "ms": 0.0134,
       "irChanges": 0
      },
      "all": {
       "statics": 7,
       "spills": 0,
       "steps": 6,
-      "ms": 0.0176,
+      "ms": 0.0135,
       "irChanges": 1
      }
     }
@@ -1962,49 +2001,49 @@
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0209,
+      "ms": 0.0137,
       "irChanges": 0
      },
      "fold": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0175,
+      "ms": 0.0139,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0166,
+      "ms": 0.0133,
       "irChanges": 0
      },
      "cse": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0166,
+      "ms": 0.0133,
       "irChanges": 0
      },
      "dce": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0173,
+      "ms": 0.0133,
       "irChanges": 0
      },
      "fold+copyprop": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.017,
+      "ms": 0.0134,
       "irChanges": 0
      },
      "all": {
       "statics": 6,
       "spills": 0,
       "steps": 4,
-      "ms": 0.0169,
+      "ms": 0.0136,
       "irChanges": 0
      }
     }
@@ -2016,49 +2055,49 @@
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.2094,
+      "ms": 0.2119,
       "irChanges": 0
      },
      "fold": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.1864,
+      "ms": 0.5967,
       "irChanges": 0
      },
      "copyprop": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.2935,
+      "ms": 0.2559,
       "irChanges": 0
      },
      "cse": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.1964,
+      "ms": 0.1584,
       "irChanges": 0
      },
      "dce": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.1756,
+      "ms": 0.1478,
       "irChanges": 0
      },
      "fold+copyprop": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.3039,
+      "ms": 0.2809,
       "irChanges": 0
      },
      "all": {
       "statics": 9,
       "spills": 0,
       "steps": 4997,
-      "ms": 0.317,
+      "ms": 0.2846,
       "irChanges": 0
      }
     }
@@ -2070,49 +2109,49 @@
       "statics": 259,
       "spills": 0,
       "steps": 9164,
-      "ms": 0.1797,
+      "ms": 0.1499,
       "irChanges": 0
      },
      "fold": {
       "statics": 256,
       "spills": 0,
       "steps": 8882,
-      "ms": 0.449,
+      "ms": 0.157,
       "irChanges": 1
      },
      "copyprop": {
       "statics": 259,
       "spills": 0,
       "steps": 9164,
-      "ms": 0.2141,
+      "ms": 0.1591,
       "irChanges": 0
      },
      "cse": {
       "statics": 255,
       "spills": 0,
       "steps": 9069,
-      "ms": 0.2273,
+      "ms": 0.16,
       "irChanges": 73
      },
      "dce": {
       "statics": 259,
       "spills": 0,
       "steps": 9164,
-      "ms": 0.1795,
+      "ms": 0.1556,
       "irChanges": 1
      },
      "fold+copyprop": {
       "statics": 256,
       "spills": 0,
       "steps": 8882,
-      "ms": 0.1758,
+      "ms": 0.141,
       "irChanges": 1
      },
      "all": {
       "statics": 252,
       "spills": 0,
       "steps": 8787,
-      "ms": 0.2607,
+      "ms": 0.1443,
       "irChanges": 74
      }
     }
@@ -2153,5 +2192,50 @@
   },
   "meanOutputBytes": 99,
   "limits": "Recursion is never generated, so stack_overflow is not exercised here; an array parameter is only ever indexed at 0, since the callee cannot know the caller's length."
+ },
+ "voidIntervalFilter": {
+  "producedBy": "node tools/bench.js --write",
+  "compares": "the allocator giving void instructions a register, against skipping them; nothing else differs",
+  "totals": {
+   "withVoidIntervals": {
+    "statics": 1029,
+    "moves": 117,
+    "steps": 311533
+   },
+   "withoutVoidIntervals": {
+    "statics": 1033,
+    "moves": 121,
+    "steps": 311815
+   }
+  },
+  "programs": 23,
+  "changed": [
+   {
+    "program": "sort-quick.mc",
+    "withVoidIntervals": {
+     "statics": 106,
+     "moves": 21,
+     "steps": 616
+    },
+    "withoutVoidIntervals": {
+     "statics": 108,
+     "moves": 23,
+     "steps": 649
+    }
+   },
+   {
+    "program": "vm.mc",
+    "withVoidIntervals": {
+     "statics": 250,
+     "moves": 20,
+     "steps": 8538
+    },
+    "withoutVoidIntervals": {
+     "statics": 252,
+     "moves": 22,
+     "steps": 8787
+    }
+   }
+  ]
  }
 }

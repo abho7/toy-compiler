@@ -229,11 +229,74 @@ function renderPressure(d) {
         ['median peak', n(d.medianPeak)],
         ['allocatable registers', n(d.allocatableRegisters)],
         ['spills at the natural register file', { value: n(d.totalSpillsAtNaturalRegisterFile), tone: 'warn' }],
-        d.registersUsed && ['registers used, all functions (before → after void instructions stopped getting one)',
-          { value: `${n(d.registersUsed.withVoidIntervals)} → ${n(d.registersUsed.withoutVoidIntervals)}`, tone: 'good' }],
-      ].filter(Boolean)),
+      ]),
     note(d.note, 'card finding'),
   ];
+}
+
+// The saving and the cost of one allocator change, side by side. Registers
+// used comes from tools/pressure.js and the code-side figures from
+// tools/bench.js; both compare the same flag, and neither is typed here.
+function renderVoidFilter(pressure, d) {
+  const used = pressure?.registersUsed;
+  if (!used && !d) return [];
+  const change = (before, after, betterWhenLower = true) => {
+    const delta = after - before;
+    const tone = delta === 0 ? '' : ((delta < 0) === betterWhenLower ? 'good' : 'warn');
+    return { value: `${delta > 0 ? '+' : ''}${n(delta)}`, tone };
+  };
+  const rows = [];
+  if (used) {
+    rows.push(['registers used, all functions', n(used.withVoidIntervals), n(used.withoutVoidIntervals),
+      change(used.withVoidIntervals, used.withoutVoidIntervals)]);
+  }
+  if (d) {
+    const [b, a] = [d.totals.withVoidIntervals, d.totals.withoutVoidIntervals];
+    rows.push(['move instructions', n(b.moves), n(a.moves), change(b.moves, a.moves)]);
+    rows.push(['static instructions', n(b.statics), n(a.statics), change(b.statics, a.statics)]);
+    rows.push(['instructions executed', n(b.steps), n(a.steps), change(b.steps, a.steps)]);
+  }
+  const header = [{ label: 'measure' }, { label: 'void instructions get a register', numeric: true },
+    { label: 'skipped', numeric: true }, { label: 'change', numeric: true }];
+  return [
+    heading('Skipping void instructions in allocation: the saving and the cost'),
+    el('p', {}, `store, print, putchar and calls to void functions define nothing, but the allocator
+      used to give each one a register anyway. It no longer does. That frees registers, and it also
+      changes the order the linear scan hands registers out in, which in some functions means more
+      copies at phi edges. Both effects are measured here against the old behaviour, which the
+      allocator can still be asked for.`),
+    command([pressure && used ? pressure.producedBy : null, d ? d.producedBy : null].filter(Boolean).join('; ')),
+    table(header, rows),
+    d && d.changed.length
+      ? [el('h3', {}, `The ${n(d.changed.length)} of ${n(d.programs)} programs whose code changed`),
+        table(
+          [{ label: 'program' }, { label: 'moves', numeric: true },
+            { label: 'static', numeric: true }, { label: 'executed', numeric: true }],
+          d.changed.map((r) => {
+            const [b, a] = [r.withVoidIntervals, r.withoutVoidIntervals];
+            return [r.program,
+              { value: `${n(b.moves)} → ${n(a.moves)}`, tone: a.moves > b.moves ? 'warn' : '' },
+              { value: `${n(b.statics)} → ${n(a.statics)}`, tone: a.statics > b.statics ? 'warn' : '' },
+              { value: `${n(b.steps)} → ${n(a.steps)}`, tone: a.steps > b.steps ? 'warn' : '' }];
+          }))]
+      : null,
+    d ? note(voidFilterFinding(pressure, d), 'card finding') : null,
+  ];
+}
+
+function voidFilterFinding(pressure, d) {
+  const slower = d.changed.filter((r) => r.withoutVoidIntervals.steps > r.withVoidIntervals.steps).length;
+  const parts = [`${n(d.programs - d.changed.length)} of ${n(d.programs)} corpus programs compile to
+    identical code either way.`];
+  if (pressure?.registersUsed?.spillsWithVoidIntervals === 0 && pressure.totalSpillsAtNaturalRegisterFile === 0) {
+    parts.push(`No corpus function spills with or without the change, so the registers it frees are
+      headroom and make no corpus program run faster.`);
+  }
+  if (slower) {
+    parts.push(`The extra moves make ${n(slower)} ${slower === 1 ? 'program' : 'programs'} execute
+      more instructions. On this corpus, the change costs a little speed in exchange for headroom.`);
+  }
+  return parts.join(' ');
 }
 
 function renderCampaign(d) {
@@ -274,6 +337,7 @@ try {
     ...renderAllocation(data.registerAllocation),
     ...renderPasses(data.optimizationPasses),
     ...renderPressure(data.registerPressure),
+    ...renderVoidFilter(data.registerPressure, data.voidIntervalFilter).flat().filter(Boolean),
     ...renderCampaign(data.campaign).flat().filter(Boolean),
   );
 } catch (error) {
