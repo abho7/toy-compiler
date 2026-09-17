@@ -229,7 +229,9 @@ function renderPressure(d) {
         ['median peak', n(d.medianPeak)],
         ['allocatable registers', n(d.allocatableRegisters)],
         ['spills at the natural register file', { value: n(d.totalSpillsAtNaturalRegisterFile), tone: 'warn' }],
-      ]),
+        d.registersUsed && ['registers used, all functions (before → after void instructions stopped getting one)',
+          { value: `${n(d.registersUsed.withVoidIntervals)} → ${n(d.registersUsed.withoutVoidIntervals)}`, tone: 'good' }],
+      ].filter(Boolean)),
     note(d.note, 'card finding'),
   ];
 }

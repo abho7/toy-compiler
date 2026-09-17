@@ -135,7 +135,7 @@ export function liveness(func) {
  * is the main thing a better allocator would recover, but it can never be
  * wrong, which is the right trade for a first allocator.
  */
-export function liveIntervals(func) {
+export function liveIntervals(func, { voidIntervals = false } = {}) {
   const order = linearOrder(func);
   const { liveIn, liveOut } = liveness(func);
   const intervals = new Map();
@@ -158,7 +158,12 @@ export function liveIntervals(func) {
     // Filtering here rather than at the definition site is deliberate: this is
     // the one place every value passes through, and a void instruction can
     // never be an operand, so nothing real is suppressed.
-    if (!value || value.op === 'const' || value.type === 'void') return;
+    //
+    // `voidIntervals` puts the old behaviour back. Nothing compiles with it; it
+    // exists so tools/pressure.js can measure what the filter saves instead of
+    // quoting a number from the commit that introduced it.
+    if (!value || value.op === 'const') return;
+    if (value.type === 'void' && !voidIntervals) return;
     const existing = intervals.get(value);
     if (!existing) intervals.set(value, { value, start: position, end: position });
     else {
@@ -226,8 +231,8 @@ export function allocatableRegisters(func) {
  * Returns a location per value -- { kind: 'reg', n } or { kind: 'slot', n } --
  * along with the counts the benchmark reports.
  */
-export function allocate(func, { registers: override = null } = {}) {
-  const { order, intervals } = liveIntervals(func);
+export function allocate(func, { registers: override = null, voidIntervals = false } = {}) {
+  const { order, intervals } = liveIntervals(func, { voidIntervals });
   const natural = allocatableRegisters(func);
   // The register set is injectable so the spill path can be put under real
   // pressure in a test. Every corpus program fits in the register file with

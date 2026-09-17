@@ -59,6 +59,9 @@ for (const file of readdirSync(CORPUS).filter((f) => f.endsWith('.mc')).sort()) 
       reserved: available.reservedForArgs,
       spills: result.spills,
       registersUsed: result.registersUsed,
+      // The same allocation with void instructions given intervals, as the
+      // allocator did before it learned to skip them. Measured, not remembered.
+      registersUsedWithVoidIntervals: allocate(func, { voidIntervals: true }).registersUsed,
     });
   }
 }
@@ -82,12 +85,20 @@ const summary = {
   medianPeak: peaks[Math.floor(peaks.length / 2)],
   allocatableRegisters: rows[0].available,
   totalSpillsAtNaturalRegisterFile: rows.reduce((n, r) => n + r.spills, 0),
+  registersUsed: {
+    withVoidIntervals: rows.reduce((n, r) => n + r.registersUsedWithVoidIntervals, 0),
+    withoutVoidIntervals: rows.reduce((n, r) => n + r.registersUsed, 0),
+    functionsThatUseFewer: rows.filter((r) => r.registersUsed < r.registersUsedWithVoidIntervals).length,
+  },
   note: 'No corpus function fills the register file, so the spill path never runs on this input. '
     + 'It is exercised by squeezing the register set in test/regalloc.test.js.',
 };
 
 process.stdout.write(`\npeak ${summary.peakPressure} at ${summary.peakAt}; median ${summary.medianPeak}; `);
 process.stdout.write(`${summary.totalSpillsAtNaturalRegisterFile} spills across ${summary.functions} functions\n`);
+const used = summary.registersUsed;
+process.stdout.write(`registers used: ${used.withVoidIntervals} with void intervals, ${used.withoutVoidIntervals} without `
+  + `(${used.functionsThatUseFewer} functions use fewer)\n`);
 
 if (write) {
   const goldenDir = join(ROOT, 'golden');

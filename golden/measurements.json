@@ -7,6 +7,11 @@
   "medianPeak": 3,
   "allocatableRegisters": 13,
   "totalSpillsAtNaturalRegisterFile": 0,
+  "registersUsed": {
+   "withVoidIntervals": 254,
+   "withoutVoidIntervals": 172,
+   "functionsThatUseFewer": 25
+  },
   "note": "No corpus function fills the register file, so the spill path never runs on this input. It is exercised by squeezing the register set in test/regalloc.test.js.",
   "perFunction": [
    {
@@ -17,7 +22,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 13
+    "registersUsed": 13,
+    "registersUsedWithVoidIntervals": 13
    },
    {
     "program": "sort-quick.mc",
@@ -27,7 +33,8 @@
     "available": 10,
     "reserved": 3,
     "spills": 0,
-    "registersUsed": 10
+    "registersUsed": 10,
+    "registersUsedWithVoidIntervals": 10
    },
    {
     "program": "binary-search.mc",
@@ -37,7 +44,8 @@
     "available": 10,
     "reserved": 3,
     "spills": 0,
-    "registersUsed": 10
+    "registersUsed": 10,
+    "registersUsedWithVoidIntervals": 10
    },
    {
     "program": "nqueens.mc",
@@ -47,7 +55,8 @@
     "available": 10,
     "reserved": 3,
     "spills": 0,
-    "registersUsed": 10
+    "registersUsed": 10,
+    "registersUsedWithVoidIntervals": 10
    },
    {
     "program": "nqueens.mc",
@@ -57,7 +66,8 @@
     "available": 10,
     "reserved": 3,
     "spills": 0,
-    "registersUsed": 10
+    "registersUsed": 10,
+    "registersUsedWithVoidIntervals": 10
    },
    {
     "program": "sort-insertion.mc",
@@ -67,7 +77,8 @@
     "available": 11,
     "reserved": 2,
     "spills": 0,
-    "registersUsed": 11
+    "registersUsed": 11,
+    "registersUsedWithVoidIntervals": 11
    },
    {
     "program": "sieve.mc",
@@ -77,7 +88,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 13
+    "registersUsed": 13,
+    "registersUsedWithVoidIntervals": 13
    },
    {
     "program": "strings.mc",
@@ -87,7 +99,8 @@
     "available": 11,
     "reserved": 2,
     "spills": 0,
-    "registersUsed": 10
+    "registersUsed": 10,
+    "registersUsedWithVoidIntervals": 11
    },
    {
     "program": "sort-quick.mc",
@@ -97,7 +110,8 @@
     "available": 10,
     "reserved": 3,
     "spills": 0,
-    "registersUsed": 7
+    "registersUsed": 7,
+    "registersUsedWithVoidIntervals": 9
    },
    {
     "program": "fib.mc",
@@ -107,7 +121,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 7
+    "registersUsed": 7,
+    "registersUsedWithVoidIntervals": 7
    },
    {
     "program": "fib.mc",
@@ -117,7 +132,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 7
+    "registersUsed": 7,
+    "registersUsedWithVoidIntervals": 9
    },
    {
     "program": "strings.mc",
@@ -127,7 +143,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 5
+    "registersUsed": 5,
+    "registersUsedWithVoidIntervals": 5
    },
    {
     "program": "strings.mc",
@@ -137,7 +154,8 @@
     "available": 11,
     "reserved": 2,
     "spills": 0,
-    "registersUsed": 6
+    "registersUsed": 6,
+    "registersUsedWithVoidIntervals": 8
    },
    {
     "program": "opt-call-twice.mc",
@@ -147,7 +165,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 3,
+    "registersUsedWithVoidIntervals": 4
    },
    {
     "program": "opt-load-across-call.mc",
@@ -157,7 +176,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 3,
+    "registersUsedWithVoidIntervals": 4
    },
    {
     "program": "opt-load-across-call.mc",
@@ -167,7 +187,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 3,
+    "registersUsedWithVoidIntervals": 7
    },
    {
     "program": "opt-load-after-store.mc",
@@ -177,7 +198,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 3,
+    "registersUsedWithVoidIntervals": 7
    },
    {
     "program": "sort-insertion.mc",
@@ -187,7 +209,8 @@
     "available": 11,
     "reserved": 2,
     "spills": 0,
-    "registersUsed": 5
+    "registersUsed": 5,
+    "registersUsedWithVoidIntervals": 11
    },
    {
     "program": "sort-quick.mc",
@@ -197,7 +220,8 @@
     "available": 10,
     "reserved": 3,
     "spills": 0,
-    "registersUsed": 5
+    "registersUsed": 5,
+    "registersUsedWithVoidIntervals": 10
    },
    {
     "program": "binary-search.mc",
@@ -207,7 +231,8 @@
     "available": 10,
     "reserved": 3,
     "spills": 0,
-    "registersUsed": 5
+    "registersUsed": 5,
+    "registersUsedWithVoidIntervals": 10
    },
    {
     "program": "eval-order.mc",
@@ -217,7 +242,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 2
+    "registersUsed": 2,
+    "registersUsedWithVoidIntervals": 3
    },
    {
     "program": "nqueens.mc",
@@ -227,7 +253,8 @@
     "available": 10,
     "reserved": 3,
     "spills": 0,
-    "registersUsed": 2
+    "registersUsed": 2,
+    "registersUsedWithVoidIntervals": 3
    },
    {
     "program": "opt-dead-load.mc",
@@ -237,7 +264,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 2
+    "registersUsed": 2,
+    "registersUsedWithVoidIntervals": 3
    },
    {
     "program": "opt-guarded-divide.mc",
@@ -247,7 +275,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 3,
+    "registersUsedWithVoidIntervals": 3
    },
    {
     "program": "strings.mc",
@@ -257,7 +286,8 @@
     "available": 11,
     "reserved": 2,
     "spills": 0,
-    "registersUsed": 2
+    "registersUsed": 2,
+    "registersUsedWithVoidIntervals": 11
    },
    {
     "program": "trap-oob-read.mc",
@@ -267,7 +297,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 3,
+    "registersUsedWithVoidIntervals": 4
    },
    {
     "program": "trap-stack-overflow.mc",
@@ -277,7 +308,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 3,
+    "registersUsedWithVoidIntervals": 3
    },
    {
     "program": "opt-call-twice.mc",
@@ -287,7 +319,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 1
+    "registersUsed": 1,
+    "registersUsedWithVoidIntervals": 2
    },
    {
     "program": "opt-dead-divide.mc",
@@ -297,7 +330,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 1
+    "registersUsed": 1,
+    "registersUsedWithVoidIntervals": 2
    },
    {
     "program": "opt-guarded-divide.mc",
@@ -307,7 +341,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 3
+    "registersUsed": 3,
+    "registersUsedWithVoidIntervals": 6
    },
    {
     "program": "trap-div-overflow.mc",
@@ -317,7 +352,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 1
+    "registersUsed": 1,
+    "registersUsedWithVoidIntervals": 1
    },
    {
     "program": "trap-div-zero.mc",
@@ -327,7 +363,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 1
+    "registersUsed": 1,
+    "registersUsedWithVoidIntervals": 2
    },
    {
     "program": "trap-oob-write.mc",
@@ -337,7 +374,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 1
+    "registersUsed": 1,
+    "registersUsedWithVoidIntervals": 2
    },
    {
     "program": "trap-stack-overflow.mc",
@@ -347,7 +385,8 @@
     "available": 12,
     "reserved": 1,
     "spills": 0,
-    "registersUsed": 1
+    "registersUsed": 1,
+    "registersUsedWithVoidIntervals": 1
    },
    {
     "program": "arith.mc",
@@ -357,7 +396,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 0
+    "registersUsed": 0,
+    "registersUsedWithVoidIntervals": 13
    },
    {
     "program": "opt-foldable.mc",
@@ -367,7 +407,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 0
+    "registersUsed": 0,
+    "registersUsedWithVoidIntervals": 7
    },
    {
     "program": "short-circuit.mc",
@@ -377,7 +418,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 0
+    "registersUsed": 0,
+    "registersUsedWithVoidIntervals": 1
    },
    {
     "program": "short-circuit.mc",
@@ -387,7 +429,8 @@
     "available": 13,
     "reserved": 0,
     "spills": 0,
-    "registersUsed": 0
+    "registersUsed": 0,
+    "registersUsedWithVoidIntervals": 8
    }
   ]
  },

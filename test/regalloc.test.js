@@ -221,3 +221,22 @@ test('peak pressure across the corpus is well under the register file', () => {
   assert.ok(worst <= FIRST_SCRATCH,
     `peak pressure ${worst} at ${worstAt} no longer fits the ${FIRST_SCRATCH} allocatable registers`);
 });
+
+test('void instructions get no interval, unless the pre-fix behaviour is asked for', () => {
+  // tools/pressure.js reports registers used with and without this filter, so
+  // the flag that restores the old behaviour has to actually restore it.
+  const func = build('int main() { print(1); print(2); putchar(10); return 0; }');
+  const isVoid = (iv) => iv.value.type === 'void';
+  assert.equal(liveIntervals(func).intervals.filter(isVoid).length, 0);
+  assert.ok(liveIntervals(func, { voidIntervals: true }).intervals.filter(isVoid).length >= 3);
+
+  let fewer = 0;
+  for (const { file, func: f } of corpusFunctions()) {
+    const before = allocate(f, { voidIntervals: true });
+    const after = allocate(f);
+    assert.deepEqual(verifyAllocation(f, before), [], `${file}:${f.name}`);
+    assert.ok(after.registersUsed <= before.registersUsed, `${file}:${f.name} uses more registers`);
+    if (after.registersUsed < before.registersUsed) fewer++;
+  }
+  assert.ok(fewer > 0, 'the filter saved no registers anywhere in the corpus');
+});
