@@ -49,10 +49,15 @@ class FunctionGen {
     // run -- and code that never runs is code whose passing tests mean
     // nothing. test/codegen-spill.test.js compiles and runs the whole corpus
     // with this squeezed down.
+    //
+    // `voidIntervals` is passed through for tools/bench.js, which compiles the
+    // corpus with and without void instructions holding registers to measure
+    // what dropping them cost in code; see liveIntervals.
     const natural = allocatableRegisters(func).registers;
-    this.alloc = allocate(func, options.maxRegisters !== undefined
-      ? { registers: natural.slice(0, options.maxRegisters) }
-      : {});
+    this.alloc = allocate(func, {
+      ...(options.maxRegisters !== undefined ? { registers: natural.slice(0, options.maxRegisters) } : {}),
+      voidIntervals: options.voidIntervals ?? false,
+    });
 
     const problems = verifyAllocation(func, this.alloc);
     if (problems.length) {

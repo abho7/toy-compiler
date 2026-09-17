@@ -50,6 +50,9 @@ for (const file of readdirSync(CORPUS).filter((f) => f.endsWith('.mc')).sort()) 
     }
     const available = allocatableRegisters(func);
     const result = allocate(func);
+    // The same allocation with void instructions given intervals, as the
+    // allocator did before it learned to skip them. Measured, not remembered.
+    const prefix = allocate(func, { voidIntervals: true });
     rows.push({
       program: file,
       func: func.name,
@@ -59,9 +62,8 @@ for (const file of readdirSync(CORPUS).filter((f) => f.endsWith('.mc')).sort()) 
       reserved: available.reservedForArgs,
       spills: result.spills,
       registersUsed: result.registersUsed,
-      // The same allocation with void instructions given intervals, as the
-      // allocator did before it learned to skip them. Measured, not remembered.
-      registersUsedWithVoidIntervals: allocate(func, { voidIntervals: true }).registersUsed,
+      registersUsedWithVoidIntervals: prefix.registersUsed,
+      spillsWithVoidIntervals: prefix.spills,
     });
   }
 }
@@ -88,6 +90,7 @@ const summary = {
   registersUsed: {
     withVoidIntervals: rows.reduce((n, r) => n + r.registersUsedWithVoidIntervals, 0),
     withoutVoidIntervals: rows.reduce((n, r) => n + r.registersUsed, 0),
+    spillsWithVoidIntervals: rows.reduce((n, r) => n + r.spillsWithVoidIntervals, 0),
     functionsThatUseFewer: rows.filter((r) => r.registersUsed < r.registersUsedWithVoidIntervals).length,
   },
   note: 'No corpus function fills the register file, so the spill path never runs on this input. '

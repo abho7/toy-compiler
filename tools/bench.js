@@ -236,6 +236,62 @@ process.stdout.write(
   + '  None of these four passes optimizes across an iteration or a call, and the corpus spends\n'
   + '  almost every instruction inside a loop or a recursive call.\n');
 
+// ---------------------------------------------------------------------------
+// What it cost to stop giving void instructions a register.
+//
+// tools/pressure.js records the saving: fewer registers used. This records the
+// price, which lands in the code. A shorter interval list hands the linear scan
+// a different free-register order, and some functions end up with assignments
+// that need more copies at phi edges. The two sides differ only in the
+// allocator's `voidIntervals` flag, so every difference below is that filter's.
+
+const countMoves = (bytecode) => {
+  let moves = 0;
+  for (const func of bytecode.funcs) {
+    for (let at = 0; at < func.spans.length; at++) {
+      if (func.code[at * WORDS_PER_INSTR] === OP.MOVE) moves++;
+    }
+  }
+  return moves;
+};
+
+const measureFilterSide = (bytecode) => ({
+  statics: bytecode.funcs.reduce((n, f) => n + f.spans.length, 0),
+  moves: countMoves(bytecode),
+  steps: runBytecode(bytecode, { maxSteps: 200_000_000 }).steps,
+});
+
+const filterTotals = {
+  withVoidIntervals: { statics: 0, moves: 0, steps: 0 },
+  withoutVoidIntervals: { statics: 0, moves: 0, steps: 0 },
+};
+const filterChanged = [];
+for (const file of readdirSync(CORPUS).filter((f) => f.endsWith('.mc')).sort()) {
+  const source = readFileSync(join(CORPUS, file), 'utf8');
+  const before = measureFilterSide(generate(compile(source), { voidIntervals: true }));
+  const after = measureFilterSide(generate(compile(source)));
+  for (const key of ['statics', 'moves', 'steps']) {
+    filterTotals.withVoidIntervals[key] += before[key];
+    filterTotals.withoutVoidIntervals[key] += after[key];
+  }
+  if (before.statics !== after.statics || before.moves !== after.moves || before.steps !== after.steps) {
+    filterChanged.push({ program: file, withVoidIntervals: before, withoutVoidIntervals: after });
+  }
+}
+
+const fb = filterTotals.withVoidIntervals;
+const fa = filterTotals.withoutVoidIntervals;
+process.stdout.write('\n\nwhat skipping void instructions in allocation cost, in code\n\n');
+process.stdout.write(`  moves:               ${fb.moves} -> ${fa.moves}\n`);
+process.stdout.write(`  static instructions: ${fb.statics} -> ${fa.statics}\n`);
+process.stdout.write(`  executed:            ${fb.steps} -> ${fa.steps}\n`);
+for (const r of filterChanged) {
+  const [b, a] = [r.withVoidIntervals, r.withoutVoidIntervals];
+  process.stdout.write(`  ${r.program.padEnd(24)} moves ${b.moves} -> ${a.moves}, `
+    + `static ${b.statics} -> ${a.statics}, executed ${b.steps} -> ${a.steps}\n`);
+}
+process.stdout.write(`  ${filterChanged.length} of ${rows.length} programs compile differently; the rest are unchanged\n`);
+
 if (write) {
   const goldenDir = join(ROOT, 'golden');
   if (!existsSync(goldenDir)) mkdirSync(goldenDir, { recursive: true });
@@ -275,6 +331,13 @@ if (write) {
       + 'its own is reported as such rather than omitted: copy propagation removes trivial phis, '
       + 'and what creates them is constant folding.',
     wallClockNote: `median of ${REPEATS} runs, per program, not aggregated: it measures this host on this day`,
+  };
+  existing.voidIntervalFilter = {
+    producedBy: 'node tools/bench.js --write',
+    compares: 'the allocator giving void instructions a register, against skipping them; nothing else differs',
+    totals: filterTotals,
+    programs: rows.length,
+    changed: filterChanged,
   };
   writeFileSync(path, `${JSON.stringify(existing, null, 1)}\n`);
   process.stdout.write('\nrecorded in golden/measurements.json\n');

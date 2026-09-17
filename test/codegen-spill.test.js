@@ -111,3 +111,21 @@ test('allocation emits far fewer instructions than keeping everything in memory'
   assert.ok(allocated < inMemory * 0.75,
     `expected a substantial cut, got ${inMemory} -> ${allocated}`);
 });
+
+test('the pre-fix allocation still generates correct code, and it is not the same code', () => {
+  // tools/bench.js measures the cost of skipping void instructions by
+  // compiling with `voidIntervals` on and off. If the generator dropped the
+  // flag, both sides would be identical and the report would show no cost.
+  let differs = 0;
+  for (const file of programs) {
+    const source = readFileSync(join(CORPUS, file), 'utf8');
+    const expected = observationBytes(runProgram(compile(source).program, { maxSteps: 5_000_000 }));
+    const before = generate(compile(source).module, { voidIntervals: true });
+    const after = generate(compile(source).module);
+    const actual = observationBytes(runBytecode(before, { maxSteps: 90_000_000 }));
+    assert.equal(decode(actual), decode(expected), `${file} disagrees with void intervals`);
+    const size = (b) => b.funcs.reduce((n, f) => n + f.spans.length, 0);
+    if (size(before) !== size(after)) differs++;
+  }
+  assert.ok(differs > 0, 'the flag changed no generated code anywhere in the corpus');
+});
