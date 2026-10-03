@@ -1,5 +1,9 @@
 # toy-compiler
 
+[![license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
+[![tests](https://github.com/abho7/toy-compiler/actions/workflows/tests.yml/badge.svg)](https://github.com/abho7/toy-compiler/actions/workflows/tests.yml)
+
 A compiler for **minic**, a small imperative language: lexer, parser, type checker, an SSA
 intermediate representation, optimization passes, register allocation, and a bytecode VM. Written
 from scratch, no dependencies, no build step.
