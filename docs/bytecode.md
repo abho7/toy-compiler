@@ -105,8 +105,8 @@ is 11 against 13 allocatable registers, so every value fits and none has to be s
 
 #### A historical figure, measured differently
 
-Against the *actual phase 5 generator* (commit `5e6d35a`, extracted with
-`git show 5e6d35a:src/backend/codegen.js` and run side by side), the same corpus went from 2033 to
+Against the *actual phase 5 generator* (commit `90f9f18`, extracted with
+`git show 90f9f18:src/backend/codegen.js` and run side by side), the same corpus went from 2033 to
 1029 static instructions and 671,214 to 311,533 executed — 49.4% and 53.6%.
 
 Those were measured before the void-interval fix described below, which moved the current
